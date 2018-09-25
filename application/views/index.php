@@ -115,6 +115,38 @@
         </div>
     </div>
 
+    <div class="center">
+        <h2 class="faq">faq</h2>
+    </div>
+
+    <div class="center faq_center" style="background-image: url(<?=base_url()?>assets/img/faq.jpg);">
+        <div class="faq_content">
+            <h3 class="faq_title">Lorem ipsum dolor sit.</h3>
+            <p class="faq_answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas incidunt alias dolores nihil, numquam quasi saepe iste tempora labore veniam ipsa voluptates eum. Magni ullam placeat ducimus sunt fuga accusamus!</p>    
+
+            <h3 class="faq_title">Lorem ipsum dolor sit amet.</h3>
+            <p class="faq_answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque qui esse dolorem ipsum quod eos odit amet minima tempore quos assumenda similique libero, dicta quibusdam.</p>  
+
+            <h3 class="faq_title">Lorem ipsum dolor sit amet consectetur.</h3>
+            <p class="faq_answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, nesciunt enim. Provident quam voluptatum ea est eligendi enim ipsa error totam impedit sit dolorum at debitis adipisci autem, delectus dolor, ex quisquam! Natus, cum.</p>
+        </div>  
+    </div>
+
+
+    <div class="center">
+        <h2 class="subscribe">Subscribe</h2>
+        <p class="subscribe_text">Stay in Touch, Be the first to know the Latest News</p>
+        <div class="subscribe_form">
+            <input type="text" placeholder="Name" />
+            <input type="mail" placeholder="E-mail" />
+            <button>Subscribe</button>
+        </div>
+    </div>
+
+    <footer>
+       <span class="copy">&copy; <?php echo date('Y'); ?> John Doe All Rights Reserved</span>
+    </footer>
+
 
 <script>
 
