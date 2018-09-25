@@ -117,3 +117,13 @@ ERROR - 2018-09-25 12:25:08 --> Could not find the language line "Home"
 ERROR - 2018-09-25 12:26:04 --> Could not find the language line "Home"
 ERROR - 2018-09-25 12:28:04 --> Could not find the language line "Home"
 ERROR - 2018-09-25 12:28:19 --> Could not find the language line "Home"
+ERROR - 2018-09-25 13:43:15 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'dilemmatik' D:\OSPanel\domains\localhost\NestGarage\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-09-25 13:43:15 --> Unable to connect to the database
+ERROR - 2018-09-25 13:43:15 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-25 13:43:15 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-25 13:43:15 --> Could not find the language line "db_unable_to_connect"
+ERROR - 2018-09-25 13:43:15 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at D:\OSPanel\domains\localhost\NestGarage\system\core\Exceptions.php:271) D:\OSPanel\domains\localhost\NestGarage\system\core\Common.php 570
+ERROR - 2018-09-25 13:45:51 --> Could not find the language line "Home"
+ERROR - 2018-09-25 13:45:58 --> Could not find the language line "Home"
+ERROR - 2018-09-25 13:46:07 --> Could not find the language line "Home"
+ERROR - 2018-09-25 13:51:44 --> Could not find the language line "Home"
