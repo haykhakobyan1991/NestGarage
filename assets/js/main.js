@@ -12,4 +12,31 @@ $(document).ready(function(){
 	var h = window.innerHeight+'px';
 	$('header').css('height',h);
   
+
+
+   
+    setTimeout(function(){ 
+        $('.chat').fadeIn('slow'); 
+    }, 3000);
+            
+    
+    $(window).scroll(function(){
+        $("header").inView();
+    });
+
+
+    $('.chat').click(function() {
+
+        if($(this).hasClass('open')){
+            $('.modal').fadeOut('slow');
+            $(this).removeClass('open');
+        } else {
+            $('.modal').fadeIn('slow');
+            $(this).addClass('open');
+        }
+       
+    })
+
+
+
 })
