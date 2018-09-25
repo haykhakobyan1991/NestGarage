@@ -147,6 +147,19 @@
        <span class="copy">&copy; <?php echo date('Y'); ?> John Doe All Rights Reserved</span>
     </footer>
 
+    
+    
+    <!-- Chat -->
+
+    <div class="chat">
+        <p>order a call</p>
+        <img src="<?=base_url()?>assets/img/chat.png" />
+    </div>
+
+    <div class="modal">
+        
+    </div>
+
 
 <script>
 
