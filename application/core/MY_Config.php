@@ -45,23 +45,23 @@ class MY_Config extends MX_Config
         }
     }
 
-
-    /**
-     * @param string $uri
-     * @return string
-     */
-    public function site_url($uri = '', $protocol = NULL)
-    {
-        if (is_array($uri)) {
-            $uri = implode('/', $uri);
-        }
-
-        if (class_exists('CI_Controller')) {
-            $CI =& get_instance();
-            $uri = $CI->lang->localized($uri);
-        }
-
-        return parent::site_url($uri);
-    }
+//    todo
+//    /**
+//     * @param string $uri
+//     * @return string
+//     */
+//    public function site_url($uri = '', $protocol = NULL)
+//    {
+//        if (is_array($uri)) {
+//            $uri = implode('/', $uri);
+//        }
+//
+//        if (class_exists('CI_Controller')) {
+//            $CI =& get_instance();
+//            $uri = $CI->lang->localized($uri);
+//        }
+//
+//        return parent::site_url($uri);
+//    }
 
 }

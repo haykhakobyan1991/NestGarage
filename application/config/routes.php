@@ -57,11 +57,9 @@ $route['admin'] = 'admin/User/index';
 $route['admin/dashboard'] = 'admin/User/dashboard';
 
 
-//user
-$route['admin/sysadmin/user'] = 'admin/Sysadmin/user/';
-$route['admin/sysadmin/add_user'] = 'admin/Sysadmin/add_user/';
-$route['admin/sysadmin/edit_user'] = 'admin/Sysadmin/edit_user/';
-$route['admin/sysadmin/user_details'] = 'admin/Sysadmin/user_details/';
+//web
+$route['admin/web'] = 'admin/Sysadmin/web/';
+
 
 //permission
 $route['admin/sysadmin/permission'] = 'admin/Sysadmin/permission/';
