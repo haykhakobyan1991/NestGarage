@@ -100,7 +100,7 @@
 
         </div>
 
-    </div> ff
+    </div>
 
 
     <div class="center text_center">
