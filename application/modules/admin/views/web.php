@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container" style="padding-top: 50px;">
 
 	<div class="jumbotron mt-md-5 mt-5">
 		<h1 class="display-4">Web</h1>
@@ -26,8 +26,9 @@
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="card mt-3">
+				<div class="col-sm-6 pt-md-3">
+					<h5 class="title">Language 1</h5>
+					<div class="card mt-3 pt-md-3">
 						<div class="card-body">
 							<div class="form-group">
 								<label>Language 1</label>
@@ -49,6 +50,7 @@
 				</div>
 
 				<div class="col-sm-6" style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
+					<h5 class="title">Language 1</h5>
 					<div class="card mt-3">
 						<div class="card-body">
 							<div class="form-group ">
@@ -78,8 +80,8 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="row mt-md-3 pt-md-3">
+			<hr class="my-4">
+			<div class="row mt-md-3">
 
 				<div class="col-sm-6 ">
 					<div class="custom-control custom-checkbox">
@@ -87,31 +89,89 @@
 						<label class="custom-control-label" for="customCheck1">Mail to send ORDER A CALL</label>
 					</div>
 				</div>
-				<div class="col-sm-6 pt-md-3">
-					<label class="mt-md-3">Text</label>
-					<input type="text" class="form-control" name="order" placeholder="">
-					<label class="mt-md-3">Mail to</label>
+				<div class="col-sm-6">
+					<label class="">Mail to</label>
 					<input value="" type="text" class="form-control"
 						   name="mail_to"
 						   placeholder="Enter E-mail address">
 				</div>
 
 			</div>
-		</form>
-		<div class="row mt-md-3">
+			<hr class="my-4">
+			<div class="row mt-md-3">
 
-			<div class="col-sm-6 ">
-				<div class="form-group">
-					<label for="exampleFormControlFile1">Choose icon</label>
-					<input name="chat_icon" type="file" class="form-control-file" id="exampleFormControlFile1">
+				<div class="col-sm-6 ">
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Choose icon</label>
+						<input name="chat_icon" type="file" class="form-control-file" id="exampleFormControlFile1">
+					</div>
+				</div>
+				<div class="col-sm-6 pt-md-3">
+					<img width="50" src="<?= base_url() ?>assets/img/<?= $result[0]['favicon'] ?>" alt="..."
+						 class="img-thumbnail">
+				</div>
+
+			</div>
+
+			<div class="row mt-md-3">
+				<div class="col-sm-6 ">
+					<div class="form-group">
+						<label>Text Lang 1</label>
+						<input type="text" class="form-control" name="order_l1" placeholder="">
+					</div>
+				</div>
+				<div class="col-sm-6 " style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
+					<div class="form-group">
+						<label>Text Lang 2</label>
+						<input type="text" class="form-control" name="order_l2" placeholder="">
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 pt-md-3">
-				<img width="50" src="<?= base_url() ?>assets/img/<?= $result[0]['favicon'] ?>" alt="..."
-					 class="img-thumbnail">
+			<hr class="my-4">
+
+			<div class="row mt-md-3">
+				<div class="col-sm-6 ">
+					<div class="form-group">
+						<label>Title</label>
+						<input type="text" class="form-control" name="title_chat_l1" placeholder="Title">
+
+						<label>Name</label>
+						<input type="text" class="form-control" name="name_l1" placeholder="Name">
+
+						<label>E-mail</label>
+						<input type="text" class="form-control" name="email_l1" placeholder="E-mail">
+
+						<label>Country Code</label>
+						<input type="text" class="form-control" name="country_code_l1" placeholder="Countr code">
+
+						<label>Phone Number</label>
+						<input type="text" class="form-control" name="phone_number_l1" placeholder="Phone number">
+					</div>
+				</div>
+
+				<div class="col-sm-6 " style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
+					<div class="form-group">
+						<label>Title</label>
+						<input type="text" class="form-control" name="title_chat_l1" placeholder="Title">
+
+						<label>Name</label>
+						<input type="text" class="form-control" name="name_l2" placeholder="Name">
+
+						<label>E-mail</label>
+						<input type="text" class="form-control" name="email_l2" placeholder="E-mail">
+
+						<label>Country Code</label>
+						<input type="text" class="form-control" name="country_code_l2" placeholder="Countr code">
+
+						<label>Phone Number</label>
+						<input type="text" class="form-control" name="phone_number_l2" placeholder="Phone number">
+					</div>
+				</div>
 			</div>
 
-		</div>
+
+		</form>
+
 
 		<input id="submit" class="btn btn-primary  mt-3 mt-md-3 float-right" type="submit" value="Submit">
 

@@ -20,6 +20,8 @@ $page = $this->router->fetch_method();
 				<a class="nav-item nav-link <?= ($page == 'web' ? 'active' : '') ?>" href="<?= base_url() ?>admin/web">Web</a>
 				<a class="nav-item nav-link <?= ($page == 'main' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
 				<a class="nav-item nav-link <?= ($page == 'challenge' ? 'active' : '') ?>" href="<?= base_url() ?>admin/challenge">Challenge</a>
+				<a class="nav-item nav-link <?= ($page == 'solution' ? 'active' : '') ?>" href="<?= base_url() ?>admin/solution">Solution</a>
+				<a class="nav-item nav-link <?= ($page == 'functional' ? 'active' : '') ?>" href="<?= base_url() ?>admin/functional">Functional</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>

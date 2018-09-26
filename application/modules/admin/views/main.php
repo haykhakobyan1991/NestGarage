@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-top: 50px;">
 
 	<div class="jumbotron mt-md-5 mt-5">
 		<h1 class="display-4">Main</h1>
