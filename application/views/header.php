@@ -8,11 +8,10 @@
     <!--// Stylesheets //-->
     <link href="<?=base_url()?>assets/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-     <link href="<?=base_url()?>assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/css/animate.css" rel="stylesheet" type="text/css" />
     <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/favico.png" type="image/x-icon"/>
    
-    
-
 
     <!--// Javascript //-->
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
