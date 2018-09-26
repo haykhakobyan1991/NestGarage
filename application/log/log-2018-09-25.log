@@ -562,4 +562,8 @@ ERROR - 2018-09-25 18:10:23 --> Could not find the language line "Home"
 ERROR - 2018-09-25 18:11:02 --> Could not find the language line "Home"
 ERROR - 2018-09-25 18:11:54 --> Could not find the language line "Home"
 ERROR - 2018-09-25 18:12:05 --> Could not find the language line "Home"
+<<<<<<< HEAD
+ERROR - 2018-09-25 18:12:55 --> Could not find the language line "Home"
+=======
 >>>>>>> 20c6b69d31839313f908206621ebc41a33cdd1ad
+>>>>>>> 9f0b05f6325ec2b1af5574146b28094d028027cc
