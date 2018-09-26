@@ -6,6 +6,8 @@
 </head>
 <body>
 <?
+$page =  $this->router->fetch_method();
+//todo
 $sql = "SELECT 
 					`user`.`id`,
 					CONCAT_WS(' ', `user`.`first_name`, `user`.`last_name`) AS `name`
@@ -17,12 +19,11 @@ $sql = "SELECT
 				";
 
 $query = $this->db->query($sql);
-
 $account = $query->row_array();
+
+
 ?>
 <header>
-
-
 	<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +31,8 @@ $account = $query->row_array();
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="<?= base_url() ?>">Web</a>
-				<a class="nav-item nav-link " href="<?= base_url() ?>content_type">FAQ</a>
+				<a class="nav-item nav-link <?=($page == 'web' ? 'active' : '')?>" href="<?= base_url() ?>admin/web">Web</a>
+				<a class="nav-item nav-link <?=($page == 'faq' ? 'active' : '')?>" href="<?= base_url() ?>admin/faq">FAQ</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>
