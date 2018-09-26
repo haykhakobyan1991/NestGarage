@@ -295,7 +295,12 @@ class Sysadmin extends CI_Controller {
 			);
 
 		    $messages['error']['elements'][] = $validation_errors;
+
+			echo json_encode($messages);
+			return false;
 		}
+
+
 
 
 
@@ -317,6 +322,8 @@ class Sysadmin extends CI_Controller {
 
 		$key_words_1 = $this->input->post('key_words_1');
 		$key_words_2 = $this->input->post('key_words_2');
+
+		$allow = $this->input->post('allow');
 
 
 		if(isset($_FILES['favicon']['name']) AND $_FILES['favicon']['name'] != '') {
@@ -351,15 +358,24 @@ class Sysadmin extends CI_Controller {
 
 		}
 
+		$add_sql = '';
+
+		var_dump($allow);
+
 		foreach ($language_arr as $lang_id => $language) {
+			if ($allow != 1 and $lang_id == 2) {
+				$add_sql = "`status` = '-1',";
+			}
+
 			$sql_lang = "
-				UPDATE `language` SET `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
+				UPDATE `language` SET " . $add_sql . " `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
 			";
 			$result_lang = $this->db->query($sql_lang);
 
+
 			if (!$result_lang) {
 				$messages['success'] = 0;
-				$messages['error'] = 'Error N '.$lang_id;
+				$messages['error'] = 'Error N ' . $lang_id;
 				echo json_encode($messages);
 				return false;
 			}
