@@ -502,3 +502,4 @@ ERROR - 2018-09-26 15:27:32 --> Severity: Parsing Error --> syntax error, unexpe
 ERROR - 2018-09-26 15:28:17 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
 ERROR - 2018-09-26 15:28:17 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
 ERROR - 2018-09-26 15:28:18 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 15:54:02 --> Could not find the language line "Home"
