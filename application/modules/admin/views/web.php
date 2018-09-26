@@ -57,7 +57,7 @@
 
 								<label>Language 2</label>
 								<div class="custom-control custom-checkbox float-right">
-									<input type="checkbox" class="custom-control-input" id="customCheck2">
+									<input <?=($result[1]['language_status'] == 1 ? 'checked' : '') ?> name="allow" value="on" type="checkbox" class="custom-control-input" id="customCheck2">
 									<label class="custom-control-label" for="customCheck2">Language 2 on or off</label>
 								</div>
 								<input value="<?= $result[1]['language'] ?>" type="text" class="form-control"
@@ -85,7 +85,7 @@
 
 				<div class="col-sm-6 ">
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="customCheck1">
+						<input name="allodddw" type="checkbox" class="custom-control-input" value="on" id="customCheck1">
 						<label class="custom-control-label" for="customCheck1">Mail to send ORDER A CALL</label>
 					</div>
 				</div>
