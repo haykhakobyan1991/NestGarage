@@ -6,21 +6,6 @@
 <body>
 <?
 $page = $this->router->fetch_method();
-//todo
-$sql = "SELECT 
-					`user`.`id`,
-					CONCAT_WS(' ', `user`.`first_name`, `user`.`last_name`) AS `name`
-				FROM 
-					`user`				
-				WHERE (`username` = '" . $this->session->username . "' 
-					OR `email` = '" . $this->session->username . "')
-				LIMIT 1
-				";
-
-$query = $this->db->query($sql);
-$account = $query->row_array();
-
-
 ?>
 <header>
 
