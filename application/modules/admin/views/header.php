@@ -24,23 +24,24 @@ $account = $query->row_array();
 
 ?>
 <header>
-	<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light " style="position: fixed;top: 0;z-index:999;width: 100%;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+		<a class="navbar-brand" href="#">Admin Panel</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div class="navbar-nav">
 				<a class="nav-item nav-link <?= ($page == 'web' ? 'active' : '') ?>" href="<?= base_url() ?>admin/web">Web</a>
-				<a class="nav-item nav-link <?= ($page == 'faq' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
+				<a class="nav-item nav-link <?= ($page == 'main' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>
-			<!--			<a calss="navbar-nav ml-auto" href="#">--><? //= $account['name'] ?><!--</a>-->
 			<a class="navbar-nav ml-auto" href="./logout"><img width="30" height="30"
 															   src="<?= base_url() ?>/assets/img/logout.png"></a>
-
 		</div>
 	</nav>
+
+
 </header>
