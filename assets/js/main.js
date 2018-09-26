@@ -26,7 +26,6 @@ $(document).ready(function(){
 
 
     $('.chat').click(function() {
-
         if($(this).hasClass('open')){
             $('.modal').fadeOut('slow');
             $(this).removeClass('open');
@@ -34,8 +33,17 @@ $(document).ready(function(){
             $('.modal').fadeIn('slow');
             $(this).addClass('open');
         }
-       
     })
+
+
+    var $menu = $('.modal');
+
+    $(document).mouseup(function (e) {
+        if (!$menu.is(e.target) && $menu.has(e.target).length === 0) {
+            $('.modal').fadeOut('slow');
+            $('.chat').removeClass('open');
+        }
+    });
 
 
 
