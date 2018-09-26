@@ -152,12 +152,16 @@
     <!-- Chat -->
 
     <div class="chat">
-        <p>order a call</p>
-        <img src="<?=base_url()?>assets/img/chat.png" />
+        <p class="chat_text">order a call</p>
+        <img class="chat_img" src="<?=base_url()?>assets/img/chat.png" />
     </div>
 
     <div class="modal">
-        
+        <input class="modal_input" type="text" placeholder="Name">
+        <input class="modal_input" type="email" placeholder="E-mail">
+        <input class="modal_input_2" type="text" placeholder="County code">
+        <input class="modal_input_2" type="text" placeholder="Phone number">
+        <button class="modal_button">Order</button>
     </div>
 
 

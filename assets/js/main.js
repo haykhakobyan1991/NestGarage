@@ -18,32 +18,38 @@ $(document).ready(function(){
     setTimeout(function(){ 
         $('.chat').fadeIn('slow'); 
     }, 3000);
+
+    var $menu = $('.modal');
+    var $chat = $('.chat');
+    var $chat_img = $('.chat_img');
+    var $chat_text = $('.chat_text');
+
+    $(document).click(function (e) {
+        //var div = e.target;
+        if (!$menu.is(e.target) && !$chat.is(e.target) && !$chat_img.is(e.target) && !$chat_text.is(e.target) && $menu.has(e.target).length === 0) {
             
+            $('.modal').fadeOut('slow');
+            $('.chat').removeClass('open');
     
-    $(window).scroll(function(){
-        $("header").inView();
+        }
     });
 
 
-    $('.chat').click(function() {
+
+    $('.chat').on('click',function() {
+
         if($(this).hasClass('open')){
+
             $('.modal').fadeOut('slow');
             $(this).removeClass('open');
+
         } else {
+
             $('.modal').fadeIn('slow');
             $(this).addClass('open');
         }
+
     })
-
-
-    var $menu = $('.modal');
-
-    $(document).mouseup(function (e) {
-        if (!$menu.is(e.target) && $menu.has(e.target).length === 0) {
-            $('.modal').fadeOut('slow');
-            $('.chat').removeClass('open');
-        }
-    });
 
 
 
