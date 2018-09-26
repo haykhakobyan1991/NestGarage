@@ -36,6 +36,10 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+<<<<<<< HEAD
+=======
+
+>>>>>>> d452b9c1fe3b64473a1f51ec8b706b7b052606ca
 $lang['form_validation_required']		= 'The {field} field is required.';
 $lang['form_validation_isset']			= 'The {field} field must have a value.';
 $lang['form_validation_valid_email']		= 'The {field} field must contain a valid email address.';

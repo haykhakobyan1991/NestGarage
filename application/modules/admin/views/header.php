@@ -35,8 +35,12 @@ $account = $query->row_array();
 			<div class="navbar-nav">
 				<a class="nav-item nav-link <?= ($page == 'web' ? 'active' : '') ?>" href="<?= base_url() ?>admin/web">Web</a>
 				<a class="nav-item nav-link <?= ($page == 'main' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
+<<<<<<< HEAD
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
+=======
+				<a class="nav-item nav-link <?= ($page == 'faq' ? 'active' : '') ?>" href="<?= base_url() ?>admin/faq">FAQ</a>
+>>>>>>> d452b9c1fe3b64473a1f51ec8b706b7b052606ca
 			</div>
 			<a class="navbar-nav ml-auto" href="./logout"><img width="30" height="30"
 															   src="<?= base_url() ?>/assets/img/logout.png"></a>
@@ -45,3 +49,8 @@ $account = $query->row_array();
 
 
 </header>
+
+
+
+
+

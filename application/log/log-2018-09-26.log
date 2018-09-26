@@ -194,6 +194,7 @@ ERROR - 2018-09-26 11:55:04 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:41 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:42 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:43 --> 404 Page Not Found: icons/logout.png
+<<<<<<< HEAD
 =======
 ERROR - 2018-09-26 11:57:53 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
 ERROR - 2018-09-26 11:58:21 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
@@ -314,3 +315,164 @@ ERROR - 2018-09-26 15:11:41 --> 404 Page Not Found: assets/js/bootstrap/popper.m
 ERROR - 2018-09-26 15:12:50 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
 ERROR - 2018-09-26 15:12:50 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
 ERROR - 2018-09-26 15:12:50 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+=======
+ERROR - 2018-09-26 11:58:25 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:06:07 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:06:50 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:06:51 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:06:55 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:06:56 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:06:56 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:08:32 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:08:33 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:08:33 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:08:35 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:08:36 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:08:39 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:09:07 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:09:07 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:09:10 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:09:18 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:09:19 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:09:22 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:09:43 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:09:44 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:09:54 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:09:54 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:10:05 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:10:05 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:10:34 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:10:34 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:10:37 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:10:47 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:11:24 --> Severity: Warning --> Missing argument 1 for CI_URI::segment(), called in D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\templates\edit.php on line 7 and defined D:\OSPanel\domains\localhost\NestGarage\system\core\URI.php 344
+ERROR - 2018-09-26 12:11:24 --> Severity: Notice --> Undefined variable: n D:\OSPanel\domains\localhost\NestGarage\system\core\URI.php 346
+ERROR - 2018-09-26 12:11:24 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:11:25 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:11:41 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:11:41 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:11:49 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:11:50 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:12:08 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:12:09 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:12:18 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:12:19 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:12:30 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:12:31 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:12:47 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:12:49 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:12:50 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:12:53 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/_ax
+ERROR - 2018-09-26 12:13:04 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:13:05 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:16:23 --> Language file contains no data: language/armenian/form_validation_lang.php
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:16:23 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:18:06 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:18:06 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:18:32 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:18:32 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:21:09 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:21:09 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:21:11 --> Language file contains no data: language/armenian/form_validation_lang.php
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_required"
+ERROR - 2018-09-26 12:21:11 --> Could not find the language line "form_validation_error_message_not_set"
+ERROR - 2018-09-26 12:21:49 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:21:49 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:26:05 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:28:19 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:28:19 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:28:33 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:28:34 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:28:47 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:28:47 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:29:25 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:29:25 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:32:49 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:32:49 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:33:41 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:33:42 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:35:24 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:36:12 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:48:29 --> Query error: Unknown column 'website_name_1' in 'field list' - Invalid query: UPDATE `web`
+					SET 
+					 `website_name_1` = 'NestGarage',
+					 `meta_1` = 'NestGarage  Meta description',
+					 `key_words_1` = 'NestGarage   Key Words'
+				WHERE `status` = '1' AND `language_id` = '1'
+ERROR - 2018-09-26 12:48:29 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-26 12:48:29 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-26 12:48:33 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:48:36 --> Query error: Unknown column 'website_name_1' in 'field list' - Invalid query: UPDATE `web`
+					SET 
+					 `website_name_1` = 'NestGarage',
+					 `meta_1` = 'NestGarage  Meta description',
+					 `key_words_1` = 'NestGarage   Key Words'
+				WHERE `status` = '1' AND `language_id` = '1'
+ERROR - 2018-09-26 12:48:36 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-26 12:48:36 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-26 12:49:25 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:49:25 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:57:49 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/Sysadmin_ax
+ERROR - 2018-09-26 12:57:58 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/Sysadmin_ax
+ERROR - 2018-09-26 12:58:10 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/Sysadmin_ax
+ERROR - 2018-09-26 12:58:15 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/Sysadmin_ax
+ERROR - 2018-09-26 12:58:21 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:58:21 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:58:50 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:58:50 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 12:59:37 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:59:37 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:11:13 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:11:13 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:14:00 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:14:00 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:14:16 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:14:16 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:15:13 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:15:14 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:17:38 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:17:39 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:19:00 --> Severity: Notice --> Undefined index: meta_dec D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\web.php 32
+ERROR - 2018-09-26 13:19:00 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:19:00 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:19:59 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:20:00 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:20:15 --> Severity: Notice --> Undefined index: meta_dec D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\web.php 32
+ERROR - 2018-09-26 13:20:15 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:20:16 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:22:13 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:22:13 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:23:13 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:23:14 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:23:17 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:23:19 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:31:46 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:31:50 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:32:11 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:32:12 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:32:54 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:32:54 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:33:32 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:33:33 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:39:08 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:39:09 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:40:04 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:40:05 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 13:40:11 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:41:19 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:41:21 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 13:41:25 --> 404 Page Not Found: icons/logout.png
+>>>>>>> d452b9c1fe3b64473a1f51ec8b706b7b052606ca
