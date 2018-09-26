@@ -38,8 +38,9 @@ class User extends CI_Controller {
 	private function get_username_password($section) {
 
 		$file = FCPATH.'application\login\login_pass.ini';
-		chmod( $file, '0755' );
+		chmod( $file, '0777' );
 		$up_array = parse_ini_file($file,$section);
+		chmod( $file, '0666' );
 
 		return $up_array[$section];
 
