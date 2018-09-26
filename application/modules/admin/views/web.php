@@ -88,6 +88,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6 pt-md-3">
+					<label class="mt-md-3">Text</label>
 					<input type="text" class="form-control" name="order" placeholder="">
 					<label class="mt-md-3">Mail to</label>
 					<input value="" type="text" class="form-control"
@@ -97,6 +98,21 @@
 
 			</div>
 		</form>
+		<div class="row mt-md-3">
+
+			<div class="col-sm-6 ">
+				<div class="form-group">
+					<label for="exampleFormControlFile1">Choose icon</label>
+					<input name="chat_icon" type="file" class="form-control-file" id="exampleFormControlFile1">
+				</div>
+			</div>
+			<div class="col-sm-6 pt-md-3">
+				<img width="50" src="<?= base_url() ?>assets/img/<?= $result[0]['favicon'] ?>" alt="..."
+					 class="img-thumbnail">
+			</div>
+
+		</div>
+
 		<input id="submit" class="btn btn-primary  mt-3 mt-md-3 float-right" type="submit" value="Submit">
 
 	</div>

@@ -19,6 +19,7 @@ $page = $this->router->fetch_method();
 			<div class="navbar-nav">
 				<a class="nav-item nav-link <?= ($page == 'web' ? 'active' : '') ?>" href="<?= base_url() ?>admin/web">Web</a>
 				<a class="nav-item nav-link <?= ($page == 'main' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
+				<a class="nav-item nav-link <?= ($page == 'challenge' ? 'active' : '') ?>" href="<?= base_url() ?>admin/challenge">Challenge</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>

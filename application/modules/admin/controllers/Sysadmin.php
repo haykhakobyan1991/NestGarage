@@ -441,7 +441,18 @@ class Sysadmin extends CI_Controller {
 	}
 
 
+	public function challenge() {
 
+		$this->authorisation();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$data = array();
+
+
+
+		$this->layout->view('faq', $data, 'edit');
+
+	}
 
     
 }
