@@ -31,6 +31,21 @@ class User extends CI_Controller {
 	}
 
 
+	/**
+	 * @param $section
+	 * @return mixed
+	 */
+	private function get_username_password($section) {
+
+		$file = FCPATH.'application\login\login_pass.ini';
+		chmod( $file, '0755' );
+		$up_array = parse_ini_file($file,$section);
+
+		return $up_array[$section];
+
+	}
+
+
 
 	public function config() {
 		$this->authorisation();
@@ -107,42 +122,27 @@ class User extends CI_Controller {
 	/**
 	 * @return bool
 	 */
-	public function login() {
+	public function login()
+	{
 
 		$this->load->library('session');
 		$this->load->helper('url');
-        $this->load->helper('form');
+		$this->load->helper('form');
 		$data[] = array();
 
 		$username = $this->input->post('username');
-		$pass = $this->input->post('password');
-		$password = $this->hash($this->input->post('password'));
+		$password = $this->input->post('password');
+		//$password = $this->hash($this->input->post('password'));
 
-		$sql = "SELECT 
-					`user`.`id`,
-					`user`.`username`,
-					`user`.`password`,
-					`user`.`status`
-				FROM 
-					`user`				
-				WHERE (`username` = '".$username."' 
-					OR `email` = '".$username."')
-				LIMIT 1
-				";
 
-		$query = $this->db->query($sql);
-
-		$account = $query->row_array();	
-		$num = $query->num_rows();
+		$account = $this->get_username_password('account');
 
 
 		$data['username'] = $username;
-		$data['password'] = $pass;
+		$data['password'] = $password;
 
 
-
-
-		if($username != '') {
+		if ($username != '') {
 
 			if ($username != $account['username'] or $password != $account['password']) {
 
@@ -150,56 +150,33 @@ class User extends CI_Controller {
 				$this->load->view('login/login', $data);
 				return false;
 			}
-		}
 
-		if($num == 1) {
-
-			if (!isset($account['username']) or !isset($account['password']) or $account['username'] != $username or $account['password'] != $password) {
-				 $data['error'] = 'You were not logged in because you entered an invalid username/password combination';
-				 $this->load->view('login/login', $data);
-				 return false;
-			}
-
-			if($account['status'] == -2) {
-				 $data['error'] = 'Your account suspended';
-				 $this->load->view('login/login', $data);
-				 return false;
-
-			}
-		
-			if($account['status'] == -1) {
-				$data['error'] = 'Your account is not active';
-				$this->load->view('login/login', $data);
-				return false;
-			}
 
 			$remember = $this->input->post('remember_me');
 			if ($remember) {
 				$this->session->set_userdata('remember_me', TRUE);
 			}
 
-			
 
 			$sess = array(
-				'user_id' => $account['id'],
-	        	'username'  => $account['username'],
-	        	'password'  => $account['password']
+				'username' => $account['username'],
+				'password' => $account['password']
 			);
 
-		
+
 			$session = $sess;
 
-			
+
 			$this->session->set_userdata($session);
 			redirect('admin/', 'location');
-
 		} else {
 			$data['error'] = '';
 			$this->load->view('login/login', $data);
 		}
-		
 
-		
+		return true;
+
+
 	}
 
     /**
