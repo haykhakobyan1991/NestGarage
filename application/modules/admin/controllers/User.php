@@ -104,6 +104,9 @@ class User extends CI_Controller {
         
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function login() {
 
 		$this->load->library('session');
@@ -168,6 +171,11 @@ class User extends CI_Controller {
 				$data['error'] = 'Your account is not active';
 				$this->load->view('login/login', $data);
 				return false;
+			}
+
+			$remember = $this->input->post('remember_me');
+			if ($remember) {
+				$this->session->set_userdata('remember_me', TRUE);
 			}
 
 			

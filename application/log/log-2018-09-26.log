@@ -1,7 +1,20 @@
+<<<<<<< HEAD
+ERROR - 2018-09-26 08:57:10 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 09:15:51 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 09:17:00 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 09:25:01 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:13 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:31 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:33 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:34 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:34 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:25:34 --> Could not find the language line "Home"
+=======
 ERROR - 2018-09-26 08:58:53 --> Could not find the language line "Home"
 ERROR - 2018-09-26 09:15:54 --> Could not find the language line "Home"
 ERROR - 2018-09-26 09:17:17 --> Could not find the language line "Home"
 ERROR - 2018-09-26 09:18:26 --> Could not find the language line "Home"
+<<<<<<< HEAD
 ERROR - 2018-09-26 09:34:22 --> Could not find the language line "Home"
 ERROR - 2018-09-26 09:37:21 --> Could not find the language line "Home"
 ERROR - 2018-09-26 09:37:35 --> Could not find the language line "Home"
@@ -30,3 +43,8 @@ ERROR - 2018-09-26 10:14:33 --> Could not find the language line "Home"
 ERROR - 2018-09-26 10:17:09 --> Could not find the language line "Home"
 ERROR - 2018-09-26 10:17:55 --> Could not find the language line "Home"
 ERROR - 2018-09-26 10:18:13 --> Could not find the language line "Home"
+=======
+>>>>>>> 1760965f81dd3fff9f59f3e1fd8b096c02cd16ed
+ERROR - 2018-09-26 09:27:11 --> Could not find the language line "Home"
+ERROR - 2018-09-26 09:27:46 --> Could not find the language line "Home"
+>>>>>>> dae38662d9293140a1dc4d7f8e30c7f151acfb32
