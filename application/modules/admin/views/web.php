@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="col-sm-6 pt-md-3">
-				<img width="50" src="<?= base_url() ?>assets/img/favico.png" alt="..." class="img-thumbnail">
+				<img width="50" src="<?= base_url() ?>assets/img/<?=$result[0]['favicon']?>" alt="..." class="img-thumbnail">
 			</div>
 
 		</div>

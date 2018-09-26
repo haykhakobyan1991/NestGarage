@@ -315,6 +315,39 @@ class Sysadmin extends CI_Controller {
 		$key_words_1 = $this->input->post('key_words_1');
 		$key_words_2 = $this->input->post('key_words_2');
 
+
+		if(isset($_FILES['favicon']['name']) AND $_FILES['favicon']['name'] != '') {
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('favicon')) {
+				$validation_errors = array('favicon' => $this->upload->display_errors());
+				$messages['error']['elements'][] = $validation_errors;
+				echo json_encode($messages);
+				return false;
+			}
+
+
+
+			$photo_arr = $this->upload->data();
+
+			$image = $photo_arr['file_name'];
+
+			$sql_favicon = "
+				UPDATE `web` SET `favicon` = " . $this->db_value($image) . " WHERE 1
+			";
+			$result_favicon = $this->db->query($sql_favicon);
+
+			if (!$result_favicon) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error N 1';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+		}
+
 		foreach ($language_arr as $lang_id => $language) {
 			$sql_lang = "
 				UPDATE `language` SET `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
