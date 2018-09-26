@@ -76,23 +76,19 @@ class Sysadmin extends CI_Controller {
 	}
 
 
+	/**
+	 * @return mixed
+	 */
+	private function upload_config() {
 
-	
 
-
-    /**
-     * @return mixed
-     */
-    private function upload_config() {
-
-        
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'ioc|jpg|png';
         $config['max_size'] 			= '2097152'; //2 MB
         $config['file_name']			= $this->uname();
         $config['max_width']            = '2048';
         $config['max_height']           = '1024';
 
-        $this->load->library('upload', $config);	
+        $this->load->library('upload', $config);
 
         $this->upload->initialize($config);
 
@@ -234,7 +230,26 @@ class Sysadmin extends CI_Controller {
         $this->load->helper('form');
         $data = array();
 
+        $sql = "
+        	SELECT 
+			  `web`.`language_id`,
+			  `language`.`title` AS `language`,
+			  `web`.`favicon`,
+			  `web`.`website_name`,
+			  `web`.`meta_desc`,
+			  `web`.`key_word` 
+			FROM
+			  `web` 
+			  LEFT JOIN `language` 
+				ON `language`.`id` = `web`.`language_id` 
+			WHERE `web`.`status` = 1 
+        ";
 
+		$query = $this->db->query($sql);
+
+
+		$result = $query->result_array();
+		$data['result'] = $result;
 
         $this->layout->view('web', $data, 'edit');
 
@@ -253,14 +268,17 @@ class Sysadmin extends CI_Controller {
         }
 
 
+		$this->load->library('image_lib');
+		$config = $this->upload_config();
+		$config['upload_path'] = set_realpath('assets/img');
+
+
          $this->load->library('form_validation');
         // $this->config->set_item('language', 'armenian');
          $this->form_validation->set_error_delimiters('<div>', '</div>');
-    	 $this->form_validation->set_rules('username', 'Username', 'required');
-    	 $this->form_validation->set_rules('first_name', 'First name', 'required');
-    	 $this->form_validation->set_rules('role', 'Role', 'required');
-    	 $this->form_validation->set_rules('password','Password','required|min_length[6]');
-    	 $this->form_validation->set_rules('email','Email','valid_email');
+    	 $this->form_validation->set_rules('language_1', 'Language 1', 'required');
+    	 $this->form_validation->set_rules('language_2', 'Language 2', 'required');
+
 
 
     
@@ -269,57 +287,84 @@ class Sysadmin extends CI_Controller {
 			$n = 1;
 
 			$validation_errors = array(
-			                            'username' => form_error('username'),
-                                        'first_name' => form_error('first_name'),
-                                        'role' => form_error('role'),
-                                        'password' => form_error('password'),
-                                        'email' => form_error('email')
-            );
+				'language_1' => form_error('language_1'),
+				'language_2' => form_error('language_2')
+			);
+
 		    $messages['error']['elements'][] = $validation_errors;
 		}
 
 
 
-        $password = $this->hash($this->input->post('password'));
-        $role = $this->input->post('role');
-        $email = $this->input->post('email');
-        $first_name = $this->input->post('first_name');
-        $last_name = $this->input->post('last_name');
-        $username = $this->input->post('username');
-        $status = $this->input->post('status');
+		$language_1 = $this->input->post('language_1');
+		$language_2 = $this->input->post('language_2');
 
-        $sql_unique = "SELECT `username` FROM `user` WHERE `username` = '".$username."'";
+		$language_arr = array(
+			'1' => $language_1,
+			'2' => $language_2
+		);
 
-		$query = $this->db->query($sql_unique);
-		$num_rows = $query->num_rows();
-		
 
-		if($num_rows > '0') {
-			$n = 1;
-			$validation_errors = array('username' => "Username is not unique");
-		    $messages['error']['elements'][] = $validation_errors;
+		$website_name_1 = $this->input->post('website_name_1');
+		$website_name_2 = $this->input->post('website_name_2');
+
+		$meta_1 = $this->input->post('meta_1');
+		$meta_2 = $this->input->post('meta_2');
+
+
+		$key_words_1 = $this->input->post('key_words_1');
+		$key_words_2 = $this->input->post('key_words_2');
+
+		foreach ($language_arr as $lang_id => $language) {
+			$sql_lang = "
+				UPDATE `language` SET `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
+			";
+			$result_lang = $this->db->query($sql_lang);
+
+			if (!$result_lang) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error N '.$lang_id;
+				echo json_encode($messages);
+				return false;
+			}
+
+
 		}
 
-		if($n == 1) {
-			echo json_encode($messages);
-		    return false;
-		}
 
 
-		$sql = "INSERT INTO `user`
+		$sql_web1 = "UPDATE `web`
 					SET 
-					 `role_id` = ".$this->db_value($role).",
-					 `username` = ".$this->db_value($username).",
-					 `first_name` = ".$this->db_value($first_name).",
-					 `last_name` = ".$this->db_value($last_name).",
-					 `email` = ".$this->db_value($email).",
-					 `password` = ".$this->db_value($password).",
-					 `status` = ".$this->db_value($status)."";
+					 `website_name` = ".$this->db_value($website_name_1).",
+					 `meta_desc` = ".$this->db_value($meta_1).",
+					 `key_word` = ".$this->db_value($key_words_1)."
+				WHERE `status` = '1' AND `language_id` = '1'";
 
 
-		$result = $this->db->query($sql);
+		$result_web1 = $this->db->query($sql_web1);
 
-		if ($result){
+
+
+		if (!$result_web1) {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+			echo json_encode($messages);
+			return false;
+		}
+
+
+		$sql_web2 = "UPDATE `web`
+					SET 
+					 `website_name` = ".$this->db_value($website_name_2).",
+					 `meta_desc` = ".$this->db_value($meta_2).",
+					 `key_word` = ".$this->db_value($key_words_2)."
+				WHERE `status` = '1' AND `language_id` = '2'";
+
+
+		$result_web2 = $this->db->query($sql_web2);
+
+
+		if ($result_web2){
             $messages['success'] = 1;
             $messages['message'] = 'Success';
         } else {

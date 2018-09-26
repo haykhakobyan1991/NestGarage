@@ -2,7 +2,10 @@
 <?
 $controller = $this->router->fetch_class();
 $page =  $this->router->fetch_method();
-$url=base_url().'admin/'.$controller.'/'.$this->uri->segment(3);
+$url=base_url().'admin/'.$this->uri->segment(0);
+
+//var_dump($this->uri->segment(0));
+
 ?>
 
 
@@ -19,56 +22,38 @@ $url=base_url().'admin/'.$controller.'/'.$this->uri->segment(3);
 
 
 		<script type='text/javascript'>
-			var n = 0;
-			var loadText = 'Loading';
-			var interval = null;
-			function start_load() {
-				if(n!=3) {
-					$('#loading').append('.');
-					n++;
-				} else {
-					n=0;
-					$('#loading').html(loadText);				
-				}
-			}
+
 			
 			function close_message() {
-				setTimeout(function(){ $('.success, .error').addClass('d_none'); }, 3000);
+				setTimeout(function(){ $('.alert-success, .alert-danger').addClass('d-none'); }, 3000);
 			}
 			
 			function scroll_top(){
 				$('html, body').animate({scrollTop:0},700);
 			}
-			
-			function loading(e='start'){
-				if (e=='start') {
-					$('#submit').addClass('d_none');
-					$('#loading, #head_load').removeClass('d_none');
-					interval = setInterval('start_load()',1000);
-				} else {
-					$('#loading').addClass('d_none');
-					$('#loading').html(loadText);
-					$('#submit').removeClass('d_none');
-					$('#head_load').addClass('d_none');
-					clearInterval(interval); 
-				}
-			}
-			
+
 			function progressHandlingFunction(e){
+
 				if(e.lengthComputable){
+
 					var percentComplete = e.loaded/e.total*100;
+
 					$('#head_load').css('width', percentComplete+'%');
+
 				}
+
 			}
+			
+
+
 			
 			function beforeSendHandler(e){
-				$('.success, .error').addClass('d_none');
-				loading();
+				$('.alert-success, .alert-danger').addClass('d-none');
 			}
 			
 			function completeHandler(e){
 				var error = '';
-				$('.fe_err').removeClass('fe_err');
+				$('.alert-danger').removeClass('d-none');
 
 				if ($.isArray(e.error.elements)) {
 
@@ -78,7 +63,7 @@ $url=base_url().'admin/'.$controller.'/'.$this->uri->segment(3);
 						$.each(e.error.elements[index], function( index, value  ) {
 							if(value != '') {
 									
-								$("input[name='" + index + "']").addClass('fe_err');
+								$("input[name='" + index + "']").addClass('border border-danger');
 								$("select[name='" + index + "']").parent('label').children('div').addClass('fe_err');
 								error += value + ' ';
 							}					
@@ -90,58 +75,70 @@ $url=base_url().'admin/'.$controller.'/'.$this->uri->segment(3);
 				}
 
 
-				
-				
+
+
+
 				if (e.success == '1') {
+
 					scroll_top();
-					$('.error').addClass('d_none');
-					$('.success').removeClass('d_none');
-					$('.success').html(e.message);
+
+					$('.alert-danger').addClass('d_none');
+
+					$('.alert-success').removeClass('d_none');
+
+					$('.alert-success').html(e.message);
+
 					var url = "<?=$url?>";
+
 					$(location).attr('href',url);
-					loading('stop');
-					close_message();					
+
+					close_message();
+
 				} else {
+
 					scroll_top();
-					$('.success').addClass('d_none');
-					$('.error').removeClass('d_none');
-					$('.error').html(error);
-					loading('stop');
+
+					$('.alert-success').addClass('d_none');
+
+					$('.alert-danger').removeClass('d_none');
+
+					$('.alert-danger').html(error);
+
 				}
 			}
 						
 			function errorHandler(e){
 				scroll_top();
-				$('.error').removeClass('d_none');
-				$('.error').html(e);
-				loading('stop');
+				$('.alert-danger').removeClass('d_none');
+				$('.alert-danger').html(e);
 			}
 		
 			$(document).ready(function() {
 				$('#submit').click(function() {
 
-					var url = "<?=base_url().'admin/'.$controller?>/<?=$this->uri->segment(3).'_ax'?>";		
+					var url = "<?=base_url().'admin/'.$controller?>/<?=$this->uri->segment(0).'_ax'?>";
+
 					var formData = new FormData($('form')[0]);
-						
 					$.ajax({
-						url: url,  
+						url: url,
 						type: 'POST',
 						dataType: 'json',
-						xhr: function() {  
+						xhr: function() {
 							var myXhr = $.ajaxSettings.xhr();
 							if(myXhr.upload){
-								myXhr.upload.addEventListener('progress', progressHandlingFunction, false); 						
+								myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
 							}
 							return myXhr;
 						},
 							beforeSend: beforeSendHandler,
-							success: completeHandler,					
-							error: errorHandler,					
+							success: completeHandler,
+							error: errorHandler,
 							data: formData,
 							cache: false,
 							contentType: false,
 							processData: false
-					});	
-				});			
+					});
+
+				});
 			});
 	</script>
