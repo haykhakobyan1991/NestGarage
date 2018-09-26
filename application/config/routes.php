@@ -60,6 +60,8 @@ $route['admin/dashboard'] = 'admin/User/dashboard';
 //web
 $route['admin/web'] = 'admin/Sysadmin/web/';
 
+//faq
+$route['admin/faq'] = 'admin/Sysadmin/faq/';
 
 //permission
 $route['admin/sysadmin/permission'] = 'admin/Sysadmin/permission/';
