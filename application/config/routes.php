@@ -66,6 +66,9 @@ $route['admin/main'] = 'admin/Sysadmin/main/';
 //faq
 $route['admin/faq'] = 'admin/Sysadmin/faq/';
 
+//challenge
+$route['admin/challenge'] = 'admin/Sysadmin/challenge/';
+
 //permission
 $route['admin/sysadmin/permission'] = 'admin/Sysadmin/permission/';
 $route['admin/sysadmin/add_permission'] = 'admin/Sysadmin/add_permission/';

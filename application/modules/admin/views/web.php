@@ -55,7 +55,7 @@
 
 								<label>Language 2</label>
 								<div class="custom-control custom-checkbox float-right">
-									<input type="checkbox" class="custom-control-input" id="customCheck2">
+									<input <?=($result[1]['language_status'] == 1 ? 'checked' : '') ?> name="allow" value="on" type="checkbox" class="custom-control-input" id="customCheck2">
 									<label class="custom-control-label" for="customCheck2">Language 2 on or off</label>
 								</div>
 								<input value="<?= $result[1]['language'] ?>" type="text" class="form-control"
@@ -83,11 +83,12 @@
 
 				<div class="col-sm-6 ">
 					<div class="custom-control custom-checkbox">
-						<input name="allow"  value="1"  type="checkbox" class="custom-control-input" id="customCheck1">
+						<input name="allodddw" type="checkbox" class="custom-control-input" value="on" id="customCheck1">
 						<label class="custom-control-label" for="customCheck1">Mail to send ORDER A CALL</label>
 					</div>
 				</div>
 				<div class="col-sm-6 pt-md-3">
+					<label class="mt-md-3">Text</label>
 					<input type="text" class="form-control" name="order" placeholder="">
 					<label class="mt-md-3">Mail to</label>
 					<input value="" type="text" class="form-control"
@@ -97,6 +98,21 @@
 
 			</div>
 		</form>
+		<div class="row mt-md-3">
+
+			<div class="col-sm-6 ">
+				<div class="form-group">
+					<label for="exampleFormControlFile1">Choose icon</label>
+					<input name="chat_icon" type="file" class="form-control-file" id="exampleFormControlFile1">
+				</div>
+			</div>
+			<div class="col-sm-6 pt-md-3">
+				<img width="50" src="<?= base_url() ?>assets/img/<?= $result[0]['favicon'] ?>" alt="..."
+					 class="img-thumbnail">
+			</div>
+
+		</div>
+
 		<input id="submit" class="btn btn-primary  mt-3 mt-md-3 float-right" type="submit" value="Submit">
 
 	</div>

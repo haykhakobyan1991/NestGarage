@@ -237,6 +237,7 @@ class Sysadmin extends CI_Controller {
         	SELECT 
 			  `web`.`language_id`,
 			  `language`.`title` AS `language`,
+			  `language`.`status` AS `language_status`,
 			  `web`.`favicon`,
 			  `web`.`website_name`,
 			  `web`.`meta_desc`,
@@ -360,14 +361,14 @@ class Sysadmin extends CI_Controller {
 
 		$add_sql = '';
 
-		var_dump($allow);
-
 		foreach ($language_arr as $lang_id => $language) {
-			if ($allow != 1 and $lang_id == 2) {
+			if ($allow != 'on' and $lang_id == 2) {
 				$add_sql = "`status` = '-1',";
+			} else {
+				$add_sql = "`status` = '1',";
 			}
 
-			$sql_lang = "
+			 $sql_lang = "
 				UPDATE `language` SET " . $add_sql . " `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
 			";
 			$result_lang = $this->db->query($sql_lang);
@@ -457,7 +458,18 @@ class Sysadmin extends CI_Controller {
 	}
 
 
+	public function challenge() {
 
+		$this->authorisation();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$data = array();
+
+
+
+		$this->layout->view('faq', $data, 'edit');
+
+	}
 
     
 }
