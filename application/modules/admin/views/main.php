@@ -6,7 +6,7 @@
 		<hr class="my-4">
 		<div class="row">
 			<div class="col-sm-6">
-				<h5 class="title">Language 11</h5>
+				<h5 class="title">Language 1</h5>
 				<div class="card mt-3">
 					<div class="card-body">
 
