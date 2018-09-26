@@ -342,7 +342,20 @@ class Sysadmin extends CI_Controller {
 
 
 
-		$this->layout->view('web', $data, 'edit');
+		$this->layout->view('faq', $data, 'edit');
+
+	}
+
+	public function main() {
+
+		$this->authorisation();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$data = array();
+
+
+
+		$this->layout->view('main', $data, 'edit');
 
 	}
 
