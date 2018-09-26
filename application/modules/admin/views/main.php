@@ -62,7 +62,7 @@
 				</div>
 			</div>
 
-			<div class="col-sm-6">
+			<div class="col-sm-6" style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
 				<h5 class="title">Language 2</h5>
 				<div class="card mt-3">
 					<div class="card-body">

@@ -72,36 +72,42 @@
 	<div class="cards">
 
 		<div class="card card_1 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/1.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum</h3>
 			</div>
 		</div>
 
 		<div class="card card_2 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/4.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum dolor</h3>
 			</div>
 		</div>
 
 		<div class="card card_3 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/3.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum</h3>
 			</div>
 		</div>
 
 		<div class="card card_4 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/2.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum dolor</h3>
 			</div>
 		</div>
 
 		<div class="card card_5 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/5.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum dolor</h3>
 			</div>
 		</div>
 
 		<div class="card card_6 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/6.jpg);">
+			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
 			<div class="card_text">
 				<h3>Lorem ipsum</h3>
 			</div>
@@ -112,8 +118,8 @@
 </div>
 
 
-<div class="center text_center">
-	<p class="join_text">
+<div class="center text_center join_center" style="background-image: url(<?= base_url() ?>assets/img/faq.jpg);">
+	<p class="join_text" style="position:relative;">
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, id quis consequatur magnam natus assumenda autem
 		magni modi eveniet quam molestias eligendi corporis amet ad laboriosam sapiente odio! Voluptas, at possimus?
 		Perspiciatis beatae, ratione eaque enim totam repudiandae aliquam neque quia? Quibusdam doloribus, id laudantium
@@ -157,8 +163,8 @@
 	<h2 class="subscribe">Subscribe</h2>
 	<p class="subscribe_text">Stay in Touch, Be the first to know the Latest News</p>
 	<div class="subscribe_form">
-		<input type="text" placeholder="Name"/>
-		<input type="mail" placeholder="E-mail"/>
+		<input type="text" placeholder="* Name"/>
+		<input type="mail" placeholder="* E-mail"/>
 		<button>Subscribe</button>
 	</div>
 </div>
@@ -176,6 +182,7 @@
 </div>
 
 <div class="modal">
+	<p class="modal_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, beatae!</p>
 	<input class="modal_input" type="text" placeholder="Name">
 	<input class="modal_input" type="email" placeholder="E-mail">
 	<input class="modal_input_2" type="text" placeholder="County code">

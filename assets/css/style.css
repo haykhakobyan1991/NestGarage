@@ -269,7 +269,7 @@ button.m_btn.btn_begin:hover {
 }
 
 .card_text {
-	margin-top: 45%;
+	margin-top: 20%;
 }
 
 .card_text h3 {
@@ -468,4 +468,50 @@ button.modal_button {
 button.modal_button:hover {
 	color: #fff;
 	background: #28a745;
+}
+
+.modal_description {
+	text-align: center;
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+.join_center {
+	position: relative;
+	width: 100%;
+	padding: 20px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.join_center::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	opacity: .7;
+	background: linear-gradient(to right, rgb(58, 97, 134), rgb(137, 37, 62));
+	z-index: -1;
+}
+
+.join_center p{
+	color: #fff;
+	width: 70%;
+}
+
+.card_image {
+	margin-top: 21%;
+	position: relative;
+	z-index: 999;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+}
+.card:hover .card_image {
+	transform: scale(1.1);
 }
