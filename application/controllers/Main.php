@@ -64,7 +64,10 @@ class Main extends MX_Controller {
 	}
 
 
-    public function video_list() {
+	/**
+	 * @return bool
+	 */
+	public function video_list() {
 
 
 
