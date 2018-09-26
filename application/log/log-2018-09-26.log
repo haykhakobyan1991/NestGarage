@@ -144,6 +144,7 @@ ERROR - 2018-09-26 11:42:15 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:42:55 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:43:36 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:48:10 --> 404 Page Not Found: icons/logout.png
+<<<<<<< Updated upstream
 ERROR - 2018-09-26 11:49:59 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:50:03 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:50:06 --> 404 Page Not Found: icons/logout.png
@@ -193,3 +194,12 @@ ERROR - 2018-09-26 11:55:04 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:41 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:42 --> 404 Page Not Found: icons/logout.png
 ERROR - 2018-09-26 11:55:43 --> 404 Page Not Found: icons/logout.png
+=======
+ERROR - 2018-09-26 11:57:53 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 11:58:21 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 11:59:27 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 11:59:44 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-26 11:59:54 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+>>>>>>> Stashed changes
+ERROR - 2018-09-26 12:09:15 --> 404 Page Not Found: icons/logout.png
+ERROR - 2018-09-26 12:09:22 --> 404 Page Not Found: icons/logout.png

@@ -1,56 +1,52 @@
-$(document).ready(function(){
-    // WOW
-    new WOW().init();
+$(document).ready(function () {
+	// WOW
+	new WOW().init();
 
-    //SCROLL 100VH
-    $('.learn_more_btn').click(function(){
-        $('html, body').animate({
-            scrollTop: $("#elementtoScrollToID").offset().top - 100
-        }, 1000);
-    })
-	
-	var h = window.innerHeight+'px';
-	$('header').css('height',h);
-  
+	//SCROLL 100VH
+	$('.learn_more_btn').click(function () {
+		$('html, body').animate({
+			scrollTop: $("#elementtoScrollToID").offset().top - 100
+		}, 1000);
+	})
 
-
-   
-    setTimeout(function(){ 
-        $('.chat').fadeIn('slow'); 
-    }, 3000);
-
-    var $menu = $('.modal');
-    var $chat = $('.chat');
-    var $chat_img = $('.chat_img');
-    var $chat_text = $('.chat_text');
-
-    $(document).click(function (e) {
-        //var div = e.target;
-        if (!$menu.is(e.target) && !$chat.is(e.target) && !$chat_img.is(e.target) && !$chat_text.is(e.target) && $menu.has(e.target).length === 0) {
-            
-            $('.modal').fadeOut('slow');
-            $('.chat').removeClass('open');
-    
-        }
-    });
+	var h = window.innerHeight + 'px';
+	$('header').css('height', h);
 
 
+	setTimeout(function () {
+		$('.chat').fadeIn('slow');
+	}, 3000);
 
-    $('.chat').on('click',function() {
+	var $menu = $('.modal');
+	var $chat = $('.chat');
+	var $chat_img = $('.chat_img');
+	var $chat_text = $('.chat_text');
 
-        if($(this).hasClass('open')){
+	$(document).click(function (e) {
+		//var div = e.target;
+		if (!$menu.is(e.target) && !$chat.is(e.target) && !$chat_img.is(e.target) && !$chat_text.is(e.target) && $menu.has(e.target).length === 0) {
 
-            $('.modal').fadeOut('slow');
-            $(this).removeClass('open');
+			$('.modal').fadeOut('slow');
+			$('.chat').removeClass('open');
 
-        } else {
+		}
+	});
 
-            $('.modal').fadeIn('slow');
-            $(this).addClass('open');
-        }
 
-    })
+	$('.chat').on('click', function () {
 
+		if ($(this).hasClass('open')) {
+
+			$('.modal').fadeOut('slow');
+			$(this).removeClass('open');
+
+		} else {
+
+			$('.modal').fadeIn('slow');
+			$(this).addClass('open');
+		}
+
+	})
 
 
 })
