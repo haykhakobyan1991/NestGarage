@@ -227,12 +227,10 @@ if ($result_chat[$lng]['status'] == '1') {
 <script src="<?= base_url() ?>assets/js/wow.js"></script>
 
 <script>
-
 	/* Change Language */
 	$('.language_div>span').click(function () {
 		window.location.href = '<?php echo base_url(); ?>LangSwitch/switchLanguage/' + $(this).data('value');
 	});
-
 </script>
 </body>
 </html>

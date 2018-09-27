@@ -1,7 +1,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
-	<link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap/bootstrap.min.css" />
+	<script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <?
@@ -21,7 +22,10 @@ $page = $this->router->fetch_method();
 				<a class="nav-item nav-link <?= ($page == 'main' ? 'active' : '') ?>" href="<?= base_url() ?>admin/main">Main</a>
 				<a class="nav-item nav-link <?= ($page == 'challenge' ? 'active' : '') ?>" href="<?= base_url() ?>admin/challenge">Challenge</a>
 				<a class="nav-item nav-link <?= ($page == 'solution' ? 'active' : '') ?>" href="<?= base_url() ?>admin/solution">Solution</a>
-				<a class="nav-item nav-link <?= ($page == 'functional' ? 'active' : '') ?>" href="<?= base_url() ?>admin/functional">Functional</a>
+				<a class="nav-item nav-link <?= ($page == 'functional' ? 'active' : '') ?>" href="<?= base_url() ?>admin/functional">Functional 1</a>
+				<a class="nav-item nav-link <?= ($page == 'functional_2' ? 'active' : '') ?>" href="<?= base_url() ?>admin/functional_2">Functional 2</a>
+				<a class="nav-item nav-link <?= ($page == 'faq' ? 'active' : '') ?>" href="<?= base_url() ?>admin/faq">FAQ</a>
+				<a class="nav-item nav-link <?= ($page == 'footer_section' ? 'active' : '') ?>" href="<?= base_url() ?>admin/footer_section">Footer</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>
@@ -29,6 +33,4 @@ $page = $this->router->fetch_method();
 															   src="<?= base_url() ?>/assets/img/logout.png"></a>
 		</div>
 	</nav>
-
-
 </header>

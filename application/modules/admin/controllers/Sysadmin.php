@@ -5,23 +5,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sysadmin extends CI_Controller {
 
 
-    /**
-     * sysadmin constructor.
-     */
-    public function __construct() {
+	/**
+	 * sysadmin constructor.
+	 */
+	public function __construct() {
 
-        parent::__construct();
+		parent::__construct();
 
-        // load the library
-        $this->load->library('layout');
-        // load the helper
-        $this->load->helper('url');
+		// load the library
+		$this->load->library('layout');
+		// load the helper
+		$this->load->helper('url');
 
-    }
+	}
 
 
 
-    /**
+	/**
 	 * Valid URL
 	 *
 	 * @param	string	$str
@@ -30,48 +30,48 @@ class Sysadmin extends CI_Controller {
 	public function valid_url($str) {
 
 		if (filter_var($str, FILTER_VALIDATE_URL)) {
-		    return true;
+			return true;
 		} else {
-		    return false;
+			return false;
 		}
 	}
 
-    /**
-     * @param $element
-     */
-    private function pre($element) {
+	/**
+	 * @param $element
+	 */
+	private function pre($element) {
 
 		echo '<pre>';
-			print_r($element);
+		print_r($element);
 		echo '</pre>';
 	}
 
-	 /**
-	 * Return unical name without extension. 
+	/**
+	 * Return unical name without extension.
 	 * Ex: 45f7fd76
 	 *
 	 * @access public
 	 * @return string
 	 */
 	private function uname() {
-		
-	 	return substr(md5(time() . rand()), 3, 8);
-	 	
+
+		return substr(md5(time() . rand()), 3, 8);
+
 	} // End func uname
 
 
-    /**
-     * @return string
-     */
-    private function default_lng() {
+	/**
+	 * @return string
+	 */
+	private function default_lng() {
 		return 'hy';
 	}
 
-    /**
-     * @return array
-     */
-    // TODO MULTI LANGUAGE MOD
-    private function languages() {
+	/**
+	 * @return array
+	 */
+	// TODO MULTI LANGUAGE MOD
+	private function languages() {
 		return array('hy', 'ru', 'en');
 	}
 
@@ -85,29 +85,29 @@ class Sysadmin extends CI_Controller {
 	private function upload_config() {
 
 
-        $config['allowed_types']        = 'ioc|jpg|png';
-        $config['max_size'] 			= '2097152'; //2 MB
-        $config['file_name']			= $this->uname();
-        $config['max_width']            = '2048';
-        $config['max_height']           = '1024';
+		$config['allowed_types']        = 'ioc|jpg|png';
+		$config['max_size'] 			= '2097152'; //2 MB
+		$config['file_name']			= $this->uname();
+		$config['max_width']            = '2048';
+		$config['max_height']           = '1024';
 
-        $this->load->library('upload', $config);
+		$this->load->library('upload', $config);
 
-        $this->upload->initialize($config);
+		$this->upload->initialize($config);
 
-        return $config;
+		return $config;
 
-    }
+	}
 
 
 
-    /**
-     * @param $url
-     * @return bool
-     */
-    private function youtube_id_from_url($url) {
+	/**
+	 * @param $url
+	 * @return bool
+	 */
+	private function youtube_id_from_url($url) {
 
-        $result = preg_match('%^# Match any youtube URL
+		$result = preg_match('%^# Match any youtube URL
 			(?:https?://)?  # Optional scheme. Either http or https
 			(?:www\.)?      # Optional www subdomain
 			(?:             # Group host alternatives
@@ -122,33 +122,33 @@ class Sysadmin extends CI_Controller {
 			([\w-]{10,12})  # Allow 10-12 for 11 char youtube id.
 			$%x', $url, $matches);
 
-        if (!isset($matches[1])) {
-            return false;
-        }
+		if (!isset($matches[1])) {
+			return false;
+		}
 
-        if ($result) {
-            return $matches[1];
-        }
+		if ($result) {
+			return $matches[1];
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function pagination_config() {
+	/**
+	 * @return mixed
+	 */
+	public function pagination_config() {
 		//pagination config
 		$config['use_page_numbers'] = TRUE;
 		$config['per_page'] = 20;
 		$config['full_tag_open'] = '<div class="pgn">';
 		$config['full_tag_close'] = '</div>';
-        $config['next_link'] = '&gt;';
-        $config['next_tag_open'] = '<span class="pg_n">';
-        $config['next_tag_close'] = '</span>';
-        $config['prev_link'] = '&lt;';
-        $config['prev_tag_open'] = '<span class="pg_s">';
-        $config['prev_tag_close'] = '</span>';
-        $config['cur_tag_open'] = '<span class="pg_s">';
+		$config['next_link'] = '&gt;';
+		$config['next_tag_open'] = '<span class="pg_n">';
+		$config['next_tag_close'] = '</span>';
+		$config['prev_link'] = '&lt;';
+		$config['prev_tag_open'] = '<span class="pg_s">';
+		$config['prev_tag_close'] = '</span>';
+		$config['cur_tag_open'] = '<span class="pg_s">';
 		$config['cur_tag_close'] = '</span>';
 		$config['num_tag_open'] = '<span class="pg_s">';
 		$config['num_tag_close'] = '</span>';
@@ -158,38 +158,38 @@ class Sysadmin extends CI_Controller {
 
 
 
-    public function config() {
+	public function config() {
 		$this->authorisation();
 		$this->load->helper('form');
 		$this->layout->view('config');
-		   
-		
+
+
 	}
 
-    /**
-     * @return bool
-     */
-    public function access_denied() {
+	/**
+	 * @return bool
+	 */
+	public function access_denied() {
 		$message = 'Մուտքը արգելված է';
 		show_error($message, '403', $heading = '403');
 		return false;
 	}
 
 
-    /**
-     * @param $data
-     * @return string
-     */
-    public function hash($data) {
+	/**
+	 * @param $data
+	 * @return string
+	 */
+	public function hash($data) {
 		return md5($data);
 	}
 
 
-    /**
-     * @param null $value
-     * @return string
-     */
-    public function db_value($value = NULL) {
+	/**
+	 * @param null $value
+	 * @return string
+	 */
+	public function db_value($value = NULL) {
 
 		$this->load->helper('form');
 
@@ -229,11 +229,11 @@ class Sysadmin extends CI_Controller {
 	public function web() {
 
 		$this->authorisation();
-        $this->load->helper('url');
-        $this->load->helper('form');
-        $data = array();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$data = array();
 
-        $sql = "
+		$sql = "
         	SELECT 
 			  `web`.`language_id`,
 			  `language`.`title` AS `language`,
@@ -282,9 +282,9 @@ class Sysadmin extends CI_Controller {
 		$data['result_chat'] = $result_chat;
 
 
-        $this->layout->view('web', $data, 'edit');
+		$this->layout->view('web', $data, 'edit');
 
-    }
+	}
 
 	public function web_ax() {
 
@@ -292,11 +292,11 @@ class Sysadmin extends CI_Controller {
 		$n = 0;
 
 		if ($this->input->server('REQUEST_METHOD') != 'POST') {
-            // Return error
-            $messages['error'] = 'error_message';
-            $this->access_denied();
-            return false;
-        }
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
 
 
 		$this->load->library('image_lib');
@@ -304,12 +304,12 @@ class Sysadmin extends CI_Controller {
 		$config['upload_path'] = set_realpath('assets/img');
 
 
-         $this->load->library('form_validation');
-        // $this->config->set_item('language', 'armenian');
-         $this->form_validation->set_error_delimiters('<div>', '</div>');
-    	 $this->form_validation->set_rules('language_1', 'Language 1', 'required');
-    	 $this->form_validation->set_rules('language_2', 'Language 2', 'required');
-    //	 $this->form_validation->set_rules('mail_to', 'Mail To', 'required|valid_email');
+		$this->load->library('form_validation');
+		// $this->config->set_item('language', 'armenian');
+		$this->form_validation->set_error_delimiters('<div>', '</div>');
+		$this->form_validation->set_rules('language_1', 'Language 1', 'required');
+		$this->form_validation->set_rules('language_2', 'Language 2', 'required');
+		//	 $this->form_validation->set_rules('mail_to', 'Mail To', 'required|valid_email');
 
 
 		$mail_allow = $this->input->post('mail_allow'); // allow mail form
@@ -337,7 +337,7 @@ class Sysadmin extends CI_Controller {
 		}
 
 
-    
+
 		if($this->form_validation->run() == false){
 			//validation errors
 
@@ -377,7 +377,7 @@ class Sysadmin extends CI_Controller {
 
 			}
 
-		    $messages['error']['elements'][] = $validation_errors;
+			$messages['error']['elements'][] = $validation_errors;
 
 			echo json_encode($messages);
 			return false;
@@ -449,7 +449,7 @@ class Sysadmin extends CI_Controller {
 				$add_sql .= "`status` = '1',";
 			}
 
-			 $sql_lang = "
+			$sql_lang = "
 				UPDATE `language` SET " . $add_sql . " `title` = " . $this->db_value($language) . " WHERE `id` = " . $this->db_value($lang_id) . "
 			";
 			$result_lang = $this->db->query($sql_lang);
@@ -632,9 +632,9 @@ class Sysadmin extends CI_Controller {
 			$messages['error'] = 'Error';
 		}
 
-        // Return success or error message
-        echo json_encode($messages);
-        return true;
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
 	}
 
 
@@ -1055,6 +1055,6 @@ class Sysadmin extends CI_Controller {
 
 	}
 
-    
+
 }
 //end of class

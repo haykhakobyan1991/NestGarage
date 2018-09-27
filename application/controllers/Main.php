@@ -24,37 +24,37 @@ class Main extends MX_Controller {
 
 	}
 
-    /**
-     * @return string
-     */
-    private function default_lng() {
-        return 'hy';
+	/**
+	 * @return string
+	 */
+	private function default_lng() {
+		return 'hy';
 
-    }
+	}
 
-    /**
-     * @param $value
-     * @return bool
-     */
-    private function language($value) {
-        if ($value != '') {
-            return $this->lang->line($value);
-        }
-        return true;
+	/**
+	 * @param $value
+	 * @return bool
+	 */
+	private function language($value) {
+		if ($value != '') {
+			return $this->lang->line($value);
+		}
+		return true;
 
-    }
+	}
 
 
 	public function index() {
 
 		$this->load->helper('url');
-        $this->load->helper('form');
-        $language_id = $this->session->language_id;
+		$this->load->helper('form');
+		$language_id = $this->session->language_id;
 
 //        $this->layout->set_title($this->language('Home'));
-        $data = array();
+		$data = array();
 
-        if($language_id == '') {
+		if($language_id == '') {
 			$language_id = 0;
 		}
 
@@ -111,9 +111,9 @@ class Main extends MX_Controller {
 		$data['lng'] = $language_id;
 
 
-        $this->load->view('index', $data);
-	       
-        
+		$this->load->view('index', $data);
+
+
 	}
 
 
@@ -124,18 +124,18 @@ class Main extends MX_Controller {
 
 
 
-        $this->load->helper('url');
-        $this->load->helper('form');
-        $lng = $this->default_lng();
-        $alias = $this->uri->segment(2);
-        $data = array();
-        $add_sql = '';
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$lng = $this->default_lng();
+		$alias = $this->uri->segment(2);
+		$data = array();
+		$add_sql = '';
 
-        if($alias) {
+		if($alias) {
 
 
 
-            $sql = "SELECT 
+			$sql = "SELECT 
     					`video`.`id`,
     					`video`.`title_".$lng."` AS `title`,
     					`video`.`alias_".$lng."` AS `alias`,
@@ -154,9 +154,9 @@ class Main extends MX_Controller {
                     AND `video`.`an` = '0'
                     AND `video_list`.`alias_".$lng."` = '".$alias."'
     				ORDER BY `video`.`id` DESC";
-        } else {
+		} else {
 
-            $sql = "
+			$sql = "
                         SELECT 
                             `video_list`.`id`,
                             `video_list`.`title_".$lng."` AS `title`,
@@ -170,45 +170,45 @@ class Main extends MX_Controller {
                         WHERE `video_list`.`status` = '1' 
                         AND `video_list`.`alias_".$lng."` <> 'ayl'
                     ";
-        }
-        $query = $this->db->query($sql);
-        $num_rows = $query->num_rows();
+		}
+		$query = $this->db->query($sql);
+		$num_rows = $query->num_rows();
 
-        if($num_rows == 0) {
-            $message = 'Էջը չի գտնվել';
-            show_error($message, '404', $heading = '404');
-            return false;
-        }
-        $result = $query->result_array();
-        $data['result'] = $result;
+		if($num_rows == 0) {
+			$message = 'Էջը չի գտնվել';
+			show_error($message, '404', $heading = '404');
+			return false;
+		}
+		$result = $query->result_array();
+		$data['result'] = $result;
 
-        if ($alias) {
-            $this->layout->set_title($result[0]['video_list']);
-        } else {
-            $this->layout->set_title($this->language('Series'));
-        }
+		if ($alias) {
+			$this->layout->set_title($result[0]['video_list']);
+		} else {
+			$this->layout->set_title($this->language('Series'));
+		}
 
-        $this->layout->view('video_list', $data);
+		$this->layout->view('video_list', $data);
 
 
-    }
+	}
 
 	public function video() {
 
-        $this->load->helper('url');
-        $this->load->helper('form');
-        $lng = $this->default_lng();
-        $alias = $this->uri->segment(2);
-        $data = array();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$lng = $this->default_lng();
+		$alias = $this->uri->segment(2);
+		$data = array();
 
-        if(!$alias) {
-            $message = 'Էջը չի գտնվել';
-            show_error($message, '404', $heading = '404');
-            return false;
-        }
+		if(!$alias) {
+			$message = 'Էջը չի գտնվել';
+			show_error($message, '404', $heading = '404');
+			return false;
+		}
 
 
-       $sql = "SELECT 
+		$sql = "SELECT 
 					`video`.`id`,
 					`video`.`title_".$lng."` AS `title`,
 					`video`.`alias_".$lng."` AS `alias`,
@@ -225,72 +225,72 @@ class Main extends MX_Controller {
 				  `video` 
 				WHERE `video`.`alias_".$lng."` = '".$alias."'";
 
-        $query = $this->db->query($sql);
-        $num_rows = $query->num_rows();
+		$query = $this->db->query($sql);
+		$num_rows = $query->num_rows();
 
-        if($num_rows != 1) {
-            $message = 'Էջը չի գտնվել';
-            show_error($message, '404', $heading = '404');
-            return false;
-        }
-        $row = $query->row_array();
+		if($num_rows != 1) {
+			$message = 'Էջը չի գտնվել';
+			show_error($message, '404', $heading = '404');
+			return false;
+		}
+		$row = $query->row_array();
 
 
 
-        // video page view todo ajax video list click
-        $sql_view = "UPDATE `video` SET `count` = `count`+1 WHERE `alias_".$lng."` = '".$alias."'";
-        $query_view = $this->db->query($sql_view);
+		// video page view todo ajax video list click
+		$sql_view = "UPDATE `video` SET `count` = `count`+1 WHERE `alias_".$lng."` = '".$alias."'";
+		$query_view = $this->db->query($sql_view);
 
-        $data['video_id'] = $row['video_id'];
-        $data['iframe_link'] = $row['iframe_link'];
-        $data['title'] = $row['title'];
-        $data['date'] = $row['date'];
-        $data['count'] = $row['count'];
-        $data['photo'] = $row['photo'];
-        $data['like'] = $row['like'];
-        $data['dislike'] = $row['dislike'];
-        $this->layout->set_title($row['title']);
+		$data['video_id'] = $row['video_id'];
+		$data['iframe_link'] = $row['iframe_link'];
+		$data['title'] = $row['title'];
+		$data['date'] = $row['date'];
+		$data['count'] = $row['count'];
+		$data['photo'] = $row['photo'];
+		$data['like'] = $row['like'];
+		$data['dislike'] = $row['dislike'];
+		$this->layout->set_title($row['title']);
 
-        $this->layout->view('video', $data);
+		$this->layout->view('video', $data);
 
-    }
-    
-    
-    public function like_ax() {
-        
-        $data = $this->input->post('data');
-        $alias = $this->input->post('alias');
-        $check = $this->input->post('check');
-        
-        
-        if($data == 1 and $check == 1) {
-            $sql = "UPDATE `video` SET `like` = `like`+1 WHERE `alias_hy` = '".$alias."'";
-            $sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
-        } elseif($data == -1 and $check == 1) {
-           $sql = "UPDATE `video` SET `dislike` = `dislike`+1 WHERE `alias_hy` = '".$alias."'";
-           $sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
-        } elseif($data == 1 and $check == -1) {
-            $sql = "UPDATE `video` SET `like` = `like`-1 WHERE `alias_hy` = '".$alias."'";
-            $sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
-        } elseif($data == -1 and $check == -1) {
-            $sql = "UPDATE `video` SET `dislike` = `dislike`-1 WHERE `alias_hy` = '".$alias."'";
-           $sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
-        }
-        
-        
-        $result = $this->db->query($sql);
-        $query = $this->db->query($sql_like);
-        $row = $query->row_array();
-        
-        if($data == 1) {
-            echo  $row['like'];
-        } elseif($data == -1) {
-            echo  $row['dislike'];
-        }
-        
-        
-        
-    }
+	}
+
+
+	public function like_ax() {
+
+		$data = $this->input->post('data');
+		$alias = $this->input->post('alias');
+		$check = $this->input->post('check');
+
+
+		if($data == 1 and $check == 1) {
+			$sql = "UPDATE `video` SET `like` = `like`+1 WHERE `alias_hy` = '".$alias."'";
+			$sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
+		} elseif($data == -1 and $check == 1) {
+			$sql = "UPDATE `video` SET `dislike` = `dislike`+1 WHERE `alias_hy` = '".$alias."'";
+			$sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
+		} elseif($data == 1 and $check == -1) {
+			$sql = "UPDATE `video` SET `like` = `like`-1 WHERE `alias_hy` = '".$alias."'";
+			$sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
+		} elseif($data == -1 and $check == -1) {
+			$sql = "UPDATE `video` SET `dislike` = `dislike`-1 WHERE `alias_hy` = '".$alias."'";
+			$sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
+		}
+
+
+		$result = $this->db->query($sql);
+		$query = $this->db->query($sql_like);
+		$row = $query->row_array();
+
+		if($data == 1) {
+			echo  $row['like'];
+		} elseif($data == -1) {
+			echo  $row['dislike'];
+		}
+
+
+
+	}
 
 
 }

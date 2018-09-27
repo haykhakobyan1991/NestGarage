@@ -63,9 +63,6 @@ $route['admin/web'] = 'admin/Sysadmin/web/';
 //main
 $route['admin/main'] = 'admin/Sysadmin/main/';
 
-//faq
-$route['admin/faq'] = 'admin/Sysadmin/faq/';
-
 //challenge
 $route['admin/challenge'] = 'admin/Sysadmin/challenge/';
 
@@ -74,6 +71,17 @@ $route['admin/solution'] = 'admin/Sysadmin/solution/';
 
 //functional
 $route['admin/functional'] = 'admin/Sysadmin/functional/';
+
+//functional_2
+$route['admin/functional_2'] = 'admin/Sysadmin/functional_2/';
+
+//faq
+$route['admin/faq'] = 'admin/Sysadmin/faq/';
+
+//footer
+$route['admin/footer_section'] = 'admin/Sysadmin/footer_section/';
+
+
 
 //permission
 $route['admin/sysadmin/permission'] = 'admin/Sysadmin/permission/';
