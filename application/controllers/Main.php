@@ -227,67 +227,6 @@ class Main extends MX_Controller {
 
 	}
 
-	public function video() {
-
-		$this->load->helper('url');
-		$this->load->helper('form');
-		$lng = $this->default_lng();
-		$alias = $this->uri->segment(2);
-		$data = array();
-
-		if(!$alias) {
-			$message = 'Էջը չի գտնվել';
-			show_error($message, '404', $heading = '404');
-			return false;
-		}
-
-
-		$sql = "SELECT 
-					`video`.`id`,
-					`video`.`title_".$lng."` AS `title`,
-					`video`.`alias_".$lng."` AS `alias`,
-					`video`.`text_".$lng."` AS `text`,
-					DATE_FORMAT(`video`.`date`, '%d-%m-%Y') AS `date`,
-                    `video`.`video_id`,
-                    `video`.`count`,
-                    `video`.`photo`,
-                    `video`.`like`,
-                    `video`.`dislike`,
-					`video`.`iframe_link`,
-					`video`.`status` 
-				FROM
-				  `video` 
-				WHERE `video`.`alias_".$lng."` = '".$alias."'";
-
-		$query = $this->db->query($sql);
-		$num_rows = $query->num_rows();
-
-		if($num_rows != 1) {
-			$message = 'Էջը չի գտնվել';
-			show_error($message, '404', $heading = '404');
-			return false;
-		}
-		$row = $query->row_array();
-
-
-
-		// video page view todo ajax video list click
-		$sql_view = "UPDATE `video` SET `count` = `count`+1 WHERE `alias_".$lng."` = '".$alias."'";
-		$query_view = $this->db->query($sql_view);
-
-		$data['video_id'] = $row['video_id'];
-		$data['iframe_link'] = $row['iframe_link'];
-		$data['title'] = $row['title'];
-		$data['date'] = $row['date'];
-		$data['count'] = $row['count'];
-		$data['photo'] = $row['photo'];
-		$data['like'] = $row['like'];
-		$data['dislike'] = $row['dislike'];
-		$this->layout->set_title($row['title']);
-
-		$this->layout->view('video', $data);
-
-	}
 
 
 
