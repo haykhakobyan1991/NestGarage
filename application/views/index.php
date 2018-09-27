@@ -7,12 +7,11 @@
 	<title><?= $result_web[$lng]['website_name'] ?></title>
 
 	<!--// Stylesheets //-->
-	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?=$result_web[$lng]['favicon']?>" type="image/png">
+	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?= $result_web[$lng]['favicon'] ?>" type="image/png">
 	<link href="<?= base_url() ?>assets/css/reset.css" rel="stylesheet" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"/>
 	<link href="<?= base_url() ?>assets/css/animate.css" rel="stylesheet" type="text/css"/>
 	<link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
-
 
 
 </head>
@@ -213,12 +212,12 @@ if ($result_chat[$lng]['status'] == '1') {
 ?>
 
 <div class="modal">
-	<p class="modal_description"><?=$result_chat[$lng]['form_title']?></p>
-	<input class="modal_input" type="text" placeholder="<?=$result_chat[$lng]['form_name']?>">
-	<input class="modal_input" type="email" placeholder="<?=$result_chat[$lng]['form_email']?>">
-	<input class="modal_input_2" type="text" placeholder="<?=$result_chat[$lng]['form_country_code']?>">
-	<input class="modal_input_2" type="text" placeholder="<?=$result_chat[$lng]['form_phone_number']?>">
-	<button class="modal_button"><?=$result_chat[$lng]['form_button']?></button>
+	<p class="modal_description"><?= $result_chat[$lng]['form_title'] ?></p>
+	<input class="modal_input modal_name" type="text" placeholder="<?= $result_chat[$lng]['form_name'] ?>">
+	<input class="modal_input modal_email" type="email" placeholder="<?= $result_chat[$lng]['form_email'] ?>">
+	<input class="modal_input_2 modal_country" type="text" placeholder="<?= $result_chat[$lng]['form_country_code'] ?>">
+	<input class="modal_input_2 modal_phone" type="text" placeholder="<?= $result_chat[$lng]['form_phone_number'] ?>">
+	<button class="modal_button"><?= $result_chat[$lng]['form_button'] ?></button>
 </div>
 
 <!--// Javascript //-->
@@ -231,6 +230,51 @@ if ($result_chat[$lng]['status'] == '1') {
 	$('.language_div>span').click(function () {
 		window.location.href = '<?php echo base_url(); ?>LangSwitch/switchLanguage/' + $(this).data('value');
 	});
+
+
+	/* Change Language */
+	$('.language_div>span').click(function () {
+		window.location.href = '<?php echo base_url(); ?>LangSwitch/switchLanguage/' + $(this).data('value');
+	});
+
+	$('.modal_button').click(function () {
+		var name = $('.modal_name').val();
+		var email = $('.modal_email').val();
+		var country = $('.modal_country').val();
+		var phone = $('.modal_phone').val();
+
+		if (name == '') {$('.modal_name').css('border', '1px solid red');}
+		if (email == '') {$('.modal_email').css('border', '1px solid red');}
+		if (country == '') {$('.modal_country').css('border', '1px solid red');}
+		if (phone == '') {$('.modal_phone').css('border', '1px solid red');}
+
+		if (name != '' && email != '' && country != '' && phone != '') {
+
+				var url = "<?=base_url() . 'Main/index_ax'?>";
+				$.ajax({
+					url: url,
+					type: 'POST',
+					data: {
+						'name': name,
+						'email': email,
+						'country': country,
+						'phone': phone
+					},
+
+					success: function(res) {
+						console.log(res);
+					}
+
+				});
+
+		}
+	});
+
+	$('.modal_name').focus(function () {$('.modal_name').css('border', '1px solid #28a745');});
+	$('.modal_email').focus(function () {$('.modal_email').css('border', '1px solid #28a745');});
+	$('.modal_country').focus(function () {$('.modal_country').css('border', '1px solid #28a745');});
+	$('.modal_phone').focus(function () {$('.modal_phone').css('border', '1px solid #28a745');});
+
 </script>
 </body>
 </html>
