@@ -219,6 +219,11 @@ class Sysadmin extends CI_Controller
 			WHERE `web`.`status` = 1 
         ";
 		$query = $this->db->query($sql);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		$sql_chat = "
 			SELECT 
 			  `chat`.`language_id`,
@@ -238,6 +243,7 @@ class Sysadmin extends CI_Controller
 				ON `language`.`id` = `chat`.`language_id` 
 			WHERE 1 
 		";
+<<<<<<< HEAD
 		$query_chat = $this->db->query($sql_chat);
 		$result = $query->result_array();
 		$result_chat = $query_chat->result_array();
@@ -245,6 +251,18 @@ class Sysadmin extends CI_Controller
 		$data['result_chat'] = $result_chat;
 		$this->layout->view('web', $data, 'edit');
 	}
+=======
+
+		$query_chat = $this->db->query($sql_chat);
+
+
+		$result = $query->result_array();
+		$result_chat = $query_chat->result_array();
+
+		$data['result'] = $result;
+		$data['result_chat'] = $result_chat;
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 
 	public function web_ax()
 	{
@@ -287,12 +305,57 @@ class Sysadmin extends CI_Controller
 			}
 		}
 
+<<<<<<< HEAD
 		if ($this->form_validation->run() == false) {
 			//validation errors
+=======
+
+         $this->load->library('form_validation');
+        // $this->config->set_item('language', 'armenian');
+         $this->form_validation->set_error_delimiters('<div>', '</div>');
+    	 $this->form_validation->set_rules('language_1', 'Language 1', 'required');
+    	 $this->form_validation->set_rules('language_2', 'Language 2', 'required');
+    //	 $this->form_validation->set_rules('mail_to', 'Mail To', 'required|valid_email');
+
+
+		$mail_allow = $this->input->post('mail_allow'); // allow mail form
+		$allow = $this->input->post('allow'); //allow language 2
+		// where mail form is allow
+		if($mail_allow == 'on') {
+			$this->form_validation->set_rules('mail_to', 'Mail To', 'required|valid_email');
+
+			$this->form_validation->set_rules('title_chat_1', 'Text Lang 1', 'required');
+			$this->form_validation->set_rules('name_1', 'Name Lang 1', 'required');
+			$this->form_validation->set_rules('email_1', 'Email Lang 1', 'required');
+			$this->form_validation->set_rules('country_code_1', 'Country code Lang 1', 'required');
+			$this->form_validation->set_rules('phone_number_1', 'Phone number Lang 1', 'required');
+			$this->form_validation->set_rules('button_1', 'Button Lang 1', 'required');
+
+			// where language 2 is allow
+			if ($allow == 'on') {
+				$this->form_validation->set_rules('title_chat_2', 'Text Lang 1', 'required');
+				$this->form_validation->set_rules('name_2', 'Name Lang 2', 'required');
+				$this->form_validation->set_rules('email_2', 'Email Lang 2', 'required');
+				$this->form_validation->set_rules('country_code_2', 'Country code Lang 2', 'required');
+				$this->form_validation->set_rules('phone_number_2', 'Phone number Lang 2', 'required');
+				$this->form_validation->set_rules('button_2', 'Button Lang 2', 'required');
+			}
+		}
+
+
+    
+		if($this->form_validation->run() == false){
+			//validation errors
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 			$validation_errors = array(
 				'language_1' => form_error('language_1'),
 				'language_2' => form_error('language_2')
 			);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 			// where mail for is allow
 			if ($mail_allow == 'on') {
 				$validation_errors = array_merge(
@@ -321,11 +384,26 @@ class Sysadmin extends CI_Controller
 						)
 					);
 				}
+<<<<<<< HEAD
 			}
 			$messages['error']['elements'][] = $validation_errors;
 			echo json_encode($messages);
 			return false;
 		}
+=======
+
+			}
+
+		    $messages['error']['elements'][] = $validation_errors;
+
+			echo json_encode($messages);
+			return false;
+		}
+
+
+
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		$language_1 = $this->input->post('language_1');
 		$language_2 = $this->input->post('language_2');
 		$language_arr = array(
@@ -338,7 +416,15 @@ class Sysadmin extends CI_Controller
 		$meta_2 = $this->input->post('meta_2');
 		$key_words_1 = $this->input->post('key_words_1');
 		$key_words_2 = $this->input->post('key_words_2');
+<<<<<<< HEAD
 		if (isset($_FILES['favicon']['name']) AND $_FILES['favicon']['name'] != '') {
+=======
+
+
+
+
+		if(isset($_FILES['favicon']['name']) AND $_FILES['favicon']['name'] != '') {
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			if (!$this->upload->do_upload('favicon')) {
@@ -398,31 +484,57 @@ class Sysadmin extends CI_Controller
 					 `key_word` = " . $this->db_value($key_words_2) . "
 				WHERE `status` = '1' AND `language_id` = '2'";
 		$result_web2 = $this->db->query($sql_web2);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		if (!$result_web2) {
 			$messages['success'] = 0;
 			$messages['error'] = 'Error';
 			echo json_encode($messages);
 			return false;
 		}
+<<<<<<< HEAD
 		// chat info
 		$mail_to = $this->input->post('mail_to');
 		$add_sql_chat = '';
 		if ($mail_allow != 'on') {
+=======
+
+
+		// chat info
+		$mail_to = $this->input->post('mail_to');
+		$add_sql_chat = '';
+
+		if($mail_allow != 'on') {
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 			$add_sql_chat .= "`status` = '-1',";
 		} else {
 			$add_sql_chat .= "`status` = '1',";
 		}
+<<<<<<< HEAD
 		//chat icon
 		$chat_icon = '';
 		if (isset($_FILES['chat_icon']['name']) AND $_FILES['chat_icon']['name'] != '') {
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
+=======
+
+		//chat icon
+		$chat_icon = '';
+		if(isset($_FILES['chat_icon']['name']) AND $_FILES['chat_icon']['name'] != '') {
+
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 			if (!$this->upload->do_upload('chat_icon')) {
 				$validation_errors = array('chat_icon' => $this->upload->display_errors());
 				$messages['error']['elements'][] = $validation_errors;
 				echo json_encode($messages);
 				return false;
 			}
+<<<<<<< HEAD
 			$chat_icon_arr = $this->upload->data();
 			$chat_icon = $chat_icon_arr['file_name'];
 			$add_sql_chat .= "`photo` = " . $this->db_value($chat_icon) . ",";
@@ -434,15 +546,49 @@ class Sysadmin extends CI_Controller
 			WHERE 1	
 		";
 		$result_chat = $this->db->query($sql_chat);
+=======
+
+
+
+			$chat_icon_arr = $this->upload->data();
+
+			$chat_icon = $chat_icon_arr['file_name'];
+
+
+			$add_sql_chat .= "`photo` = ".$this->db_value($chat_icon).",";
+
+
+		}
+
+		$sql_chat = "
+			UPDATE `chat` 
+				SET ".$add_sql_chat." 
+				`mail_to` = ".$this->db_value($mail_to)."
+			WHERE 1	
+		";
+
+		$result_chat = $this->db->query($sql_chat);
+
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		if (!$result_chat) {
 			$messages['success'] = 0;
 			$messages['error'] = 'Error chat';
 			echo json_encode($messages);
 			return false;
 		}
+<<<<<<< HEAD
 		// chat form
 		$chat_title_1 = $this->input->post('order_1');
 		$chat_title_2 = $this->input->post('order_2');
+=======
+
+
+		// chat form
+		$chat_title_1 = $this->input->post('order_1');
+		$chat_title_2 = $this->input->post('order_2');
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		$chat_form_title_1 = $this->input->post('title_chat_1');
 		$chat_form_title_2 = $this->input->post('title_chat_2');
 		$chat_form_name_1 = $this->input->post('name_1');
@@ -455,6 +601,10 @@ class Sysadmin extends CI_Controller
 		$chat_form_phone_number_2 = $this->input->post('phone_number_2');
 		$chat_form_button_1 = $this->input->post('button_1');
 		$chat_form_button_2 = $this->input->post('button_2');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		$chat_lang_arr = array(
 			'1' => array(
 				'title' => $chat_title_1,
@@ -475,6 +625,7 @@ class Sysadmin extends CI_Controller
 				'form_button' => $chat_form_button_2
 			)
 		);
+<<<<<<< HEAD
 		foreach ($chat_lang_arr as $lang_id => $value) {
 			$sql_chat_form = "
 				UPDATE `chat` SET 
@@ -495,6 +646,36 @@ class Sysadmin extends CI_Controller
 				return false;
 			}
 		}
+=======
+
+		foreach ($chat_lang_arr as $lang_id => $value) {
+			$sql_chat_form = "
+				UPDATE `chat` SET 
+					`title` = ".$this->db_value($value['title']).",
+					`form_title` = ".$this->db_value($value['form_title']).",
+					`form_name` = ".$this->db_value($value['form_name']).",
+					`form_email` = ".$this->db_value($value['form_email']).",
+					`form_country_code` = ".$this->db_value($value['form_country_code']).",
+					`form_phone_number` = ".$this->db_value($value['form_phone_number']).",
+					`form_button` = ".$this->db_value($value['form_button'])."
+				WHERE `language_id` = '".$lang_id."'	
+			";
+
+			$result_chat_form = $this->db->query($sql_chat_form);
+
+			if (!$result_chat_form) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error chat form '.$language_1;
+				echo json_encode($messages);
+				return false;
+			}
+
+		}
+
+
+
+
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 		if ($result_web2) {
 			$messages['success'] = 1;
 			$messages['message'] = 'Success';
@@ -502,9 +683,16 @@ class Sysadmin extends CI_Controller
 			$messages['success'] = 0;
 			$messages['error'] = 'Error';
 		}
+<<<<<<< HEAD
 		// Return success or error message
 		echo json_encode($messages);
 		return true;
+=======
+
+        // Return success or error message
+        echo json_encode($messages);
+        return true;
+>>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
 	}
 
 	public function faq()

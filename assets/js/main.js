@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 	setTimeout(function () {
 		$('.chat').fadeIn('slow');
-	}, 3000);
+	}, 10);
 
 	var $menu = $('.modal');
 	var $chat = $('.chat');

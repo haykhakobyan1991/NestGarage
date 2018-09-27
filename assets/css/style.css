@@ -67,7 +67,7 @@ header::before {
 .lng_rus::after {
 	content: "";
 	display: inline-block;
-	right: 0;
+	left: 0;
 	top: 18px;
 	height: 35px;
 	width: 2px;
