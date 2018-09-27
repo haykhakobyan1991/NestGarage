@@ -114,7 +114,8 @@ class Main extends MX_Controller {
 			  `button_2_url`,
 			  `title`,
 			  `main_text`,
-			  `font`,
+			  `font_url`,
+			  `font_css`,
 			  `background_img`,
 			  `status`
 			FROM `main`
@@ -126,9 +127,32 @@ class Main extends MX_Controller {
 		$query_main = $this->db->query($sql_main);
 		$result_main = $query_main->result_array();
 
+
+		$sql_sch = "
+        	SELECT 
+			  `id`,
+			  `language_id`,
+			  `title_solution`,
+			  `text_solution`,
+			  `title_challenge`,
+			  `text_challenge`,
+			  `photo_solution`,
+			  `photo_challenge`,
+			  `status` 
+			FROM
+			  `solution_challenge` 
+			WHERE `status` = 1 
+			LIMIT 2 
+        ";
+
+
+		$query_sch = $this->db->query($sql_sch);
+		$result_solution_challenge = $query_sch->result_array();
+
 		$data['result_web'] = $result_web;
 		$data['result_chat'] = $result_chat;
 		$data['result_main'] = $result_main;
+		$data['result_solution_challenge'] = $result_solution_challenge;
 
 		$data['lng'] = $language_id;
 

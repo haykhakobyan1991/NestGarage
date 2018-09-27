@@ -66,12 +66,19 @@
 								<textarea type="text" class="form-control" name="main_text_1"
 										  placeholder="Enter Main Text"><?=$result[0]['main_text']?></textarea>
 
-								<label class="mt-md-3">Font</label>
+								<label class="mt-md-3">Font url</label>
 								<input type="text"
 									   class="form-control"
-									   name="font_1"
-									   placeholder="Enter font"
-									   value="<?=$result[0]['font']?>"
+									   name="font_url_1"
+									   placeholder="Enter font url"
+									   value="<?=$result[0]['font_url']?>"
+								>
+								<label class="mt-md-3">Font css</label>
+								<input type="text"
+									   class="form-control"
+									   name="font_css_1"
+									   placeholder="Enter font css"
+									   value="<?=$result[0]['font_css']?>"
 								>
 
 
@@ -143,12 +150,19 @@
 										  name="main_text_2"
 										  placeholder="Enter Main Text"><?=$result[1]['main_text']?></textarea>
 
-								<label class="mt-md-3">Font</label>
+								<label class="mt-md-3">Font url</label>
 								<input type="text"
 									   class="form-control"
-									   name="font_2"
-									   placeholder="Enter font"
-									   value="<?=$result[1]['font']?>"
+									   name="font_url_2"
+									   placeholder="Enter font url"
+									   value="<?=$result[1]['font_url']?>"
+								>
+								<label class="mt-md-3">Font css</label>
+								<input type="text"
+									   class="form-control"
+									   name="font_css_2"
+									   placeholder="Enter font css"
+									   value="<?=$result[1]['font_css']?>"
 								>
 							</div>
 

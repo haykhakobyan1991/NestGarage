@@ -63,11 +63,9 @@ $route['admin/web'] = 'admin/Sysadmin/web/';
 //main
 $route['admin/main'] = 'admin/Sysadmin/main/';
 
-//challenge
-$route['admin/challenge'] = 'admin/Sysadmin/challenge/';
 
-//solution
-$route['admin/solution'] = 'admin/Sysadmin/solution/';
+//solution challenge
+$route['admin/solution_challenge'] = 'admin/Sysadmin/solution_challenge/';
 
 //functional
 $route['admin/functional'] = 'admin/Sysadmin/functional/';

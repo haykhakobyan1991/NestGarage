@@ -9,13 +9,15 @@
 	<!--// Stylesheets //-->
 	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?= $result_web[$lng]['favicon'] ?>" type="image/png">
 	<link href="<?= base_url() ?>assets/css/reset.css" rel="stylesheet" type="text/css"/>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"/>
+	<link
+		href="<?= ($result_main[$lng]['font_url'] == '' ? 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' : $result_main[$lng]['font_url']) ?>"
+		rel="stylesheet"/>
 	<link href="<?= base_url() ?>assets/css/animate.css" rel="stylesheet" type="text/css"/>
 	<link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
 
 
 </head>
-<body>
+<body style="<?=($result_main[$lng]['font_css'] == '' ? 'font-family: \'Open Sans\', sans-serif;' : $result_main[$lng]['font_css'])?>">
 <header style="background-image: url(<?= base_url().'assets/img/'.$result_main[$lng]['background_img'] ?>);">
 
 	<div class="center">
@@ -49,32 +51,24 @@
 
 	<div class="challenge">
 		<div class="img_left_div wow bounceIn">
-			<img src="<?= base_url() ?>assets/img/challenge.jpg" alt="challenge">
+			<img src="<?= base_url() ?>assets/img/<?=$result_solution_challenge[$lng]['photo_challenge']?>" alt="challenge">
 		</div>
 		<div class="text_right_div">
-			<h2>challenge</h2>
+			<h2><?=$result_solution_challenge[$lng]['title_challenge']?></h2>
 			<hr>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-				industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and
-				typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-				an unknown printer took a galley of type and scrambled it to make a type specimen book ...</p>
+			<p><?=$result_solution_challenge[$lng]['text_challenge']?></p>
 		</div>
 	</div>
 
 	<div class="solution">
 		<div class="text_left_div">
-			<h2>Solution</h2>
+			<h2><?=$result_solution_challenge[$lng]['title_solution']?></h2>
 			<hr>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-				industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and
-				typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-				an unknown printer took a galley of type and scrambled it to make a type specimen book ...</p>
+			<p><?=$result_solution_challenge[$lng]['text_solution']?></p>
 		</div>
 
 		<div class="img_right_div wow bounceIn">
-			<img src="<?= base_url() ?>assets/img/solution.jpg" alt="challenge">
+			<img src="<?= base_url() ?>assets/img/<?=$result_solution_challenge[$lng]['photo_solution']?>" alt="challenge">
 		</div>
 	</div>
 
