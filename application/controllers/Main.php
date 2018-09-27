@@ -151,6 +151,5 @@ class Main extends MX_Controller {
 	}
 
 
-
 }
 //end of class

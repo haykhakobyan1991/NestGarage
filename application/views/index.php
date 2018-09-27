@@ -16,8 +16,7 @@
 
 </head>
 <body>
-
-<header style="background-image: url(<?= base_url() ?>assets/img/h_p_bg.jpg);">
+<header style="background-image: url(<?= base_url().'assets/img/'.$result_main[$lng]['background_img'] ?>);">
 
 	<div class="center">
 
@@ -29,17 +28,15 @@
 		</div>
 
 		<main>
-			<h1 class="title wow bounceIn">What is Lorem Ipsum</h1>
+			<h1 class="title wow bounceIn"><?=$result_main[$lng]['title']?></h1>
 			<p class="main_text">
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-				industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book...
+				<?=$result_main[$lng]['main_text']?>
 			</p>
 
 			<div class="main_buttons">
-				<button class="m_btn learn_more_btn">learn more</button>
-				<a class="buttons_href" href="#">
-					<button class="m_btn begin_btn">begin</button>
+				<button class="m_btn learn_more_btn"><?=$result_main[$lng]['button_1']?></button>
+				<a class="buttons_href" href="<?=$result_main[$lng]['button_2_url']?>">
+					<button class="m_btn begin_btn"><?=$result_main[$lng]['button_2']?></button>
 				</a>
 			</div>
 		</main>
