@@ -30,13 +30,6 @@
 							</div>
 						</div>
 					</div>
-
-					<hr class="my-4">
-
-
-					<button style="position: absolute;bottom: -63px;width: 94%;" type="button"
-							class="add_l1  mt-3 mt-md-3 btn btn-outline-success btn-lg btn-block">add new block
-					</button>
 				</div>
 
 				<div class="col-sm-6 pt-md-3 lang2_col"
@@ -61,7 +54,7 @@
 					</div>
 
 					<button style="position: absolute;bottom: -63px;width: 94%;" type="button"
-							class="add_l2  mt-3 mt-md-3 btn btn-outline-success btn-lg btn-block">add new block
+							class="add_l  mt-3 mt-md-3 btn btn-outline-success btn-lg btn-block">add new block
 					</button>
 				</div>
 
@@ -79,7 +72,7 @@
 	$(document).ready(function () {
 		var i = 2;
 		var j = 2;
-		$('.add_l1').click(function () {
+		$('.add_l').click(function () {
 			$('.lang1_col').append('<div class="card mt-3 pt-md-3">\n' +
 				'<div class="card-body">\n' +
 				'<div style="text-align: right;" class="mb-3 mb-md-3 "><button type="button" class="delete btn btn-warning btn-sm">-</button></div>\n' +
@@ -99,11 +92,6 @@
 				'</div>\n' +
 				'</div>');
 
-			i++;
-		});
-
-
-		$('.add_l2').click(function () {
 			$('.lang2_col').append('<div class="card mt-3 pt-md-3">\n' +
 				'<div class="card-body">\n' +
 				'<div style="text-align: right;" class="mb-3 mb-md-3 "><button type="button" class="delete btn btn-warning btn-sm">-</button></div>\n' +
@@ -123,14 +111,18 @@
 				'</div>\n' +
 				'</div>');
 
+			i++;
 			j++;
+
+			$('html, body').animate({
+				scrollTop: '+=500px'
+			}, 800);
 		});
 
 
 	});
 
 	$(document).on('click', '.delete', function () {
-		console.log($(this).parent('div').parent('div').parent('.card'));
 		$(this).parent('div').parent('div').parent('.card').fadeOut();
 	})
 </script>
