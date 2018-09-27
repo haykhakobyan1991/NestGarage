@@ -139,6 +139,18 @@ class Main extends MX_Controller {
 	}
 
 
+
+	public function index_ax() {
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+	}
+
+
 	/**
 	 * @return bool
 	 */
@@ -278,41 +290,7 @@ class Main extends MX_Controller {
 	}
 
 
-	public function like_ax() {
 
-		$data = $this->input->post('data');
-		$alias = $this->input->post('alias');
-		$check = $this->input->post('check');
-
-
-		if($data == 1 and $check == 1) {
-			$sql = "UPDATE `video` SET `like` = `like`+1 WHERE `alias_hy` = '".$alias."'";
-			$sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
-		} elseif($data == -1 and $check == 1) {
-			$sql = "UPDATE `video` SET `dislike` = `dislike`+1 WHERE `alias_hy` = '".$alias."'";
-			$sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
-		} elseif($data == 1 and $check == -1) {
-			$sql = "UPDATE `video` SET `like` = `like`-1 WHERE `alias_hy` = '".$alias."'";
-			$sql_like = "SELECT `like` FROM `video` WHERE `alias_hy` = '".$alias."'";
-		} elseif($data == -1 and $check == -1) {
-			$sql = "UPDATE `video` SET `dislike` = `dislike`-1 WHERE `alias_hy` = '".$alias."'";
-			$sql_like = "SELECT `dislike` FROM `video` WHERE `alias_hy` = '".$alias."'";
-		}
-
-
-		$result = $this->db->query($sql);
-		$query = $this->db->query($sql_like);
-		$row = $query->row_array();
-
-		if($data == 1) {
-			echo  $row['like'];
-		} elseif($data == -1) {
-			echo  $row['dislike'];
-		}
-
-
-
-	}
 
 
 }
