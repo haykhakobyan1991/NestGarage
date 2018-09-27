@@ -122,6 +122,7 @@ class Main extends MX_Controller {
 			LIMIT 2
         ";
 
+
 		$query_main = $this->db->query($sql_main);
 		$result_main = $query_main->result_array();
 
