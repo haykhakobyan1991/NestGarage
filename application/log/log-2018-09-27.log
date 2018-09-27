@@ -461,3 +461,29 @@ ERROR - 2018-09-27 14:41:41 --> 404 Page Not Found: assets/js/bootstrap/popper.m
 ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
 ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
 ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 16:27:37 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 20
+ERROR - 2018-09-27 16:27:44 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 20
+ERROR - 2018-09-27 16:27:52 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 20
+ERROR - 2018-09-27 16:29:28 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 20
+ERROR - 2018-09-27 16:29:57 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 19
+ERROR - 2018-09-27 16:29:57 --> Severity: Notice --> Undefined index: background_img D:\OSPanel\domains\localhost\NestGarage\application\views\index.php 20
+ERROR - 2018-09-27 16:48:03 --> Severity: Notice --> Undefined index: font_url D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\main.php 74
+ERROR - 2018-09-27 16:48:03 --> Severity: Notice --> Undefined index: font_css D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\main.php 81
+ERROR - 2018-09-27 16:48:03 --> Severity: Notice --> Undefined index: font_url D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\main.php 158
+ERROR - 2018-09-27 16:48:03 --> Severity: Notice --> Undefined index: font_css D:\OSPanel\domains\localhost\NestGarage\application\modules\admin\views\main.php 165
+ERROR - 2018-09-27 17:11:14 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_ax
+ERROR - 2018-09-27 17:12:05 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_ax
+ERROR - 2018-09-27 17:12:55 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_ax
+ERROR - 2018-09-27 17:13:00 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_ax
+ERROR - 2018-09-27 17:13:18 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_ax
+ERROR - 2018-09-27 17:16:02 --> 404 Page Not Found: admin/solution
+ERROR - 2018-09-27 17:16:03 --> 404 Page Not Found: admin/solution
+ERROR - 2018-09-27 17:16:11 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_challenge_ax
+ERROR - 2018-09-27 17:21:10 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_challenge_ax
+ERROR - 2018-09-27 17:21:14 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 17:21:14 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+ERROR - 2018-09-27 17:21:14 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 17:21:16 --> 404 Page Not Found: ../modules/admin/controllers/Sysadmin/solution_challenge_ax
+ERROR - 2018-09-27 17:49:10 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 17:49:10 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 17:49:10 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
