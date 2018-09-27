@@ -105,8 +105,29 @@ class Main extends MX_Controller {
 		$query_chat = $this->db->query($sql_chat);
 		$result_chat = $query_chat->result_array();
 
+
+		$sql_main = "
+        	SELECT
+			  `language_id`,
+			  `button_1`,
+			  `button_2`,
+			  `button_2_url`,
+			  `title`,
+			  `main_text`,
+			  `font`,
+			  `background_img`,
+			  `status`
+			FROM `main`
+			WHERE `main`.`status` = 1
+			LIMIT 2
+        ";
+
+		$query_main = $this->db->query($sql_main);
+		$result_main = $query_main->result_array();
+
 		$data['result_web'] = $result_web;
 		$data['result_chat'] = $result_chat;
+		$data['result_main'] = $result_main;
 
 		$data['lng'] = $language_id;
 
