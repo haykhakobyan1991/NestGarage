@@ -6,7 +6,6 @@ $url=base_url().'admin/'.$this->uri->segment(0);
 ?>
 
 
-<script src="<?=base_url()?>assets/jquery/jquery.min.js"></script>
 <script src="<?=base_url()?>assets/jquery/choosen/chosen.jquery.js" type="text/javascript"></script>
 <script src="<?=base_url()?>assets/jquery/choosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
 <script src="<?=base_url()?>assets/jquery/choosen/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
@@ -15,7 +14,7 @@ $url=base_url().'admin/'.$this->uri->segment(0);
 <script src="<?=base_url()?>assets/ckeditor/ckeditor.js"></script>
 <script src="<?=base_url()?>assets/ckfinder/ckfinder.js"></script>
 <script src="<?=base_url()?>assets/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
+
 <script src="<?=base_url()?>assets/js/bootstrap/popper.min.js"></script>
 <script src="<?=base_url()?>assets/js/bootstrap/bootstrap.min.js"></script>
 

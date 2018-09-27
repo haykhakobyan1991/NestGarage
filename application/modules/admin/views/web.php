@@ -57,7 +57,11 @@
 
 								<label>Language 2</label>
 								<div class="custom-control custom-checkbox float-right">
-									<input <?=($result[1]['language_status'] == 1 ? 'checked' : '') ?> name="allow" value="on" type="checkbox" class="custom-control-input" id="customCheck2">
+									<input <?= ($result[1]['language_status'] == 1 ? 'checked' : '') ?> name="allow"
+																										value="on"
+																										type="checkbox"
+																										class="custom-control-input"
+																										id="customCheck2">
 									<label class="custom-control-label" for="customCheck2">Language 2 on or off</label>
 								</div>
 								<input value="<?= $result[1]['language'] ?>" type="text" class="form-control"
@@ -85,13 +89,18 @@
 
 				<div class="col-sm-6 ">
 					<div class="custom-control custom-checkbox">
-						<input name="allodddw" type="checkbox" class="custom-control-input" value="on" id="customCheck1">
+						<input <?= ($result_chat[1]['status'] == '1' ? 'checked' : '') ?> name="mail_allow"
+																						  type="checkbox"
+																						  class="custom-control-input"
+																						  value="on" id="customCheck1">
 						<label class="custom-control-label" for="customCheck1">Mail to send ORDER A CALL</label>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<label class="">Mail to</label>
-					<input value="" type="text" class="form-control"
+					<input value="<?= $result_chat[0]['mail_to'] ?>"
+						   type="text"
+						   class="form-control"
 						   name="mail_to"
 						   placeholder="Enter E-mail address">
 				</div>
@@ -103,11 +112,14 @@
 				<div class="col-sm-6 ">
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Choose icon</label>
-						<input name="chat_icon" type="file" class="form-control-file" id="exampleFormControlFile1">
+						<input name="chat_icon"
+							   type="file"
+							   class="form-control-file"
+							   id="exampleFormControlFile1">
 					</div>
 				</div>
 				<div class="col-sm-6 pt-md-3">
-					<img width="50" src="<?= base_url() ?>assets/img/<?= $result[0]['favicon'] ?>" alt="..."
+					<img width="50" src="<?= base_url() ?>assets/img/<?= $result_chat[0]['photo'] ?>" alt="..."
 						 class="img-thumbnail">
 				</div>
 
@@ -117,13 +129,23 @@
 				<div class="col-sm-6 ">
 					<div class="form-group">
 						<label>Text Lang 1</label>
-						<input type="text" class="form-control" name="order_l1" placeholder="">
+						<input type="text"
+							   class="form-control"
+							   name="order_1"
+							   placeholder="Text Lang 1"
+							   value="<?= $result_chat[0]['title'] ?>"
+						>
 					</div>
 				</div>
 				<div class="col-sm-6 " style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
 					<div class="form-group">
 						<label>Text Lang 2</label>
-						<input type="text" class="form-control" name="order_l2" placeholder="">
+						<input type="text"
+							   class="form-control"
+							   name="order_2"
+							   placeholder="Text Lang 2"
+							   value="<?= $result_chat[1]['title'] ?>"
+						>
 					</div>
 				</div>
 			</div>
@@ -132,39 +154,105 @@
 			<div class="row mt-md-3">
 				<div class="col-sm-6 ">
 					<div class="form-group">
-						<label>Title</label>
-						<input type="text" class="form-control" name="title_chat_l1" placeholder="Title">
+						<label>Title Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="title_chat_1"
+							   placeholder="Title"
+							   value="<?= $result_chat[0]['form_title'] ?>"
+						>
 
-						<label>Name</label>
-						<input type="text" class="form-control" name="name_l1" placeholder="Name">
+						<label>Name Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="name_1"
+							   placeholder="Name"
+							   value="<?= $result_chat[0]['form_name'] ?>"
+						>
 
-						<label>E-mail</label>
-						<input type="text" class="form-control" name="email_l1" placeholder="E-mail">
+						<label>E-mail Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="email_1"
+							   placeholder="E-mail"
+							   value="<?= $result_chat[0]['form_email'] ?>"
+						>
 
-						<label>Country Code</label>
-						<input type="text" class="form-control" name="country_code_l1" placeholder="Countr code">
+						<label>Country Code Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="country_code_1"
+							   placeholder="Country code"
+							   value="<?= $result_chat[0]['form_country_code'] ?>"
+						>
 
-						<label>Phone Number</label>
-						<input type="text" class="form-control" name="phone_number_l1" placeholder="Phone number">
+						<label>Phone Number Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="phone_number_1"
+							   placeholder="Phone number"
+							   value="<?= $result_chat[0]['form_phone_number'] ?>"
+						>
+
+						<label>Button Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="button_1"
+							   placeholder="Button"
+							   value="<?= $result_chat[0]['form_button'] ?>"
+						>
 					</div>
 				</div>
 
 				<div class="col-sm-6 " style="padding-bottom: 10px;background: #46404059;border-radius: 5px;">
 					<div class="form-group">
-						<label>Title</label>
-						<input type="text" class="form-control" name="title_chat_l1" placeholder="Title">
+						<label>Title Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="title_chat_2"
+							   placeholder="Title"
+							   value="<?= $result_chat[1]['form_title'] ?>"
+						>
 
-						<label>Name</label>
-						<input type="text" class="form-control" name="name_l2" placeholder="Name">
+						<label>Name Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="name_2"
+							   placeholder="Name"
+							   value="<?= $result_chat[1]['form_name'] ?>"
+						>
 
-						<label>E-mail</label>
-						<input type="text" class="form-control" name="email_l2" placeholder="E-mail">
+						<label>E-mail Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="email_2"
+							   placeholder="E-mail"
+							   value="<?= $result_chat[1]['form_email'] ?>"
+						>
 
-						<label>Country Code</label>
-						<input type="text" class="form-control" name="country_code_l2" placeholder="Countr code">
+						<label>Country Code Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="country_code_2"
+							   placeholder="Country code"
+							   value="<?= $result_chat[1]['form_country_code'] ?>"
+						>
 
-						<label>Phone Number</label>
-						<input type="text" class="form-control" name="phone_number_l2" placeholder="Phone number">
+						<label>Phone Number Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="phone_number_2"
+							   placeholder="Phone number"
+							   value="<?= $result_chat[1]['form_phone_number'] ?>"
+						>
+
+						<label>Button Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="button_2"
+							   placeholder="Button"
+							   value="<?= $result_chat[1]['form_button'] ?>"
+						>
 					</div>
 				</div>
 			</div>
