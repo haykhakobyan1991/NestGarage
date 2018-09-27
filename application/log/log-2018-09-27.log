@@ -425,3 +425,39 @@ ERROR - 2018-09-27 13:34:46 --> Query error: Table 'nestgarage.chat' doesn't exi
 		
 ERROR - 2018-09-27 13:34:46 --> Language file contains no data: language/armenian/db_lang.php
 ERROR - 2018-09-27 13:34:46 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-27 14:31:29 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+ERROR - 2018-09-27 14:31:29 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 14:31:29 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 14:41:04 --> Query error: Unknown column 'button_1' in 'field list' - Invalid query: 
+				UPDATE `chat` SET 
+					`button_1` = 'Button 1 name l1',
+					`button_2` = 'Button 1 name l1',
+					`button_2_url` = 'fdsfdsf',
+					`title` = 'fadsfads',
+					`main_text` = 'fadafads',
+					`font` = NULL
+				WHERE `language_id` = '1'	
+			
+ERROR - 2018-09-27 14:41:04 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-27 14:41:04 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-27 14:41:10 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+ERROR - 2018-09-27 14:41:10 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 14:41:10 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 14:41:12 --> Query error: Unknown column 'button_1' in 'field list' - Invalid query: 
+				UPDATE `chat` SET 
+					`button_1` = 'Button 1 name l1',
+					`button_2` = 'Button 1 name l1',
+					`button_2_url` = 'fdsfdsf',
+					`title` = 'fadsfads',
+					`main_text` = 'fadafads',
+					`font` = NULL
+				WHERE `language_id` = '1'	
+			
+ERROR - 2018-09-27 14:41:12 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-27 14:41:12 --> Could not find the language line "db_error_heading"
+ERROR - 2018-09-27 14:41:40 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
+ERROR - 2018-09-27 14:41:41 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+ERROR - 2018-09-27 14:41:41 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
+ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
+ERROR - 2018-09-27 14:42:18 --> 404 Page Not Found: assets/css/bootstrap/bootstrap.min.css.map
