@@ -89,7 +89,7 @@ class Sysadmin extends CI_Controller {
 		$config['max_size'] 			= '2097152'; //2 MB
 		$config['file_name']			= $this->uname();
 		$config['max_width']            = '2048';
-		$config['max_height']           = '1024';
+		$config['max_height']           = '1400';
 
 		$this->load->library('upload', $config);
 
