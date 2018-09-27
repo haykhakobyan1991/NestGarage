@@ -109,6 +109,7 @@ class Layout
             'includes' => $this->includes,
             'content' => $view
 
+
         ));
 
     }

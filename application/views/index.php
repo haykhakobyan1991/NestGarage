@@ -1,3 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="google-site-verification" content="Mkn03uHs8mUwOONukPy8p_CkkddQG5hgj9HTsHf2mKs"/>
+	<meta name="description" content="<?= $result_web[$lng]['meta_desc'] ?>"/>
+	<meta name="keywords" content="<?= $result_web[$lng]['key_word'] ?>"/>
+	<title><?= $result_web[$lng]['website_name'] ?></title>
+
+	<!--// Stylesheets //-->
+	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/<?=$result_web[$lng]['favicon']?>" type="image/png">
+	<link href="<?= base_url() ?>assets/css/reset.css" rel="stylesheet" type="text/css"/>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+	<link href="<?= base_url() ?>assets/css/animate.css" rel="stylesheet" type="text/css"/>
+	<link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
+
+
+
+</head>
 <body>
 
 <header style="background-image: url(<?= base_url() ?>assets/img/h_p_bg.jpg);">
@@ -5,8 +23,10 @@
 	<div class="center">
 
 		<div class="language_div">
-			<span data-value="ru" class="lng lng_rus">rus</span>
-			<span data-value="am" class="lng lng_arm">arm</span>
+			<span data-value="lang_1" class="lng lng_arm"><?= $result_web[0]['language'] ?></span>
+			<? if ($result_web[1]['language_status'] == 1) { ?>
+				<span data-value="lang_2" class="lng lng_rus"><?= $result_web[1]['language'] ?></span>
+			<? } ?>
 		</div>
 
 		<main>
@@ -175,21 +195,36 @@
 
 
 <!-- Chat -->
-
-<div class="chat">
-	<p class="chat_text">order a call</p>
-	<img class="chat_img" src="<?= base_url() ?>assets/img/chat.png"/>
-</div>
+<?
+if ($result_chat[$lng]['status'] == '1') {
+	?>
+	<div class="chat">
+		<?
+		if ($result_chat[$lng]['title'] != '') {
+			?>
+			<p class="chat_text"><?= $result_chat[$lng]['title'] ?></p>
+			<?
+		}
+		?>
+		<img class="chat_img" src="<?= base_url() ?>assets/img/<?= $result_chat[$lng]['photo'] ?>"/>
+	</div>
+	<?
+}
+?>
 
 <div class="modal">
-	<p class="modal_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, beatae!</p>
-	<input class="modal_input" type="text" placeholder="Name">
-	<input class="modal_input" type="email" placeholder="E-mail">
-	<input class="modal_input_2" type="text" placeholder="County code">
-	<input class="modal_input_2" type="text" placeholder="Phone number">
-	<button class="modal_button">Order</button>
+	<p class="modal_description"><?=$result_chat[$lng]['form_title']?></p>
+	<input class="modal_input" type="text" placeholder="<?=$result_chat[$lng]['form_name']?>">
+	<input class="modal_input" type="email" placeholder="<?=$result_chat[$lng]['form_email']?>">
+	<input class="modal_input_2" type="text" placeholder="<?=$result_chat[$lng]['form_country_code']?>">
+	<input class="modal_input_2" type="text" placeholder="<?=$result_chat[$lng]['form_phone_number']?>">
+	<button class="modal_button"><?=$result_chat[$lng]['form_button']?></button>
 </div>
 
+<!--// Javascript //-->
+<script src="<?= base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
+<script src="<?= base_url() ?>assets/js/main.js"></script>
+<script src="<?= base_url() ?>assets/js/wow.js"></script>
 
 <script>
 
@@ -199,3 +234,5 @@
 	});
 
 </script>
+</body>
+</html>

@@ -8,17 +8,16 @@ class LangSwitch extends CI_Controller
         $this->load->helper('url');
     }
 
-    function switchLanguage($language = "") {
+    function switchLanguage($language = "lang_1") {
 
-        $this->session->set_userdata('set_language', $language);
+    	$language_id = explode('_', $language);
 
-        if($language == 'ru') {
-            $language = 'russian';
-        } else {
-            $language = 'armenian';
-        }
-
-        $this->session->set_userdata('site_lang', $language);
+		$this->session->set_userdata(
+			array(
+				'site_lang' => $language,
+				'language_id' => ($language_id[1]-1)
+			)
+		);
         redirect($_SERVER['HTTP_REFERER']);
     }
 }

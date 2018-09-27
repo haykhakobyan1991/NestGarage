@@ -5,24 +5,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends MX_Controller {
 
 
-    public function __construct() {
+	/**
+	 * Main constructor.
+	 */
+	public function __construct()
+	{
 
-        parent::__construct();
+		parent::__construct();
 
-        // load the library
-        $this->load->helper('language');
-        $this->load->library('layout');
-        $this->load->library('session');
+		// load the library
+		$this->load->helper('language');
+		$this->load->library('layout');
+		$this->load->library('session');
 
-        $lang_slug = $this->uri->segment(1);
- 
+//		echo '<pre>';
+//		print_r($_SESSION);
+//		echo '</pre>';
 
-       // print_r($_SESSION);
-       if(isset($_SESSION['site_lang'])){
-          $this->lang->load('index',$_SESSION['site_lang']);
-       }
-       
-    }
+	}
 
     /**
      * @return string
@@ -49,16 +49,69 @@ class Main extends MX_Controller {
 
 		$this->load->helper('url');
         $this->load->helper('form');
-        $lng = $this->default_lng();
-        $this->layout->set_title($this->language('Home'));
+        $language_id = $this->session->language_id;
+
+//        $this->layout->set_title($this->language('Home'));
         $data = array();
 
+        if($language_id == '') {
+			$language_id = 0;
+		}
+
+		$sql_web = "
+        	SELECT 
+			  `web`.`language_id`,
+			  `language`.`title` AS `language`,
+			  `language`.`status` AS `language_status`,
+			  `web`.`favicon`,
+			  `web`.`website_name`,
+			  `web`.`meta_desc`,
+			  `web`.`key_word` 
+			FROM
+			  `web` 
+			  LEFT JOIN `language` 
+				ON `language`.`id` = `web`.`language_id` 
+			WHERE `web`.`status` = 1 
+				/*AND `web`.`language_id` = '".$language_id."'*/
+        ";
+
+		$query_web = $this->db->query($sql_web);
+		$result_web = $query_web->result_array();
+
+//		echo '<pre>';
+//		print_r($result_web);
+//		echo '</pre>';
+
+		$sql_chat = "
+			SELECT 
+			  `chat`.`language_id`,
+			  `chat`.`title`,
+			  `chat`.`photo`,
+			  `chat`.`mail_to`,
+			  `chat`.`form_title`,
+			  `chat`.`form_name`,
+			  `chat`.`form_email`,
+			  `chat`.`form_country_code`,
+			  `chat`.`form_phone_number`,
+			  `chat`.`form_button`,
+			  `chat`.`status`
+			FROM
+			  `chat` 
+			  LEFT JOIN `language` 
+				ON `language`.`id` = `chat`.`language_id` 
+			WHERE 1 
+		";
+
+		$query_chat = $this->db->query($sql_chat);
+		$result_chat = $query_chat->result_array();
+
+		$data['result_web'] = $result_web;
+		$data['result_chat'] = $result_chat;
+
+		$data['lng'] = $language_id;
 
 
-
-        
-
-        $this->layout->view('index', $data);
+        $this->load->view('index', $data);
 	       
         
 	}
