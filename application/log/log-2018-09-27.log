@@ -404,3 +404,24 @@ ERROR - 2018-09-27 12:39:19 --> 404 Page Not Found: assets/css/bootstrap/bootstr
 ERROR - 2018-09-27 12:39:19 --> 404 Page Not Found: assets/js/bootstrap/bootstrap.min.js.map
 ERROR - 2018-09-27 12:39:19 --> 404 Page Not Found: assets/js/bootstrap/popper.min.js.map
 >>>>>>> 25f9b1cd7ca3fee6003e5d8c684fca6a8bf91225
+ERROR - 2018-09-27 13:34:46 --> Query error: Table 'nestgarage.chat' doesn't exist - Invalid query: 
+			SELECT 
+			  `chat`.`language_id`,
+			  `chat`.`title`,
+			  `chat`.`photo`,
+			  `chat`.`mail_to`,
+			  `chat`.`form_title`,
+			  `chat`.`form_name`,
+			  `chat`.`form_email`,
+			  `chat`.`form_country_code`,
+			  `chat`.`form_phone_number`,
+			  `chat`.`form_button`,
+			  `chat`.`status`
+			FROM
+			  `chat` 
+			  LEFT JOIN `language` 
+				ON `language`.`id` = `chat`.`language_id` 
+			WHERE 1 
+		
+ERROR - 2018-09-27 13:34:46 --> Language file contains no data: language/armenian/db_lang.php
+ERROR - 2018-09-27 13:34:46 --> Could not find the language line "db_error_heading"
