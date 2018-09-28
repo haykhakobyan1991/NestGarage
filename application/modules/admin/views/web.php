@@ -39,10 +39,10 @@
 									   name="website_name_1"
 									   placeholder="Enter Website Name">
 								<label class="mt-md-3">Meta description</label>
-								<textarea type="text" class="form-control" name="meta_1"
+								<textarea type="text" class="form-control" name="meta_1" rows="7"
 										  placeholder="Enter Meta Description"><?= $result[0]['meta_desc'] ?></textarea>
 								<label class="mt-md-3">Key Words</label>
-								<textarea type="text" class="form-control" name="key_words_1"
+								<textarea type="text" class="form-control" name="key_words_1" rows="7"
 										  placeholder="Enter Key Words"><?= $result[0]['key_word'] ?></textarea>
 							</div>
 						</div>
@@ -73,11 +73,11 @@
 									   placeholder="Enter Website Name">
 
 								<label class="mt-md-3">Meta description</label>
-								<textarea type="text" class="form-control" name="meta_2"
+								<textarea type="text" class="form-control" name="meta_2" rows="7"
 										  placeholder="Enter Meta Description"><?= $result[1]['meta_desc'] ?></textarea>
 
 								<label class="mt-md-3">Key Words</label>
-								<textarea type="text" class="form-control" name="key_words_2"
+								<textarea type="text" class="form-control" name="key_words_2" rows="7"
 										  placeholder="Enter Key Words"><?= $result[1]['key_word'] ?></textarea>
 							</div>
 						</div>

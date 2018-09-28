@@ -63,7 +63,7 @@
 								>
 
 								<label class="mt-md-3">Main Text </label>
-								<textarea type="text" class="form-control" name="main_text_1"
+								<textarea type="text" class="form-control" name="main_text_1" rows="7"
 										  placeholder="Enter Main Text"><?=$result[0]['main_text']?></textarea>
 
 								<label class="mt-md-3">Font url</label>
@@ -145,7 +145,7 @@
 								>
 
 								<label class="mt-md-3">Main Text </label>
-								<textarea type="text"
+								<textarea type="text" rows="7"
 										  class="form-control"
 										  name="main_text_2"
 										  placeholder="Enter Main Text"><?=$result[1]['main_text']?></textarea>

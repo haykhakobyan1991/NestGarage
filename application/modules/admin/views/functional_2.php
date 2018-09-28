@@ -4,6 +4,31 @@
 		<p class="lead">Edit Website Functional 2 section</p>
 		<hr class="my-4">
 		<form>
+
+			<div class="row mt-md-3">
+
+				<div class="col-sm-6 ">
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Background image</label>
+						<input name="background_img" type="file" class="form-control-file" id="exampleFormControlFile1">
+
+
+						<label class="mt-3 pt-md-3">Background color</label>
+						<input value="" type="text" class="form-control"
+							   name="background_color" placeholder="Enter Background color example #345985">
+
+						<label class="mt-3 pt-md-3">Button Link</label>
+						<input value="" type="text" class="form-control"
+							   name="button_link" placeholder="Enter Button Link">
+					</div>
+				</div>
+				<div class="col-sm-6 pt-md-3">
+					<img width="50" src="<?= base_url() ?>assets/img/" alt="..."
+						 class="img-thumbnail">
+				</div>
+
+			</div>
+
 			<div class="row">
 				<div class="col-sm-6 pt-md-3 lang1_col">
 					<h5 class="title">Language 1</h5>
@@ -14,21 +39,13 @@
 								<input value="" type="text" class="form-control"
 									   name="button_name_l1" placeholder="Enter Button name">
 
-								<label class="mt-3 pt-md-3">Button background</label>
-								<input value="" type="text" class="form-control"
-									   name="background" placeholder="Enter Background example #345985">
 
-								<label class="mt-3 pt-md-3">Button Link</label>
-								<input value="" type="text" class="form-control"
-									   name="button_link" placeholder="Enter Button Link">
 
 								<label class="mt-3 pt-md-3">Text</label>
-								<textarea value="" type="text" class="form-control"
+								<textarea value="" type="text" class="form-control" rows="7"
 										  name="text_l1" placeholder="Enter Text"></textarea>
 
-								<label class="mt-3 pt-md-3">Font</label>
-								<input value="" type="text" class="form-control"
-									   name="font_l1" placeholder="Enter Font">
+
 							</div>
 						</div>
 					</div>
@@ -47,12 +64,9 @@
 									   name="button_name_l2" placeholder="Enter Button Name">
 
 								<label class="mt-3 pt-md-3">Text</label>
-								<textarea value="" type="text" class="form-control"
+								<textarea value="" type="text" class="form-control" rows="7"
 										  name="text_l2" placeholder="Enter Text"></textarea>
 
-								<label class="mt-3 pt-md-3">Font</label>
-								<input value="" type="text" class="form-control"
-									   name="font_l2" placeholder="Enter Font">
 							</div>
 						</div>
 					</div>

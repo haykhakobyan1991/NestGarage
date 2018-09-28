@@ -33,7 +33,7 @@
 									   name="title_solution_1" placeholder="Enter Title">
 
 								<label class="mt-md-3">Text</label>
-								<textarea type="text" class="form-control"
+								<textarea type="text" class="form-control" rows="7"
 										  name="text_solution_1"
 										  placeholder="Text"><?=$result[0]['text_solution']?></textarea>
 
@@ -52,7 +52,7 @@
 									   name="title_solution_2" placeholder="Enter Title">
 
 								<label class="mt-md-3">Text</label>
-								<textarea type="text"
+								<textarea type="text" rows="7"
 										  class="form-control"
 										  name="text_solution_2"
 										  placeholder="Text"><?=$result[1]['text_solution']?></textarea>
@@ -99,7 +99,7 @@
 									   name="title_challenge_1" placeholder="Enter Title">
 
 								<label class="mt-md-3">Text</label>
-								<textarea ype="text" class="form-control"
+								<textarea ype="text" class="form-control" rows="7"
 										  name="text_challenge_1"
 										  placeholder="Text"><?=$result[0]['text_challenge']?></textarea>
 
@@ -118,7 +118,7 @@
 									   name="title_challenge_2" placeholder="Enter Title">
 
 								<label class="mt-md-3">Text</label>
-								<textarea  type="text" class="form-control"
+								<textarea  type="text" class="form-control" rows="7"
 										  name="text_challenge_2"
 										  placeholder="Text"><?=$result[1]['text_challenge']?></textarea>
 

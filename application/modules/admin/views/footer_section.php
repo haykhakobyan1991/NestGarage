@@ -12,8 +12,30 @@
 					<div class="card-body">
 
 						<div class="form-group">
+
+							<label class="mt-md-3">Title</label>
+							<input type="text" class="form-control" name="title_l1"
+									  placeholder="Enter Title">
+
+							<label class="mt-md-3">Text</label>
+							<input type="text" class="form-control" name="text_l1"
+								   placeholder="Enter Text">
+
+							<label class="mt-md-3">Field 1</label>
+							<input type="text" class="form-control" name="field_1_l1"
+								   placeholder="Enter Field 1">
+
+							<label class="mt-md-3">Field 2</label>
+							<input type="text" class="form-control" name="field_2_l1"
+								   placeholder="Enter Field 2">
+
+							<label class="mt-md-3">Button name</label>
+							<input type="text" class="form-control" name="button_name_l1"
+								   placeholder="Enter button name">
+
+
 							<label class="mt-md-3">Footer Text 1</label>
-							<textarea type="text" class="form-control" name="footer_l1"
+							<textarea type="text" class="form-control" name="footer_l1" rows="7"
 									  placeholder="Enter footer Text"></textarea>
 
 						</div>
@@ -28,8 +50,30 @@
 					<div class="card-body">
 
 						<div class="form-group">
+
+							<label class="mt-md-3">Title</label>
+							<input type="text" class="form-control" name="title_l2"
+								   placeholder="Enter Title">
+
+							<label class="mt-md-3">Text</label>
+							<input type="text" class="form-control" name="text_l1"
+								   placeholder="Enter Text">
+
+							<label class="mt-md-3">Field 1</label>
+							<input type="text" class="form-control" name="field_1_l1"
+								   placeholder="Enter Field 1">
+
+							<label class="mt-md-3">Field 2</label>
+							<input type="text" class="form-control" name="field_2_l1"
+								   placeholder="Enter Field 2">
+
+							<label class="mt-md-3">Button name</label>
+							<input type="text" class="form-control" name="button_name_l1"
+								   placeholder="Enter button name">
+
+
 							<label class="mt-md-3">Footer Text 1</label>
-							<textarea type="text" class="form-control" name="footer_l2"
+							<textarea type="text" class="form-control" name="footer_l2" rows="7"
 									  placeholder="Enter footer Text"></textarea>
 
 						</div>
