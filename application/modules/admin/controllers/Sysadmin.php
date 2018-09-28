@@ -77,61 +77,6 @@ class Sysadmin extends CI_Controller {
 
 	}
 
-	/**
-	 * @param $url
-	 * @return bool
-	 */
-	private function youtube_id_from_url($url) {
-
-		$result = preg_match('%^# Match any youtube URL
-			(?:https?://)?  # Optional scheme. Either http or https
-			(?:www\.)?      # Optional www subdomain
-			(?:             # Group host alternatives
-			  youtu\.be/    # Either youtu.be,
-			| youtube\.com  # or youtube.com
-			  (?:           # Group path alternatives
-				/embed/     # Either /embed/
-			  | /v/         # or /v/
-			  | /watch\?v=  # or /watch\?v=
-			  )             # End path alternatives.
-			)               # End host alternatives.
-			([\w-]{10,12})  # Allow 10-12 for 11 char youtube id.
-			$%x', $url, $matches);
-
-		if (!isset($matches[1])) {
-			return false;
-		}
-
-		if ($result) {
-			return $matches[1];
-		}
-
-		return false;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function pagination_config() {
-		//pagination config
-		$config['use_page_numbers'] = TRUE;
-		$config['per_page'] = 20;
-		$config['full_tag_open'] = '<div class="pgn">';
-		$config['full_tag_close'] = '</div>';
-		$config['next_link'] = '&gt;';
-		$config['next_tag_open'] = '<span class="pg_n">';
-		$config['next_tag_close'] = '</span>';
-		$config['prev_link'] = '&lt;';
-		$config['prev_tag_open'] = '<span class="pg_s">';
-		$config['prev_tag_close'] = '</span>';
-		$config['cur_tag_open'] = '<span class="pg_s">';
-		$config['cur_tag_close'] = '</span>';
-		$config['num_tag_open'] = '<span class="pg_s">';
-		$config['num_tag_close'] = '</span>';
-
-		return $config;
-	}
-
 	public function config() {
 		$this->authorisation();
 		$this->load->helper('form');
@@ -166,6 +111,7 @@ class Sysadmin extends CI_Controller {
 		$this->load->helper('form');
 
 		$value = str_replace("'", "\'", $value);
+		$value = stripslashes($value);
 
 		if(is_null($value)){
 			return "NULL";
@@ -614,9 +560,217 @@ class Sysadmin extends CI_Controller {
 		$data = array();
 
 
+		$sql = "
+        	SELECT 
+			  `id`,
+			  `language_id`,
+			  `title`,
+			  `text` 
+			FROM
+			  `faq` 
+			WHERE `status` = '1' 
+        ";
+
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+
+		$data['result'] = $result;
+
+
+
+
 
 		$this->layout->view('faq', $data, 'edit');
 
+	}
+
+	public function faq_ax() {
+
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		$n = 0;
+
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+
+
+		$result = true;
+		$this->load->library('image_lib');
+		$config = $this->upload_config();
+		$config['upload_path'] = set_realpath('assets/img');
+
+
+		$this->load->library('form_validation');
+		// $this->config->set_item('language', 'armenian');
+		$this->form_validation->set_error_delimiters('<div>', '</div>');
+
+
+
+		// 2 Լեզվի ստուգում
+		$sql_lng = "SELECT status FROM `language` WHERE `id` = '2'";
+		$query_lng = $this->db->query($sql_lng);
+		$row = $query_lng->row_array();
+		$allow = $row['status']; //allow language 2
+
+		$title_1 = $this->input->post('title_1');
+		$title_2 = $this->input->post('title_2');
+
+		$text_1 = $this->input->post('text_1');
+		$text_2 = $this->input->post('text_2');
+
+
+		foreach ($title_1 as $key => $value) {
+
+			$this->form_validation->set_rules('title_1[' . $key . ']', 'Title lang 1', 'required');
+			$this->form_validation->set_rules('text_1[' . $key . ']', 'Text lang 1', 'required');
+
+			if ($this->form_validation->run() == false) {
+
+				//validation errors
+				$validation_errors = array(
+					'title_1[' . $key . ']' => form_error('title_1[' . $key . ']'),
+					'text_1[' . $key . ']' => form_error('text_1[' . $key . ']')
+				);
+
+				$messages['error']['elements'][] = $validation_errors;
+
+				echo json_encode($messages);
+				return false;
+			}
+
+
+			$sql_faq = "
+				SELECT `id` FROM `faq` WHERE `language_id` = '1'
+			";
+
+			$query_faq = $this->db->query($sql_faq);
+			$num_rows = $query_faq->num_rows();
+
+			if ($num_rows > 0) {
+				foreach ($query_faq->result() as $item) {
+					$sql_faq_update = "UPDATE `faq` SET `status` = '-1' WHERE `id` = '" . $item->id . "'";
+					$query_faq_update = $this->db->query($sql_faq_update);
+					if (!$query_faq_update) {
+						$messages['success'] = 0;
+						$messages['error'] = 'Error faq update id - ' . $item->id;
+						echo json_encode($messages);
+						return false;
+					}
+				}
+			}
+		}
+
+		foreach ($title_1 as $key => $value) {
+			$sql_faq_insert = "
+				INSERT INTO `faq`
+					SET 
+					 `title` = ".$this->db_value($value).",
+					 `language_id` = '1',
+					 `text` = ".$this->db_value($text_1[$key]).",
+					 `status` = '1'
+			";
+
+
+			$result_faq_insert = $this->db->query($sql_faq_insert);
+
+			if (!$result_faq_insert) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error faq insert';
+				echo json_encode($messages);
+				return false;
+			}
+
+		}
+
+
+		foreach ($title_2 as $key => $value) {
+
+			// where language 2  allow
+			if ($allow == '1') {
+				$this->form_validation->set_rules('title_2[' . $key . ']', 'Title lang 2', 'required');
+				$this->form_validation->set_rules('text_2[' . $key . ']', 'Text lang 2', 'required');
+
+			}
+
+			if ($this->form_validation->run() == false) {
+
+
+				// where language 2  allow
+				if ($allow == '1') {
+					$validation_errors = array(
+						'title_2[' . $key . ']' => form_error('title_2[' . $key . ']'),
+						'text_2[' . $key . ']' => form_error('text_2[' . $key . ']')
+					);
+				}
+
+				$messages['error']['elements'][] = $validation_errors;
+
+				echo json_encode($messages);
+				return false;
+			}
+
+
+			$sql_faq = "
+				SELECT `id` FROM `faq` WHERE `language_id` = '2'
+			";
+
+			$query_faq = $this->db->query($sql_faq);
+			$num_rows = $query_faq->num_rows();
+
+			if ($num_rows > 0) {
+				foreach ($query_faq->result() as $item) {
+					$sql_faq_update = "UPDATE `faq` SET `status` = '-1' WHERE `id` = '" . $item->id . "'";
+					$query_faq_update = $this->db->query($sql_faq_update);
+					if (!$query_faq_update) {
+						$messages['success'] = 0;
+						$messages['error'] = 'Error faq update id - ' . $item->id;
+						echo json_encode($messages);
+						return false;
+					}
+				}
+			}
+		}
+
+
+		foreach ($title_2 as $key => $value) {
+			$sql_faq_insert = "
+				INSERT INTO `faq`
+					SET 
+					 `title` = ".$this->db_value($value).",
+					 `language_id` = '2',
+					 `text` = ".$this->db_value($text_2[$key]).",
+					 `status` = '1'
+			";
+
+
+			$result_faq_insert = $this->db->query($sql_faq_insert);
+
+			if (!$result_faq_insert) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error faq insert';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+		}
+
+
+
+		if ($result) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Success';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
 	}
 
 	public function main() {

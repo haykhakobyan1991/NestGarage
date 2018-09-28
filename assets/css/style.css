@@ -197,7 +197,7 @@ button.m_btn.btn_begin {
 }
 
 button.m_btn.btn_begin:hover {
-	background: linear-gradient(to right, rgb(137, 37, 62), rgb(58, 97, 134));
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	color: #fff;
 }
 

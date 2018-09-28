@@ -27,6 +27,12 @@
 			background: <?=($result_functional2[$lng]['background_color'] != '' ? $result_functional2[$lng]['background_color'].';' : 'linear-gradient(to right, rgb(58, 97, 134), rgb(137, 37, 62));')?>
 			z-index: -1;
 		}
+
+		button.m_btn.btn_begin {
+			background: <?=($result_functional2[$lng]['background_color'] != '' ? $result_functional2[$lng]['background_color'].';' : 'linear-gradient(to right, rgb(58, 97, 134), rgb(137, 37, 62));')?>
+		}
+
+
 	</style>
 
 
