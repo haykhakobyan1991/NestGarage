@@ -21,12 +21,10 @@
 									   name="title_1_l1" placeholder="Enter title">
 
 								<label>FAQ text</label>
-								<input value="" type="text" class="form-control"
-									   name="text_1_l1" placeholder="Enter  Text">
+								<textarea value="" type="text" class="form-control" rows="6"
+										  name="text_1_l1" placeholder="Enter  Text"></textarea>
 
-								<label class="mt-3 pt-md-3">Font</label>
-								<input value="" type="text" class="form-control"
-									   name="font_1_l1" placeholder="Font">
+
 							</div>
 						</div>
 					</div>
@@ -43,12 +41,10 @@
 									   name="title_1_l2" placeholder="Enter title">
 
 								<label>FAQ text</label>
-								<input value="" type="text" class="form-control"
-									   name="text_1_l2" placeholder="Enter  Text">
+								<textarea value="" type="text" class="form-control" rows="6"
+										  name="text_1_l2" placeholder="Enter  Text"></textarea>
 
-								<label class="mt-3 pt-md-3">Font</label>
-								<input value="" type="text" class="form-control"
-									   name="font_1_l2" placeholder="Font">
+
 							</div>
 						</div>
 					</div>
