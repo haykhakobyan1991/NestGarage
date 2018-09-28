@@ -19,8 +19,6 @@ class Sysadmin extends CI_Controller {
 
 	}
 
-
-
 	/**
 	 * Valid URL
 	 *
@@ -59,26 +57,6 @@ class Sysadmin extends CI_Controller {
 
 	} // End func uname
 
-
-	/**
-	 * @return string
-	 */
-	private function default_lng() {
-		return 'hy';
-	}
-
-	/**
-	 * @return array
-	 */
-	// TODO MULTI LANGUAGE MOD
-	private function languages() {
-		return array('hy', 'ru', 'en');
-	}
-
-
-
-
-
 	/**
 	 * @return mixed
 	 */
@@ -98,8 +76,6 @@ class Sysadmin extends CI_Controller {
 		return $config;
 
 	}
-
-
 
 	/**
 	 * @param $url
@@ -156,8 +132,6 @@ class Sysadmin extends CI_Controller {
 		return $config;
 	}
 
-
-
 	public function config() {
 		$this->authorisation();
 		$this->load->helper('form');
@@ -175,7 +149,6 @@ class Sysadmin extends CI_Controller {
 		return false;
 	}
 
-
 	/**
 	 * @param $data
 	 * @return string
@@ -183,7 +156,6 @@ class Sysadmin extends CI_Controller {
 	public function hash($data) {
 		return md5($data);
 	}
-
 
 	/**
 	 * @param null $value
@@ -222,9 +194,6 @@ class Sysadmin extends CI_Controller {
 
 		return true;
 	}
-
-
-
 
 	public function web() {
 
@@ -637,7 +606,6 @@ class Sysadmin extends CI_Controller {
 		return true;
 	}
 
-
 	public function faq() {
 
 		$this->authorisation();
@@ -684,7 +652,6 @@ class Sysadmin extends CI_Controller {
 		$this->layout->view('main', $data, 'edit');
 
 	}
-
 
 	public function main_ax() {
 
@@ -877,9 +844,6 @@ class Sysadmin extends CI_Controller {
 		echo json_encode($messages);
 		return true;
 	}
-
-
-
 
 	public function solution_challenge() {
 
@@ -1121,7 +1085,6 @@ class Sysadmin extends CI_Controller {
 		return true;
 	}
 
-
 	public function functional() {
 
 		$this->authorisation();
@@ -1133,6 +1096,305 @@ class Sysadmin extends CI_Controller {
 
 		$this->layout->view('functional', $data, 'edit');
 
+	}
+
+
+	public function functional_ax() {
+
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		$n = 0;
+
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+
+
+		$this->load->library('image_lib');
+		$config = $this->upload_config();
+		$config['upload_path'] = set_realpath('assets/img');
+
+
+		$this->load->library('form_validation');
+		// $this->config->set_item('language', 'armenian');
+		$this->form_validation->set_error_delimiters('<div>', '</div>');
+
+		// 2 Լեզվի ստուգում
+		$sql_lng = "SELECT status FROM `language` WHERE `id` = '2'";
+		$query_lng = $this->db->query($sql_lng);
+		$row = $query_lng->row_array();
+		$allow = $row['status']; //allow language 2
+
+		$text = $this->input->post('text');
+
+		$sql_func = "
+			SELECT `id`, `language_id` FROM `functional` WHERE `default` = 1
+		";
+
+		$query_func = $this->db->query($sql_func);
+		$result_func = $query_func->result_array();
+		$lang_ids = array();
+
+		foreach ($result_func as $item) {
+			if($item['language_id'] == 1){
+				$lang_ids['lang_1'][] = $item['id'];
+			} else {
+				$lang_ids['lang_2'][] = $item['id'];
+			}
+		}
+
+
+	//	print_r($lang_ids);
+
+		foreach ($text as $key => $value) {
+			//$this->pre($value);
+
+			$this->form_validation->set_rules('text['.$key.'][1]', 'Text lang 1', 'required');
+
+			// where language 2  allow
+			if($allow == '1') {
+				$this->form_validation->set_rules('text['.$key.'][2]', 'Text lang 2', 'required');
+
+			}
+
+			if ($this->form_validation->run() == false) {
+				//validation errors
+
+				$validation_errors = array(
+					'text['.$key.'][1]' => form_error('text['.$key.'][1]')
+				);
+
+				// where language 2  allow
+				if ($allow == '1') {
+					$validation_errors = array_merge(
+						$validation_errors,
+						array(
+							'text['.$key.'][2]' => form_error('text['.$key.'][2]')
+						)
+					);
+				}
+
+				$messages['error']['elements'][] = $validation_errors;
+
+				echo json_encode($messages);
+				return false;
+			}
+
+
+			$sql_func_l1 = "
+				UPDATE `functional` SET `title` = '".$value[1]."' WHERE `language_id` = 1 AND `default` = 1  AND `id` = '".$lang_ids['lang_1'][$key-1]."'
+			";
+
+			$result_func_l1 = $this->db->query($sql_func_l1);
+
+			if (!$result_func_l1) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error func lang 1';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+			$sql_func_l2 = "
+				UPDATE `functional` SET `title` = '".$value[2]."' WHERE `language_id` = 2 AND `default` = 1 AND `id` = '".$lang_ids['lang_2'][$key-1]."'
+			";
+
+			$result_func_l2 = $this->db->query($sql_func_l2);
+
+			if (!$result_func_l2) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error func lang 2';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+
+			if(isset($_FILES['icon']['name'][$key][1]) AND $_FILES['icon']['name'][$key][1] != '') {
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+
+				foreach($_FILES as $key => $value)  {
+					if( ! empty($value['name']))  {
+						if( ! $this->upload->do_upload($key))  {
+							$validation_errors = array($key => $this->upload->display_errors());
+							$messages['error']['elements'][] = $validation_errors;
+							echo json_encode($messages);
+							return false;
+						}
+						$photo_challenge_arr = $this->upload->data();
+
+						$photo_challenge = $photo_challenge_arr['file_name'];
+
+						echo $sql_challenge = "
+							UPDATE `functional` SET `icon` = " . $this->db_value($photo_challenge) . " WHERE `language_id` = 1 AND `default` = 1  AND `id` = '".$lang_ids['lang_1'][$key-1]."'
+						";
+						$result_challenge = $this->db->query($sql_challenge);
+
+						if (!$result_challenge) {
+							$messages['success'] = 0;
+							$messages['error'] = 'Error challenge';
+							echo json_encode($messages);
+							return false;
+						}
+					}
+				}
+
+
+
+
+			}
+
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+		die();
+
+
+		$title_solution_1 = $this->input->post('title_solution_1');
+		$text_solution_1 = $this->input->post('text_solution_1');
+		$title_challenge_1 = $this->input->post('title_challenge_1');
+		$text_challenge_1 = $this->input->post('text_challenge_1');
+
+
+
+		$title_solution_2 = $this->input->post('title_solution_2');
+		$text_solution_2 = $this->input->post('text_solution_2');
+		$title_challenge_2 = $this->input->post('title_challenge_2');
+		$text_challenge_2 = $this->input->post('text_challenge_2');
+
+
+
+		$sch_lang_arr = array(
+			'1' => array(
+				'title_solution' => $title_solution_1,
+				'text_solution' => $text_solution_1,
+				'title_challenge' => $title_challenge_1,
+				'text_challenge' => $text_challenge_1
+			),
+			'2' => array(
+				'title_solution' => $title_solution_2,
+				'text_solution' => $text_solution_2,
+				'title_challenge' => $title_challenge_2,
+				'text_challenge' => $text_challenge_2
+			)
+		);
+
+		foreach ($sch_lang_arr as $lang_id => $value) {
+			$sql_sch = "
+				UPDATE `solution_challenge` SET 
+					`title_solution` = ".$this->db_value($value['title_solution']).",
+					`text_solution` = ".$this->db_value($value['text_solution']).",
+					`title_challenge` = ".$this->db_value($value['title_challenge']).",
+					`text_challenge` = ".$this->db_value($value['text_challenge'])."
+				WHERE `language_id` = '".$lang_id."'	
+			";
+
+			$result_sch = $this->db->query($sql_sch);
+
+			if (!$result_sch) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error chat form '.$lang_id;
+				echo json_encode($messages);
+				return false;
+			}
+
+		}
+
+
+
+
+		if(isset($_FILES['photo_solution']['name']) AND $_FILES['photo_solution']['name'] != '') {
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('photo_solution')) {
+				$validation_errors = array('photo_solution' => $this->upload->display_errors());
+				$messages['error']['elements'][] = $validation_errors;
+				echo json_encode($messages);
+				return false;
+			}
+
+
+
+			$photo_solution_arr = $this->upload->data();
+
+			$photo_solution = $photo_solution_arr['file_name'];
+
+			$sql_solution = "
+				UPDATE `solution_challenge` SET `photo_solution` = " . $this->db_value($photo_solution) . " WHERE 1
+			";
+			$result_solution = $this->db->query($sql_solution);
+
+			if (!$result_solution) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error solution';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+		}
+
+
+
+		if(isset($_FILES['photo_challenge']['name']) AND $_FILES['photo_challenge']['name'] != '') {
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('photo_challenge')) {
+				$validation_errors = array('photo_challenge' => $this->upload->display_errors());
+				$messages['error']['elements'][] = $validation_errors;
+				echo json_encode($messages);
+				return false;
+			}
+
+
+
+			$photo_challenge_arr = $this->upload->data();
+
+			$photo_challenge = $photo_challenge_arr['file_name'];
+
+			$sql_challenge = "
+				UPDATE `solution_challenge` SET `photo_challenge` = " . $this->db_value($photo_challenge) . " WHERE 1
+			";
+			$result_challenge = $this->db->query($sql_challenge);
+
+			if (!$result_challenge) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error challenge';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+		}
+
+		if ($result_sch) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Success';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
 	}
 
 	public function functional_2() {

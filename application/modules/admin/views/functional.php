@@ -10,6 +10,8 @@
 		<h1 class="display-4">Functional 1</h1>
 		<p class="lead">Edit Website Functional section</p>
 		<hr class="my-4">
+		<div class="d-none alert alert-danger mt-md-3 mt-3" role="alert"></div>
+		<div class="d-none alert alert-success mt-md-3 mt-3" role="alert"></div>
 		<form>
 			<div class="row">
 				<div class="col-sm-6 pt-md-3 lang1_col">
@@ -20,7 +22,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="exampleFormControlFile1">Choose icon</label>
-										<input name="icon_1_l1" type="file" class="form-control-file"
+										<input name="icon[1][1]" type="file" class="form-control-file"
 											   id="exampleFormControlFile1">
 									</div>
 								</div>
@@ -32,7 +34,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="exampleFormControlFile2">Choose background (1/1)</label>
-										<input name="background_1_l1" type="file" class="form-control-file"
+										<input name="background[1][1]" type="file" class="form-control-file"
 											   id="exampleFormControlFile2">
 									</div>
 								</div>
@@ -43,7 +45,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_1_l1" placeholder="Enter Text">
+									   name="text[1][1]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -54,7 +56,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose icon</label>
-										<input name="icon_2_l1" type="file" class="form-control-file"
+										<input name="icon[2][1]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -66,7 +68,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose background (1/1)</label>
-										<input name="background_2_l1" type="file" class="form-control-file"
+										<input name="background[2][1]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -77,7 +79,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_2_l1" placeholder="Enter Text">
+									   name="text[2][1]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -88,7 +90,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose icon</label>
-										<input name="icon_3_l1" type="file" class="form-control-file"
+										<input name="icon[3][1]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -100,7 +102,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose background (1/1)</label>
-										<input name="background_3_l1" type="file" class="form-control-file"
+										<input name="background[3][1]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -111,7 +113,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_3_l1" placeholder="Enter Text">
+									   name="text[3][1]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -126,7 +128,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="exampleFormControlFile1">Choose icon</label>
-										<input name="icon_1_l2" type="file" class="form-control-file"
+										<input name="icon[1][2]" type="file" class="form-control-file"
 											   id="exampleFormControlFile1">
 									</div>
 								</div>
@@ -138,7 +140,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="exampleFormControlFile2">Choose background (1/1)</label>
-										<input name="background_1_l2" type="file" class="form-control-file"
+										<input name="background[1][2]" type="file" class="form-control-file"
 											   id="exampleFormControlFile2">
 									</div>
 								</div>
@@ -149,7 +151,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_1_l2" placeholder="Enter Text">
+									   name="text[1][2]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -160,7 +162,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose icon</label>
-										<input name="icon_2_l2" type="file" class="form-control-file"
+										<input name="icon[2][2]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -172,7 +174,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose background (1/1)</label>
-										<input name="background_2_l2" type="file" class="form-control-file"
+										<input name="background[2][2]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -183,7 +185,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_2_l2" placeholder="Enter Text">
+									   name="text[2][2]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -194,7 +196,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose icon</label>
-										<input name="icon_3_l2" type="file" class="form-control-file"
+										<input name="icon[3][2]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -206,7 +208,7 @@
 								<div class="form-group col">
 									<div class="form-group">
 										<label for="">Choose background (1/1)</label>
-										<input name="background_3_l2" type="file" class="form-control-file"
+										<input name="background[3][2]" type="file" class="form-control-file"
 											   id="">
 									</div>
 								</div>
@@ -217,7 +219,7 @@
 							<div class="form-group mt-3 pt-md-3">
 								<label>Text</label>
 								<input value="" type="text" class="form-control"
-									   name="text_3_l2" placeholder="Enter Text">
+									   name="text[3][2]" placeholder="Enter Text">
 							</div>
 						</div>
 					</div>
@@ -251,7 +253,7 @@
 				'<div class="form-group col">\n' +
 				'<div class="form-group">\n' +
 				'<label for="">Choose icon</label>\n' +
-				'<input name="icon_' + i + '_l1" type="file" class="form-control-file"\n' +
+				'<input name="icon[' + i + '][1]" type="file" class="form-control-file"\n' +
 				' id="">\n' +
 				'</div>\n' +
 				'</div>\n' +
@@ -263,7 +265,7 @@
 				'<div class="form-group col">\n' +
 				'<div class="form-group">\n' +
 				'<label for="">Choose background (1/1)</label>\n' +
-				'<input name="background_' + i + '_l1" type="file" class="form-control-file"\n' +
+				'<input name="background[' + i + '][1]" type="file" class="form-control-file"\n' +
 				' id="">\n' +
 				'</div>\n' +
 				'</div>\n' +
@@ -274,7 +276,7 @@
 				'<div class="form-group mt-3 pt-md-3">\n' +
 				'<label>Text</label>\n' +
 				'<input value="" type="text" class="form-control"\n' +
-				' name="text_' + i + '_l1" placeholder="Enter Text">\n' +
+				' name="text[' + i + '][1]" placeholder="Enter Text">\n' +
 				'</div>\n' +
 				'</div>\n' +
 				'</div>');
@@ -287,7 +289,7 @@
 				'<div class="form-group col">\n' +
 				'<div class="form-group">\n' +
 				'<label for="">Choose icon</label>\n' +
-				'<input name="icon_' + j + '_l2" type="file" class="form-control-file"\n' +
+				'<input name="icon[' + j + '][2]" type="file" class="form-control-file"\n' +
 				' id="">\n' +
 				'</div>\n' +
 				'</div>\n' +
@@ -299,7 +301,7 @@
 				'<div class="form-group col">\n' +
 				'<div class="form-group">\n' +
 				'<label for="">Choose background (1/1)</label>\n' +
-				'<input name="background_' + j + '_l2" type="file" class="form-control-file"\n' +
+				'<input name="background[' + j + '][2]" type="file" class="form-control-file"\n' +
 				' id="">\n' +
 				'</div>\n' +
 				'</div>\n' +
@@ -310,7 +312,7 @@
 				'<div class="form-group mt-3 pt-md-3">\n' +
 				'<label>Text</label>\n' +
 				'<input value="" type="text" class="form-control"\n' +
-				' name="text_' + j + '_l2" placeholder="Enter Text">\n' +
+				' name="text[' + j + '][2]" placeholder="Enter Text">\n' +
 				'</div>\n' +
 				'</div>\n' +
 				'</div>');
