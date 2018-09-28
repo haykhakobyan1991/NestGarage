@@ -104,9 +104,9 @@
 
 	<div class="cards">
 		<?
-		foreach ($result_functional as $value) {
-			if (($lng + 1) == $value['language_id']) {
-				if ($value['title'] != '') {
+		foreach ($result_functional as $value) :
+			if (($lng + 1) == $value['language_id']) :
+				if ($value['title'] != '') :
 
 					?>
 
@@ -120,9 +120,9 @@
 					</div>
 
 
-				<? }
-			}
-		} ?>
+				<? endif;
+			endif;
+		endforeach; ?>
 
 
 
@@ -147,21 +147,23 @@
 	<h2 class="faq">faq</h2>
 </div>
 
+
+
 <div class="center faq_center" style="background-image: url(<?= base_url() ?>assets/img/faq.jpg);">
 	<div class="faq_content">
-		<h3 class="faq_title">Lorem ipsum dolor sit.</h3>
-		<p class="faq_answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas incidunt alias dolores
-			nihil, numquam quasi saepe iste tempora labore veniam ipsa voluptates eum. Magni ullam placeat ducimus sunt
-			fuga accusamus!</p>
+		<?
+		foreach ($result_faq as $value_faq) :
+			if (($lng + 1) == $value_faq['language_id']) :
+				?>
 
-		<h3 class="faq_title">Lorem ipsum dolor sit amet.</h3>
-		<p class="faq_answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque qui esse dolorem ipsum quod
-			eos odit amet minima tempore quos assumenda similique libero, dicta quibusdam.</p>
+				<h3 class="faq_title"><?= $value_faq['title'] ?></h3>
+				<p class="faq_answer"><?= $value_faq['text'] ?></p>
 
-		<h3 class="faq_title">Lorem ipsum dolor sit amet consectetur.</h3>
-		<p class="faq_answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, nesciunt enim.
-			Provident quam voluptatum ea est eligendi enim ipsa error totam impedit sit dolorum at debitis adipisci
-			autem, delectus dolor, ex quisquam! Natus, cum.</p>
+			<?
+			endif;
+		endforeach;
+		?>
+
 	</div>
 </div>
 

@@ -111,7 +111,7 @@ class Sysadmin extends CI_Controller {
 		$this->load->helper('form');
 
 		$value = str_replace("'", "\'", $value);
-		$value = stripslashes($value);
+		//$value = stripslashes($value);
 
 		if(is_null($value)){
 			return "NULL";
@@ -622,17 +622,17 @@ class Sysadmin extends CI_Controller {
 		$text_2 = $this->input->post('text_2');
 
 
-		foreach ($title_1 as $key => $value) {
+		foreach ($title_1 as $key1 => $value1) {
 
-			$this->form_validation->set_rules('title_1[' . $key . ']', 'Title lang 1', 'required');
-			$this->form_validation->set_rules('text_1[' . $key . ']', 'Text lang 1', 'required');
+			$this->form_validation->set_rules('title_1[' . $key1 . ']', 'Title lang 1', 'required');
+			$this->form_validation->set_rules('text_1[' . $key1 . ']', 'Text lang 1', 'required');
 
 			if ($this->form_validation->run() == false) {
 
 				//validation errors
 				$validation_errors = array(
-					'title_1[' . $key . ']' => form_error('title_1[' . $key . ']'),
-					'text_1[' . $key . ']' => form_error('text_1[' . $key . ']')
+					'title_1[' . $key1 . ']' => form_error('title_1[' . $key1 . ']'),
+					'text_1[' . $key1 . ']' => form_error('text_1[' . $key1 . ']')
 				);
 
 				$messages['error']['elements'][] = $validation_errors;
@@ -663,13 +663,13 @@ class Sysadmin extends CI_Controller {
 			}
 		}
 
-		foreach ($title_1 as $key => $value) {
+		foreach ($title_1 as $key1 => $value1) {
 			$sql_faq_insert = "
 				INSERT INTO `faq`
 					SET 
-					 `title` = ".$this->db_value($value).",
+					 `title` = ".$this->db_value($value1).",
 					 `language_id` = '1',
-					 `text` = ".$this->db_value($text_1[$key]).",
+					 `text` = ".$this->db_value($text_1[$key1]).",
 					 `status` = '1'
 			";
 
@@ -686,12 +686,12 @@ class Sysadmin extends CI_Controller {
 		}
 
 
-		foreach ($title_2 as $key => $value) {
+		foreach ($title_2 as $key2 => $value2) {
 
 			// where language 2  allow
 			if ($allow == '1') {
-				$this->form_validation->set_rules('title_2[' . $key . ']', 'Title lang 2', 'required');
-				$this->form_validation->set_rules('text_2[' . $key . ']', 'Text lang 2', 'required');
+				$this->form_validation->set_rules('title_2[' . $key2 . ']', 'Title lang 2', 'required');
+				$this->form_validation->set_rules('text_2[' . $key2 . ']', 'Text lang 2', 'required');
 
 			}
 
@@ -701,8 +701,8 @@ class Sysadmin extends CI_Controller {
 				// where language 2  allow
 				if ($allow == '1') {
 					$validation_errors = array(
-						'title_2[' . $key . ']' => form_error('title_2[' . $key . ']'),
-						'text_2[' . $key . ']' => form_error('text_2[' . $key . ']')
+						'title_2[' . $key2 . ']' => form_error('title_2[' . $key2 . ']'),
+						'text_2[' . $key2 . ']' => form_error('text_2[' . $key2 . ']')
 					);
 				}
 
@@ -735,13 +735,13 @@ class Sysadmin extends CI_Controller {
 		}
 
 
-		foreach ($title_2 as $key => $value) {
+		foreach ($title_2 as $key2 => $value2) {
 			$sql_faq_insert = "
 				INSERT INTO `faq`
 					SET 
-					 `title` = ".$this->db_value($value).",
+					 `title` = ".$this->db_value($value2).",
 					 `language_id` = '2',
-					 `text` = ".$this->db_value($text_2[$key]).",
+					 `text` = ".$this->db_value($text_2[$key2]).",
 					 `status` = '1'
 			";
 
@@ -807,6 +807,9 @@ class Sysadmin extends CI_Controller {
 
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function main_ax() {
 
 		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
@@ -1699,10 +1702,192 @@ class Sysadmin extends CI_Controller {
 		$this->load->helper('form');
 		$data = array();
 
+		$sql = "
+        	SELECT
+			  `id`,
+			  `language_id`,
+			  `title`,
+			  `text`,
+			  `input_1`,
+			  `input_2`,
+			  `button_name`,
+			  `footer_text`,
+			  `status`
+			FROM `footer`
+			 WHERE `status` = 1
+			 LIMIT 2
+        ";
+
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+
+		$data['result'] = $result;
+
+
 
 
 		$this->layout->view('footer_section', $data, 'edit');
 
+	}
+
+	public function footer_section_ax() {
+
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		$n = 0;
+
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+
+
+		$this->load->library('image_lib');
+		$config = $this->upload_config();
+		$config['upload_path'] = set_realpath('assets/img');
+
+
+		$this->load->library('form_validation');
+		// $this->config->set_item('language', 'armenian');
+		$this->form_validation->set_error_delimiters('<div>', '</div>');
+
+		$this->form_validation->set_rules('input_1_1', 'Input 1 lang 1', 'required');
+		$this->form_validation->set_rules('input_2_1', 'Input 2 lang 1', 'required');
+		$this->form_validation->set_rules('title_1', 'Title lang 1', 'required');
+		$this->form_validation->set_rules('text_1', 'Text lang 1', 'required');
+		$this->form_validation->set_rules('button_name_1', 'Button Name lang 1', 'required');
+		$this->form_validation->set_rules('footer_text_1', 'Footer text lang 1', 'required');
+
+		// 2 Լեզվի ստուգում
+		$sql_lng = "SELECT status FROM `language` WHERE `id` = '2'"; //todo config
+		$query_lng = $this->db->query($sql_lng);
+		$row = $query_lng->row_array();
+		$allow = $row['status']; //allow language 2
+
+
+
+
+		// where language 2  allow
+		if($allow == '1') {
+			$this->form_validation->set_rules('input_1_2', 'Input 1 lang 2', 'required');
+			$this->form_validation->set_rules('input_2_2', 'Input 2 lang 2', 'required');
+			$this->form_validation->set_rules('title_2', 'Title lang 2', 'required');
+			$this->form_validation->set_rules('text_2', 'Text lang 2', 'required');
+			$this->form_validation->set_rules('button_name_2', 'Button Name lang 2', 'required');
+			$this->form_validation->set_rules('footer_text_2', 'Footer text lang 2', 'required');
+		}
+
+
+		if ($this->form_validation->run() == false) {
+			//validation errors
+
+			$validation_errors = array(
+				'input_1_1' => form_error('input_1_1'),
+				'input_2_1' => form_error('input_2_1'),
+				'title_1' => form_error('title_1'),
+				'text_1' => form_error('text_1'),
+				'button_name_1' => form_error('button_name_1'),
+				'footer_text_1' => form_error('footer_text_1'),
+			);
+
+
+			// where language 2  allow
+			if ($allow == '1') {
+				$validation_errors = array_merge(
+					$validation_errors,
+					array(
+						'input_1_2' => form_error('input_1_2'),
+						'input_2_2' => form_error('input_2_2'),
+						'title_2' => form_error('title_2'),
+						'text_2' => form_error('text_2'),
+						'button_name_2' => form_error('button_name_2'),
+						'footer_text_2' => form_error('footer_text_2')
+					)
+				);
+			}
+
+
+			$messages['error']['elements'][] = $validation_errors;
+
+			echo json_encode($messages);
+			return false;
+		}
+
+
+		$input_1_1 = $this->input->post('input_1_1');
+		$input_2_1 = $this->input->post('input_2_1');
+		$title_1 = $this->input->post('title_1');
+		$text_1 = $this->input->post('text_1');
+		$button_name_1 = $this->input->post('button_name_1');
+		$footer_text_1 = $this->input->post('footer_text_1');
+
+		$input_1_2 = $this->input->post('input_1_2');
+		$input_2_2 = $this->input->post('input_2_2');
+		$title_2 = $this->input->post('title_2');
+		$text_2 = $this->input->post('text_2');
+		$button_name_2 = $this->input->post('button_name_2');
+		$footer_text_2= $this->input->post('footer_text_2');
+
+
+
+
+		$footer_lang_arr = array(
+			'1' => array(
+				'input_1' => $input_1_1,
+				'input_2' => $input_2_1,
+				'title' => $title_1,
+				'text' => $text_1,
+				'button_name' => $button_name_1,
+				'footer_text' => $footer_text_1
+			),
+			'2' => array(
+				'input_1' => $input_1_2,
+				'input_2' => $input_2_2,
+				'title' => $title_2,
+				'text' => $text_2,
+				'button_name' => $button_name_2,
+				'footer_text' => $footer_text_2
+			)
+		);
+
+		foreach ($footer_lang_arr as $lang_id => $value) {
+			$sql_foot = "
+				UPDATE `footer` SET 
+					`input_1` = ".$this->db_value($value['input_1']).",
+					`input_2` = ".$this->db_value($value['input_2']).",
+					`title` = ".$this->db_value($value['title']).",
+					`text` = ".$this->db_value($value['text']).",
+					`button_name` = ".$this->db_value($value['button_name']).",
+					`footer_text` = ".$this->db_value($value['footer_text'])."
+				WHERE `language_id` = '".$lang_id."'	
+			";
+
+			$result_foot = $this->db->query($sql_foot);
+
+			if (!$result_foot) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error foot '.$lang_id;
+				echo json_encode($messages);
+				return false;
+			}
+
+		}
+
+
+
+
+		if ($result_foot) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Success';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
 	}
 
 

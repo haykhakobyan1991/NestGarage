@@ -187,12 +187,28 @@ class Main extends MX_Controller {
 		$query_func2 = $this->db->query($sql_func2);
 		$result_func2 = $query_func2->result_array();
 
+		$sql_faq = "
+        	SELECT 
+			  `id`,
+			  `title`,
+			  `language_id`,
+			  `text` 
+			FROM
+			  `faq` 
+			WHERE `status` = '1' 
+        ";
+
+
+		$query_faq = $this->db->query($sql_faq);
+		$result_faq = $query_faq->result_array();
+
 		$data['result_web'] = $result_web;
 		$data['result_chat'] = $result_chat;
 		$data['result_main'] = $result_main;
 		$data['result_solution_challenge'] = $result_solution_challenge;
 		$data['result_functional'] = $result_func;
 		$data['result_functional2'] = $result_func2;
+		$data['result_faq'] = $result_faq;
 
 		$data['lng'] = $language_id;
 
