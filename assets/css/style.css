@@ -324,7 +324,7 @@ button.m_btn.btn_begin:hover {
 
 .faq_answer {
 	margin-top: 20px;
-	font-size: normal;
+	font-size: 16px;
 	font-weight: 400;
 	color: #333;
 	text-align: left;
@@ -446,7 +446,7 @@ input.modal_input, input.modal_input_2 {
 
 button.modal_button {
 	border: 1px solid #28a745;
-	margin: 20 auto;
+	margin: 20px auto;
 	display: block;
 	width: 90%;
 	padding: 10px;
