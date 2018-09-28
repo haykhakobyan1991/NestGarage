@@ -172,7 +172,43 @@ class Main extends MX_Controller {
 			$this->access_denied();
 			return false;
 		}
-	}
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$country = $this->input->post('country');
+			$phone = $this->input->post('phone');
+
+			 $sql = "INSERT INTO
+							`form_email`
+						SET 
+					`name` = '".$name."',
+					`email` = '".$email."',
+					`country_code` = '".$country."',
+					`phone_number` = '".$phone."'		
+				";
+
+			$result = $this->db->query($sql);
+
+			if (!$result) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error chat form ';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+			if ($result) {
+				$messages['success'] = 1;
+				$messages['message'] = 'Thanks for your order';
+			} else {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error';
+			}
+
+			// Return success or error message
+			echo json_encode($messages);
+			return true;
+		}
+
 
 
 }

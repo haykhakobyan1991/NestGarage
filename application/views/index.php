@@ -17,8 +17,9 @@
 
 
 </head>
-<body style="<?=($result_main[$lng]['font_css'] == '' ? 'font-family: \'Open Sans\', sans-serif;' : $result_main[$lng]['font_css'])?>">
-<header style="background-image: url(<?= base_url().'assets/img/'.$result_main[$lng]['background_img'] ?>);">
+<body
+	style="<?= ($result_main[$lng]['font_css'] == '' ? 'font-family: \'Open Sans\', sans-serif;' : $result_main[$lng]['font_css']) ?>">
+<header style="background-image: url(<?= base_url() . 'assets/img/' . $result_main[$lng]['background_img'] ?>);">
 
 	<div class="center">
 
@@ -30,15 +31,15 @@
 		</div>
 
 		<main>
-			<h1 class="title wow bounceIn"><?=$result_main[$lng]['title']?></h1>
+			<h1 class="title wow bounceIn"><?= $result_main[$lng]['title'] ?></h1>
 			<p class="main_text">
-				<?=$result_main[$lng]['main_text']?>
+				<?= $result_main[$lng]['main_text'] ?>
 			</p>
 
 			<div class="main_buttons">
-				<button class="m_btn learn_more_btn"><?=$result_main[$lng]['button_1']?></button>
-				<a class="buttons_href" href="<?=$result_main[$lng]['button_2_url']?>">
-					<button class="m_btn begin_btn"><?=$result_main[$lng]['button_2']?></button>
+				<button class="m_btn learn_more_btn"><?= $result_main[$lng]['button_1'] ?></button>
+				<a class="buttons_href" href="<?= $result_main[$lng]['button_2_url'] ?>">
+					<button class="m_btn begin_btn"><?= $result_main[$lng]['button_2'] ?></button>
 				</a>
 			</div>
 		</main>
@@ -51,24 +52,26 @@
 
 	<div class="challenge">
 		<div class="img_left_div wow bounceIn">
-			<img src="<?= base_url() ?>assets/img/<?=$result_solution_challenge[$lng]['photo_challenge']?>" alt="challenge">
+			<img src="<?= base_url() ?>assets/img/<?= $result_solution_challenge[$lng]['photo_challenge'] ?>"
+				 alt="challenge">
 		</div>
 		<div class="text_right_div">
-			<h2><?=$result_solution_challenge[$lng]['title_challenge']?></h2>
+			<h2><?= $result_solution_challenge[$lng]['title_challenge'] ?></h2>
 			<hr>
-			<p><?=$result_solution_challenge[$lng]['text_challenge']?></p>
+			<p><?= $result_solution_challenge[$lng]['text_challenge'] ?></p>
 		</div>
 	</div>
 
 	<div class="solution">
 		<div class="text_left_div">
-			<h2><?=$result_solution_challenge[$lng]['title_solution']?></h2>
+			<h2><?= $result_solution_challenge[$lng]['title_solution'] ?></h2>
 			<hr>
-			<p><?=$result_solution_challenge[$lng]['text_solution']?></p>
+			<p><?= $result_solution_challenge[$lng]['text_solution'] ?></p>
 		</div>
 
 		<div class="img_right_div wow bounceIn">
-			<img src="<?= base_url() ?>assets/img/<?=$result_solution_challenge[$lng]['photo_solution']?>" alt="challenge">
+			<img src="<?= base_url() ?>assets/img/<?= $result_solution_challenge[$lng]['photo_solution'] ?>"
+				 alt="challenge">
 		</div>
 	</div>
 
@@ -209,6 +212,9 @@ if ($result_chat[$lng]['status'] == '1') {
 	<input class="modal_input_2 modal_country" type="text" placeholder="<?= $result_chat[$lng]['form_country_code'] ?>">
 	<input class="modal_input_2 modal_phone" type="text" placeholder="<?= $result_chat[$lng]['form_phone_number'] ?>">
 	<button class="modal_button"><?= $result_chat[$lng]['form_button'] ?></button>
+	<div class="success_order">
+		<h2 class="modal_message">Thanks for your order</h2>
+	</div>
 </div>
 
 <!--// Javascript //-->
@@ -229,43 +235,99 @@ if ($result_chat[$lng]['status'] == '1') {
 	});
 
 	$('.modal_button').click(function () {
+		$('.modal_button').prop('disabled', true);
+
+		setTimeout(function () {
+			$('.modal_button').prop('disabled', false);
+		}, 1500);
 		var name = $('.modal_name').val();
 		var email = $('.modal_email').val();
 		var country = $('.modal_country').val();
 		var phone = $('.modal_phone').val();
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var phone_num_valid = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
 
-		if (name == '') {$('.modal_name').css('border', '1px solid red');}
-		if (email == '') {$('.modal_email').css('border', '1px solid red');}
-		if (country == '') {$('.modal_country').css('border', '1px solid red');}
-		if (phone == '') {$('.modal_phone').css('border', '1px solid red');}
+		if (name == '') {
+			$('.modal_name').css('border', '1px solid red');
+		}
+		if (email == '') {
+			$('.modal_email').css('border', '1px solid red');
+		}
 
-		if (name != '' && email != '' && country != '' && phone != '') {
+		if (!email.match(re)) {
+			$('.modal_email').css('border', '1px solid red');
+		}
 
-				var url = "<?=base_url() . 'Main/index_ax'?>";
-				$.ajax({
-					url: url,
-					type: 'POST',
-					data: {
-						'name': name,
-						'email': email,
-						'country': country,
-						'phone': phone
-					},
+		if (!phone.match(phone_num_valid)) {
+			$('.modal_phone').css('border', '1px solid red');
+		}
 
-					success: function(res) {
-						console.log(res);
+		if (country == '') {
+			$('.modal_country').css('border', '1px solid red');
+		}
+		if (phone == '') {
+			$('.modal_phone').css('border', '1px solid red');
+		}
+
+
+		if (name != '' && email != '' && country != '' && phone != '' && email.match(re) && phone.match(phone_num_valid)) {
+
+			var url = "<?=base_url() . 'Main/index_ax'?>";
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: {
+					'name': name,
+					'email': email,
+					'country': country,
+					'phone': phone
+				},
+
+				success: function (res) {
+					var result = JSON.parse(res);
+
+					if (result.success == '1') {
+						$('.modal_name').val('');
+						$('.modal_email').val('');
+						$('.modal_country').val('');
+						$('.modal_phone').val('');
+
+						$('.modal_button').prop('disabled', true);
+						$('.success_order').fadeIn('slow');
+
+						setTimeout(function () {
+							$('.success_order').fadeOut('slow');
+							$('.modal_button').prop('disabled', false);
+						}, 2000);
+
+						setTimeout(function () {
+							$('.modal').fadeOut('slow');
+							$('.chat').removeClass('open');
+						}, 2150);
+
 					}
+				}
 
-				});
+			});
 
 		}
 	});
 
-	$('.modal_name').focus(function () {$('.modal_name').css('border', '1px solid #28a745');});
-	$('.modal_email').focus(function () {$('.modal_email').css('border', '1px solid #28a745');});
-	$('.modal_country').focus(function () {$('.modal_country').css('border', '1px solid #28a745');});
-	$('.modal_phone').focus(function () {$('.modal_phone').css('border', '1px solid #28a745');});
+	$('.modal_name').focus(function () {
+		$('.modal_name').css('border', '1px solid #28a745');
+	});
+	$('.modal_email').focus(function () {
+		$('.modal_email').css('border', '1px solid #28a745');
+	});
+	$('.modal_country').focus(function () {
+		$('.modal_country').css('border', '1px solid #28a745');
+	});
+	$('.modal_phone').focus(function () {
+		$('.modal_phone').css('border', '1px solid #28a745');
+	});
 
 </script>
 </body>
 </html>
+
+
