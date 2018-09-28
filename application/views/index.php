@@ -169,17 +169,17 @@
 
 
 <div class="center">
-	<h2 class="subscribe">Subscribe</h2>
-	<p class="subscribe_text">Stay in Touch, Be the first to know the Latest News</p>
+	<h2 class="subscribe"><?=$result_footer[$lng]['title']?></h2>
+	<p class="subscribe_text"><?=$result_footer[$lng]['text']?></p>
 	<div class="subscribe_form">
-		<input type="text" placeholder="* Name"/>
-		<input type="mail" placeholder="* E-mail"/>
-		<button>Subscribe</button>
+		<input type="text" placeholder="<?=$result_footer[$lng]['input_1']?>"/>
+		<input type="mail" placeholder="<?=$result_footer[$lng]['input_2']?>"/>
+		<button><?=$result_footer[$lng]['button_name']?></button>
 	</div>
 </div>
 
 <footer>
-	<span class="copy">&copy; <?php echo date('Y'); ?> John Doe All Rights Reserved</span>
+	<span class="copy"><?=$result_footer[$lng]['footer_text']?></span>
 </footer>
 
 

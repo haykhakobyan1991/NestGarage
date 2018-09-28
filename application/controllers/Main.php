@@ -202,6 +202,27 @@ class Main extends MX_Controller {
 		$query_faq = $this->db->query($sql_faq);
 		$result_faq = $query_faq->result_array();
 
+
+		$sql_foot = "
+        	SELECT
+			  `id`,
+			  `language_id`,
+			  `title`,
+			  `text`,
+			  `input_1`,
+			  `input_2`,
+			  `button_name`,
+			  `footer_text`,
+			  `status`
+			FROM `footer`
+			WHERE `status` = 1
+			LIMIT 2 
+        ";
+
+
+		$query_foot = $this->db->query($sql_foot);
+		$result_foot = $query_foot->result_array();
+
 		$data['result_web'] = $result_web;
 		$data['result_chat'] = $result_chat;
 		$data['result_main'] = $result_main;
@@ -209,6 +230,7 @@ class Main extends MX_Controller {
 		$data['result_functional'] = $result_func;
 		$data['result_functional2'] = $result_func2;
 		$data['result_faq'] = $result_faq;
+		$data['result_footer'] = $result_foot;
 
 		$data['lng'] = $language_id;
 
