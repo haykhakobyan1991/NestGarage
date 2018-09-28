@@ -1265,8 +1265,8 @@ class Sysadmin extends CI_Controller {
 
 					$photo_icon = $photo_func_arr['file_name'];
 
-					 $sql_icon = "
-								UPDATE `functional` SET `icon` = " . $this->db_value($photo_icon) . " WHERE `language_id` = 1 AND `id` = '".$lang_ids['lang_1'][$i-1]."'
+					$sql_icon = "
+								UPDATE `functional` SET `icon` = " . $this->db_value($photo_icon) . " WHERE (`id` = '" . $lang_ids['lang_1'][$i - 1] . "' OR `id` = '" . $lang_ids['lang_2'][$i - 1] . "')
 							";
 					$result_icon = $this->db->query($sql_icon);
 
@@ -1304,7 +1304,7 @@ class Sysadmin extends CI_Controller {
 					$photo_background = $photo_func_arr['file_name'];
 
 					 $sql_background = "
-								UPDATE `functional` SET `background_img` = " . $this->db_value($photo_background) . " WHERE `language_id` = 1 AND `id` = '".$lang_ids['lang_1'][$i-1]."'
+								UPDATE `functional` SET `background_img` = " . $this->db_value($photo_background) . " WHERE (`id` = '" . $lang_ids['lang_1'][$i - 1] . "' OR `id` = '" . $lang_ids['lang_2'][$i - 1] . "')
 							";
 					$result_background = $this->db->query($sql_background);
 

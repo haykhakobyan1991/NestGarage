@@ -150,7 +150,7 @@ class Main extends MX_Controller {
 		$result_solution_challenge = $query_sch->result_array();
 
 
-		echo $sql_func = "
+		$sql_func = "
         	SELECT
 			  `id`,
 			  `language_id`,
