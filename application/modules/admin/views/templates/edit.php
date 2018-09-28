@@ -51,7 +51,7 @@ $url=base_url().'admin/'.$this->uri->segment(0);
 					if(value != '') {
 
 						$("input[name='" + index + "']").addClass('border border-danger');
-						$("select[name='" + index + "']").parent('label').children('div').addClass('fe_err');
+						$("textarea[name='" + index + "']").addClass('border border-danger');
 						error += value + ' ';
 					}
 				});

@@ -15,6 +15,20 @@
 	<link href="<?= base_url() ?>assets/css/animate.css" rel="stylesheet" type="text/css"/>
 	<link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css"/>
 
+	<style>
+		.join_center::after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			opacity: .7;
+			background: <?=($result_functional2[$lng]['background_color'] != '' ? $result_functional2[$lng]['background_color'].';' : 'linear-gradient(to right, rgb(58, 97, 134), rgb(137, 37, 62));')?>
+			z-index: -1;
+		}
+	</style>
+
 
 </head>
 <body
@@ -111,20 +125,14 @@
 </div>
 
 
-<div class="center text_center join_center" style="background-image: url(<?= base_url() ?>assets/img/faq.jpg);">
+<div class="center text_center join_center" style="background-image: url(<?= base_url() ?>assets/img/<?=($result_functional2[$lng]['show_img'] == 'yes' ? $result_functional2[$lng]['background_img'] : '')?>);">
 	<p class="join_text" style="position:relative;">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, id quis consequatur magnam natus assumenda autem
-		magni modi eveniet quam molestias eligendi corporis amet ad laboriosam sapiente odio! Voluptas, at possimus?
-		Perspiciatis beatae, ratione eaque enim totam repudiandae aliquam neque quia? Quibusdam doloribus, id laudantium
-		labore magni sapiente, asperiores sed expedita dolorum omnis dignissimos corporis. Doloribus pariatur numquam
-		ipsum nostrum, quasi deleniti repellat vitae. Provident maxime vel consequatur possimus animi molestias
-		distinctio quae quibusdam omnis tempora recusandae expedita laudantium ad vitae, laborum culpa ullam corporis a
-		aspernatur minima ex delectus, saepe excepturi? Vero, non aliquam. Eum quisquam adipisci consequuntur debitis.
+		<?=$result_functional2[$lng]['text']?>
 	</p>
 
 	<div class="main_buttons begin_buttons">
-		<a class="buttons_href" href="#">
-			<button class="m_btn btn_begin"><?= $this->lang->line('join'); ?></button>
+		<a target="_blank" class="buttons_href" href="<?=$result_functional2[$lng]['button_link']?>">
+			<button class="m_btn btn_begin"><?=$result_functional2[$lng]['button_name']?></button>
 		</a>
 	</div>
 </div>

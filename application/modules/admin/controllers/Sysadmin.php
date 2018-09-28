@@ -1118,7 +1118,6 @@ class Sysadmin extends CI_Controller {
 
 	}
 
-
 	public function functional_ax() {
 
 		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
@@ -1341,10 +1340,202 @@ class Sysadmin extends CI_Controller {
 		$this->load->helper('form');
 		$data = array();
 
+		$sql = "
+        	SELECT
+			  `id`,
+			  `language_id`,
+			  `button_name`,
+			  `button_link`,
+			  `background_img`,
+			  `background_color`,
+			  `show_img`,
+			  `text`,
+			  `status`
+			FROM `functional_2`
+			 WHERE `status` = 1
+			 LIMIT 2
+        ";
+
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+
+		$data['result'] = $result;
+
 
 
 		$this->layout->view('functional_2', $data, 'edit');
 
+	}
+
+	public function functional_2_ax() {
+
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		$n = 0;
+
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+
+
+		$this->load->library('image_lib');
+		$config = $this->upload_config();
+		$config['upload_path'] = set_realpath('assets/img');
+
+
+		$this->load->library('form_validation');
+		// $this->config->set_item('language', 'armenian');
+		$this->form_validation->set_error_delimiters('<div>', '</div>');
+
+		$this->form_validation->set_rules('button_name_1', 'Button name lang 1', 'required');
+		$this->form_validation->set_rules('button_link', 'Button URL lang 1', 'required|valid_url');
+		$this->form_validation->set_rules('text_1', 'Text lang 1', 'required');
+
+		// 2 Լեզվի ստուգում
+		$sql_lng = "SELECT status FROM `language` WHERE `id` = '2'";
+		$query_lng = $this->db->query($sql_lng);
+		$row = $query_lng->row_array();
+		$allow = $row['status']; //allow language 2
+
+
+
+
+		// where language 2  allow
+		if($allow == '1') {
+			$this->form_validation->set_rules('button_name_2', 'Button name lang 2', 'required');
+			$this->form_validation->set_rules('text_2', 'Text lang 2', 'required');
+		}
+
+
+		if ($this->form_validation->run() == false) {
+			//validation errors
+
+			$validation_errors = array(
+				'button_name_1' => form_error('button_name_1'),
+				'button_link' => form_error('button_link'),
+				'text_1' => form_error('text_1')
+			);
+
+
+			// where language 2  allow
+			if ($allow == '1') {
+				$validation_errors = array_merge(
+					$validation_errors,
+					array(
+						'button_name_2' => form_error('button_name_2'),
+						'text_2' => form_error('text_2')
+					)
+				);
+			}
+
+
+			$messages['error']['elements'][] = $validation_errors;
+
+			echo json_encode($messages);
+			return false;
+		}
+
+
+		$show_img = $this->input->post('show_img');
+		$button_name_1 = $this->input->post('button_name_1');
+		$text_1 = $this->input->post('text_1');
+		$button_link = $this->input->post('button_link');
+		$background_color = $this->input->post('background_color');
+
+
+
+		$button_name_2 = $this->input->post('button_name_2');
+		$text_2 = $this->input->post('text_2');
+
+
+
+		$func2_lang_arr = array(
+			'1' => array(
+				'button_name' => $button_name_1,
+				'text' => $text_1,
+				'button_link' => $button_link,
+				'background_color' => $background_color,
+				'show_img' => $show_img,
+			),
+			'2' => array(
+				'button_name' => $button_name_2,
+				'text' => $text_2,
+				'button_link' => $button_link,
+				'background_color' => $background_color,
+				'show_img' => $show_img,
+			)
+		);
+
+		foreach ($func2_lang_arr as $lang_id => $value) {
+			$sql_func2 = "
+				UPDATE `functional_2` SET 
+					`button_name` = ".$this->db_value($value['button_name']).",
+					`text` = ".$this->db_value($value['text']).",
+					`button_link` = ".$this->db_value($value['button_link']).",
+					`show_img` = ".$this->db_value($value['show_img']).",
+					`background_color` = ".$this->db_value($value['background_color'])."
+				WHERE `language_id` = '".$lang_id."'	
+			";
+
+			$result_func2 = $this->db->query($sql_func2);
+
+			if (!$result_func2) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error func2 - '.$lang_id;
+				echo json_encode($messages);
+				return false;
+			}
+
+		}
+
+
+
+
+		if(isset($_FILES['background_img']['name']) AND $_FILES['background_img']['name'] != '') {
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+
+			if (!$this->upload->do_upload('background_img')) {
+				$validation_errors = array('background_img' => $this->upload->display_errors());
+				$messages['error']['elements'][] = $validation_errors;
+				echo json_encode($messages);
+				return false;
+			}
+
+
+
+			$photo_arr = $this->upload->data();
+
+			$background_img = $photo_arr['file_name'];
+
+			$sql_img = "
+				UPDATE `functional_2` SET `background_img` = " . $this->db_value($background_img) . " WHERE 1
+			";
+			$result_img = $this->db->query($sql_img);
+
+			if (!$result_img) {
+				$messages['success'] = 0;
+				$messages['error'] = 'Error Background Image';
+				echo json_encode($messages);
+				return false;
+			}
+
+
+		}
+
+		if ($result_func2) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Success';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
 	}
 
 	public function footer_section() {
