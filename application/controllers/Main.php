@@ -141,18 +141,37 @@ class Main extends MX_Controller {
 			  `status` 
 			FROM
 			  `solution_challenge` 
-			WHERE `status` = 1 
-			LIMIT 2 
+			 WHERE `status` = 1 
+			 LIMIT 2 
         ";
 
 
 		$query_sch = $this->db->query($sql_sch);
 		$result_solution_challenge = $query_sch->result_array();
 
+
+		echo $sql_func = "
+        	SELECT
+			  `id`,
+			  `language_id`,
+			  `title`,
+			  `icon`,
+			  `background_img`,
+			  `default`,
+			  `statsu`
+			FROM `functional`
+			 WHERE statsu = 1
+        ";
+
+
+		$query_func = $this->db->query($sql_func);
+		$result_func = $query_func->result_array();
+
 		$data['result_web'] = $result_web;
 		$data['result_chat'] = $result_chat;
 		$data['result_main'] = $result_main;
 		$data['result_solution_challenge'] = $result_solution_challenge;
+		$data['result_functional'] = $result_func;
 
 		$data['lng'] = $language_id;
 

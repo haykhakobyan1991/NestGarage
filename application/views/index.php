@@ -83,48 +83,28 @@
 	<h2 class="functional">Functional</h2>
 
 	<div class="cards">
+		<?
+		foreach ($result_functional as $value) {
+			if (($lng + 1) == $value['language_id']) {
+				if ($value['title'] != '') {
 
-		<div class="card card_1 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/1.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum</h3>
-			</div>
-		</div>
+					?>
 
-		<div class="card card_2 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/4.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum dolor</h3>
-			</div>
-		</div>
+					<div class="card wow zoomIn"
+						 style="background-image: url(<?= base_url() ?>assets/img/<?= $value['background_img'] ?>);">
+						<img class="card_image" width="100" src="<?= base_url() ?>assets/img/<?= $value['icon'] ?>"
+							 alt="alt"/>
+						<div class="card_text">
+							<h3><?= $value['title'] ?></h3>
+						</div>
+					</div>
 
-		<div class="card card_3 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/3.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum</h3>
-			</div>
-		</div>
 
-		<div class="card card_4 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/2.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum dolor</h3>
-			</div>
-		</div>
+				<? }
+			}
+		} ?>
 
-		<div class="card card_5 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/5.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum dolor</h3>
-			</div>
-		</div>
 
-		<div class="card card_6 wow zoomIn" style="background-image: url(<?= base_url() ?>assets/img/6.jpg);">
-			<img class="card_image" width="100" src="<?= base_url() ?>assets/img/card.png" alt="alt"/>
-			<div class="card_text">
-				<h3>Lorem ipsum</h3>
-			</div>
-		</div>
 
 	</div>
 
