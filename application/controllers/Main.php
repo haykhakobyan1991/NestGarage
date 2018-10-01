@@ -94,6 +94,7 @@ class Main extends MX_Controller {
 			  `chat`.`form_country_code`,
 			  `chat`.`form_phone_number`,
 			  `chat`.`form_button`,
+			  `chat`.`success_message`,
 			  `chat`.`status`
 			FROM
 			  `chat` 

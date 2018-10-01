@@ -209,7 +209,7 @@ if ($result_chat[$lng]['status'] == '1') {
 	<input class="modal_input_2 modal_phone" type="text" placeholder="<?= $result_chat[$lng]['form_phone_number'] ?>">
 	<button class="modal_button"><?= $result_chat[$lng]['form_button'] ?></button>
 	<div class="success_order">
-		<h2 class="modal_message">Thanks for your order</h2> <!--todo-->
+		<h2 class="modal_message"><?=$result_chat[$lng]['success_message']?></h2>
 	</div>
 </div>
 

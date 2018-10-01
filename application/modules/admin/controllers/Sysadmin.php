@@ -179,6 +179,7 @@ class Sysadmin extends CI_Controller {
 			  `chat`.`form_country_code`,
 			  `chat`.`form_phone_number`,
 			  `chat`.`form_button`,
+			  `chat`.`success_message`,
 			  `chat`.`status`
 			FROM
 			  `chat` 
@@ -490,6 +491,8 @@ class Sysadmin extends CI_Controller {
 		$chat_form_phone_number_2 = $this->input->post('phone_number_2');
 		$chat_form_button_1 = $this->input->post('button_1');
 		$chat_form_button_2 = $this->input->post('button_2');
+		$success_message_1 = $this->input->post('success_message_1');
+		$success_message_2 = $this->input->post('success_message_2');
 
 		$chat_lang_arr = array(
 			'1' => array(
@@ -499,6 +502,7 @@ class Sysadmin extends CI_Controller {
 				'form_email' => $chat_form_email_1,
 				'form_country_code' => $chat_form_country_code_1,
 				'form_phone_number' => $chat_form_phone_number_1,
+				'success_message' => $success_message_1,
 				'form_button' => $chat_form_button_1
 			),
 			'2' => array(
@@ -508,6 +512,7 @@ class Sysadmin extends CI_Controller {
 				'form_email' => $chat_form_email_2,
 				'form_country_code' => $chat_form_country_code_2,
 				'form_phone_number' => $chat_form_phone_number_2,
+				'success_message' => $success_message_2,
 				'form_button' => $chat_form_button_2
 			)
 		);
@@ -521,6 +526,7 @@ class Sysadmin extends CI_Controller {
 					`form_email` = ".$this->db_value($value['form_email']).",
 					`form_country_code` = ".$this->db_value($value['form_country_code']).",
 					`form_phone_number` = ".$this->db_value($value['form_phone_number']).",
+					`success_message` = ".$this->db_value($value['success_message']).",
 					`form_button` = ".$this->db_value($value['form_button'])."
 				WHERE `language_id` = '".$lang_id."'	
 			";

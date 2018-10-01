@@ -201,6 +201,14 @@
 							   placeholder="Button"
 							   value="<?= $result_chat[0]['form_button'] ?>"
 						>
+
+						<label>Success message Lang 1</label>
+						<input type="text"
+							   class="form-control"
+							   name="success_message_1"
+							   placeholder="Success message"
+							   value="<?= $result_chat[0]['success_message'] ?>"
+						>
 					</div>
 				</div>
 
@@ -252,6 +260,14 @@
 							   name="button_2"
 							   placeholder="Button"
 							   value="<?= $result_chat[1]['form_button'] ?>"
+						>
+
+						<label>Success message Lang 2</label>
+						<input type="text"
+							   class="form-control"
+							   name="success_message_2"
+							   placeholder="Success message"
+							   value="<?= $result_chat[1]['success_message'] ?>"
 						>
 					</div>
 				</div>
