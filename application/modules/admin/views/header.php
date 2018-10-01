@@ -25,6 +25,7 @@ $page = $this->router->fetch_method();
 				<a class="nav-item nav-link <?= ($page == 'functional_2' ? 'active' : '') ?>" href="<?= base_url() ?>admin/functional_2">Functional 2</a>
 				<a class="nav-item nav-link <?= ($page == 'faq' ? 'active' : '') ?>" href="<?= base_url() ?>admin/faq">FAQ</a>
 				<a class="nav-item nav-link <?= ($page == 'footer_section' ? 'active' : '') ?>" href="<?= base_url() ?>admin/footer_section">Footer</a>
+				<a class="nav-item nav-link <?= ($page == 'subscribe' ? 'active' : '') ?>" href="<?= base_url() ?>admin/subscribe">Subscribers</a>
 				<a class="nav-item nav-link " href="<?= base_url() ?>content"></a>
 
 			</div>

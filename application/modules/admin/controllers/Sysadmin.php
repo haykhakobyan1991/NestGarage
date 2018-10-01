@@ -1890,6 +1890,33 @@ class Sysadmin extends CI_Controller {
 		return true;
 	}
 
+	public function subscribe() {
+
+		$this->authorisation();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$data = array();
+
+		$sql = "
+        	SELECT
+			  `id`,
+			  `name`,
+			  `email`, 
+			  DATE_FORMAT(`log_date`, '%d-%m-%Y %k:%i') AS `log_date`
+			FROM `subscribe`
+			 WHERE `status` = 1
+        ";
+
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+
+		$data['result'] = $result;
+
+
+		$this->layout->view('subscribe', $data, 'edit');
+
+	}
+
 
 }
 //end of class

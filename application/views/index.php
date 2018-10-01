@@ -172,9 +172,9 @@
 	<h2 class="subscribe"><?=$result_footer[$lng]['title']?></h2>
 	<p class="subscribe_text"><?=$result_footer[$lng]['text']?></p>
 	<div class="subscribe_form">
-		<input type="text" placeholder="<?=$result_footer[$lng]['input_1']?>"/>
-		<input type="mail" placeholder="<?=$result_footer[$lng]['input_2']?>"/>
-		<button><?=$result_footer[$lng]['button_name']?></button>
+		<input name="name" type="text" placeholder="<?=$result_footer[$lng]['input_1']?>"/>
+		<input name="email" type="email" placeholder="<?=$result_footer[$lng]['input_2']?>"/>
+		<button id="subscribe"><?=$result_footer[$lng]['button_name']?></button>
 	</div>
 </div>
 
@@ -209,7 +209,7 @@ if ($result_chat[$lng]['status'] == '1') {
 	<input class="modal_input_2 modal_phone" type="text" placeholder="<?= $result_chat[$lng]['form_phone_number'] ?>">
 	<button class="modal_button"><?= $result_chat[$lng]['form_button'] ?></button>
 	<div class="success_order">
-		<h2 class="modal_message">Thanks for your order</h2>
+		<h2 class="modal_message">Thanks for your order</h2> <!--todo-->
 	</div>
 </div>
 
@@ -321,6 +321,64 @@ if ($result_chat[$lng]['status'] == '1') {
 	$('.modal_phone').focus(function () {
 		$('.modal_phone').css('border', '1px solid #28a745');
 	});
+
+
+
+	$('#subscribe').click(function () {
+
+		var name = $('input[name="name"]').val();
+		var email = $('input[name="email"]').val();
+
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if (name == '') {
+			$('input[name="name"]').css('border', '1px solid red');
+		}
+		if (email == '') {
+			$('input[name="email"]').css('border', '1px solid red');
+		}
+
+		if (!email.match(re)) {
+			$('input[name="email"]').css('border', '1px solid red');
+		}
+
+
+
+		if (name != '' && email != '' && email.match(re)) {
+
+			var url = "<?=base_url() . 'Main/subscribe_ax'?>";
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: {
+					'name': name,
+					'email': email
+				},
+
+				success: function (res) {
+					var result = JSON.parse(res);
+
+					if (result.success == '1') {
+						$('input[name="name"]').val('');
+						$('input[name="email"]').val('');
+					}
+				}
+
+			});
+
+		}
+
+
+		$('input[name="name"]').focus(function () {
+			$('input[name="name"]').css('border', '1px solid #0095ff');
+		});
+		$('input[name="email"]').focus(function () {
+			$('input[name="email"]').css('border', '1px solid #0095ff');
+		});
+	});
+
+
+	
 
 </script>
 </body>

@@ -79,6 +79,9 @@ $route['admin/faq'] = 'admin/Sysadmin/faq/';
 //footer
 $route['admin/footer_section'] = 'admin/Sysadmin/footer_section/';
 
+//subscribe
+$route['admin/subscribe'] = 'admin/Sysadmin/subscribe/';
+
 
 
 //permission

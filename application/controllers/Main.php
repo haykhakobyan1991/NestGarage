@@ -288,6 +288,50 @@ class Main extends MX_Controller {
 		}
 
 
+	public function subscribe_ax() {
+		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
+		if ($this->input->server('REQUEST_METHOD') != 'POST') {
+			// Return error
+			$messages['error'] = 'error_message';
+			$this->access_denied();
+			return false;
+		}
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+
+
+		$sql = "INSERT INTO
+						`subscribe`
+						SET 
+					`name` = '" . $name . "',
+					`email` = '" . $email . "',
+					`log_date` = NOW()
+				";
+
+		$result = $this->db->query($sql);
+
+		if (!$result) {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error chat form ';
+			echo json_encode($messages);
+			return false;
+		}
+
+
+		if ($result) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Thanks for subscribe';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
+	}
+
+
 
 }
 //end of class
