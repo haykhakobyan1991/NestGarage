@@ -1,6 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="google-site-verification" content="Mkn03uHs8mUwOONukPy8p_CkkddQG5hgj9HTsHf2mKs"/>
 	<meta name="description" content="<?= $result_web[$lng]['meta_desc'] ?>"/>
 	<meta name="keywords" content="<?= $result_web[$lng]['key_word'] ?>"/>
@@ -39,7 +41,8 @@
 </head>
 <body
 	style="<?= ($result_main[$lng]['font_css'] == '' ? 'font-family: \'Open Sans\', sans-serif;' : $result_main[$lng]['font_css']) ?>">
-<header style="background-image: url(<?= base_url() . 'assets/img/' . $result_main[$lng]['background_img'] ?>);">
+
+<header style="background:linear-gradient(0deg,rgba(21, 27, 60, 0.72), rgba(0, 0, 0, 0.58)),url(<?= base_url() . 'assets/img/' . $result_main[$lng]['background_img'] ?>);background-size: cover;background-position: center;background-repeat: no-repeat;background-attachment: fixed;">
 
 	<div class="center">
 
@@ -221,14 +224,9 @@ if ($result_chat[$lng]['status'] == '1') {
 <script>
 	/* Change Language */
 	$('.language_div>span').click(function () {
-		window.location.href = '<?php echo base_url(); ?>LangSwitch/switchLanguage/' + $(this).data('value');
+		window.location.href = '<?php echo base_url(); ?>switchLanguage/' + $(this).data('value');
 	});
 
-
-	/* Change Language */
-	$('.language_div>span').click(function () {
-		window.location.href = '<?php echo base_url(); ?>LangSwitch/switchLanguage/' + $(this).data('value');
-	});
 
 	$('.modal_button').click(function () {
 		$('.modal_button').prop('disabled', true);
@@ -378,7 +376,7 @@ if ($result_chat[$lng]['status'] == '1') {
 	});
 
 
-	
+
 
 </script>
 </body>

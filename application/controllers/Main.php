@@ -23,6 +23,20 @@ class Main extends MX_Controller {
 //		echo '</pre>';
 
 	}
+	
+	
+	 public function switchLanguage($language = "lang_1") {
+
+    	$language_id = explode('_', $language);
+
+		$this->session->set_userdata(
+			array(
+				'site_lang' => $language,
+				'language_id' => ($language_id[1]-1)
+			)
+		);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 
 	/**
 	 * @return string
@@ -242,7 +256,6 @@ class Main extends MX_Controller {
 	}
 
 
-
 	public function index_ax() {
 		$messages = array('success' => '0', 'message' => '', 'error' => '', 'fields' => '');
 		if ($this->input->server('REQUEST_METHOD') != 'POST') {
@@ -251,42 +264,80 @@ class Main extends MX_Controller {
 			$this->access_denied();
 			return false;
 		}
-			$name = $this->input->post('name');
-			$email = $this->input->post('email');
-			$country = $this->input->post('country');
-			$phone = $this->input->post('phone');
 
-			 $sql = "INSERT INTO
-							`form_email`
-						SET 
-					`name` = '".$name."',
-					`email` = '".$email."',
-					`country_code` = '".$country."',
-					`phone_number` = '".$phone."'		
-				";
+		$sql_ = "
+			SELECT 
+			  `mail_to` 
+			FROM
+			  `chat` 
+			WHERE id = '1' 
+		";
 
-			$result = $this->db->query($sql);
+		$query_ = $this->db->query($sql_);
+		$row = $query_->row_array();
 
-			if (!$result) {
-				$messages['success'] = 0;
-				$messages['error'] = 'Error chat form ';
-				echo json_encode($messages);
-				return false;
-			}
+		$mail_to = $row['mail_to'];
+
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$country = $this->input->post('country');
+		$phone = $this->input->post('phone');
+
+        // Start send mail
+		$subject = 'NestGarage chat';
 
 
-			if ($result) {
-				$messages['success'] = 1;
-				$messages['message'] = 'Thanks for your order';
-			} else {
-				$messages['success'] = 0;
-				$messages['error'] = 'Error';
-			}
+		$headers = "From: " . strip_tags($email) . "\r\n";
+		$headers .= "Reply-To: ". strip_tags($email) . "\r\n";
+		$headers .= "CC: susan@example.com\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-			// Return success or error message
+
+		$message = '<div>
+			<p><strong>Name -</strong>'.$name.'</p>
+			<p><strong>Country -</strong>'.$country.'</p>
+			<p><strong>E-mail -</strong>'.$email.'</p>
+			<p><strong>Phone -</strong>'.$phone.'</p>
+		</div>';
+
+
+		mail($mail_to, $subject, $message, $headers);
+
+		//end send mail
+
+
+		$sql = "INSERT INTO
+				  `form_email`
+				SET 
+				  `name` = '" . $name . "',
+				  `email` = '" . $email . "',
+				  `country_code` = '" . $country . "',
+				  `phone_number` = '" . $phone . "'		
+		";
+
+		$result = $this->db->query($sql);
+
+		if (!$result) {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error chat form ';
 			echo json_encode($messages);
-			return true;
+			return false;
 		}
+
+
+		if ($result) {
+			$messages['success'] = 1;
+			$messages['message'] = 'Thanks for your order';
+		} else {
+			$messages['success'] = 0;
+			$messages['error'] = 'Error';
+		}
+
+		// Return success or error message
+		echo json_encode($messages);
+		return true;
+	}
 
 
 	public function subscribe_ax() {

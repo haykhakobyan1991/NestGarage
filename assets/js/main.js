@@ -10,7 +10,13 @@ $(document).ready(function () {
 	})
 
 	var h = window.innerHeight + 'px';
-	$('header').css('height', h);
+
+	if($(window).width() > 700) {
+		$('header').css('height', h);
+		$('header::before').css('height', h);
+	}
+
+
 
 
 	setTimeout(function () {

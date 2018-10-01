@@ -1,6 +1,6 @@
 <div class="container" style="padding-top: 50px;">
 
-	<div class="jumbotron mt-md-5 mt-5">
+	<div class="jumbotron">
 		<h1 class="display-4">Footer</h1>
 		<p class="lead">Edit Footer main section</p>
 		<hr class="my-4">

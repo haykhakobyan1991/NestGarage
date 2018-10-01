@@ -1,6 +1,6 @@
 <div class="container" style="padding-top: 50px;">
 	<form>
-		<div class="jumbotron mt-md-5 mt-5">
+		<div class="jumbotron">
 			<h1 class="display-4">Solution</h1>
 			<p class="lead">Edit Website Solution section</p>
 			<hr class="my-4">
@@ -12,7 +12,7 @@
 
 				<div class="col-sm-6 ">
 					<div class="form-group">
-						<label for="exampleFormControlFile1">Choose favicon</label>
+						<label for="exampleFormControlFile1">Choose Image</label>
 						<input name="photo_solution" type="file" class="form-control-file" id="exampleFormControlFile1">
 					</div>
 				</div>
@@ -78,12 +78,12 @@
 
 				<div class="col-sm-6 ">
 					<div class="form-group">
-						<label for="exampleFormControlFile1">Choose favicon</label>
+						<label for="exampleFormControlFile1">Choose Image</label>
 						<input name="photo_challenge" type="file" class="form-control-file" id="exampleFormControlFile1">
 					</div>
 				</div>
 				<div class="col-sm-6 pt-md-3 mb-md-3 mb-3">
-					<img width="100" src="<?= base_url() ?>assets/img/<?=$result[0]['photo_challenge']?> ?>" alt="..."
+					<img width="100" src="<?= base_url() ?>assets/img/<?=$result[0]['photo_challenge']?>" alt="..."
 						 class="img-thumbnail">
 				</div>
 

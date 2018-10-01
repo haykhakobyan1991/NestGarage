@@ -1,6 +1,6 @@
 <div class="container" style="padding-top: 50px;">
 
-	<div class="jumbotron mt-md-5 mt-5">
+	<div class="jumbotron ">
 		<h1 class="display-4">Web</h1>
 		<p class="lead">Edit Website web section</p>
 		<hr class="my-4">

@@ -84,37 +84,8 @@ $route['admin/subscribe'] = 'admin/Sysadmin/subscribe/';
 
 
 
-//permission
-$route['admin/sysadmin/permission'] = 'admin/Sysadmin/permission/';
-$route['admin/sysadmin/add_permission'] = 'admin/Sysadmin/add_permission/';
-$route['admin/sysadmin/edit_permission'] = 'admin/Sysadmin/edit_permission/';
-$route['admin/sysadmin/permission_details'] = 'admin/Sysadmin/permission_details/';
+$route['switchLanguage/(:any)'] = 'Main/switchLanguage/$1';
 
-//role
-$route['admin/sysadmin/role'] = 'admin/Sysadmin/role/';
-$route['admin/sysadmin/add_role'] = 'admin/Sysadmin/add_role/';
-$route['admin/sysadmin/edit_role'] = 'admin/Sysadmin/edit_role/';
-$route['admin/sysadmin/role_details'] = 'admin/Sysadmin/role_details/';
-
-//video
-$route['admin/sysadmin/video'] = 'admin/Sysadmin/video/';
-$route['admin/sysadmin/video/(:num)'] = 'admin/Sysadmin/video/$1';
-$route['admin/sysadmin/add_video'] = 'admin/Sysadmin/add_video/';
-$route['admin/sysadmin/edit_video'] = 'admin/Sysadmin/edit_video/';
-$route['admin/sysadmin/edit_video/(:num)'] = 'admin/Sysadmin/edit_video/$1';
-$route['admin/sysadmin/video_details'] = 'admin/Sysadmin/video_details/';
-
-//video_list
-$route['admin/sysadmin/video_list'] = 'admin/Sysadmin/video_list/';
-$route['admin/sysadmin/add_video_list'] = 'admin/Sysadmin/add_video_list/';
-$route['admin/sysadmin/edit_video_list'] = 'admin/Sysadmin/edit_video_list/$1';
-$route['admin/sysadmin/video_list_details'] = 'admin/Sysadmin/video_list_details/';
-
-//menu
-$route['admin/sysadmin/edit_menu'] = 'admin/Sysadmin/edit_menu/';
-
-//config
-$route['admin/sysadmin/config'] = 'admin/Sysadmin/config/';
 
 
 $route['admin/login'] = 'admin/User/login';
@@ -129,40 +100,6 @@ $route['default_controller'] = 'Main';
 $route['/'] = 'Main/index/$1/$1';
 
 
-$route['video/(:any)'] = 'Main/video/$1';
-
-
-$route['video_list/(:any)'] = 'Main/video_list/$1';
-
-
-$route['video_list'] = 'Main/video_list/';
-
-
-$route['edit_user/(:num)'] = 'Sysadmin/edit_user';
-
-
-$route['copy_user/(:num)'] = 'Sysadmin/copy_user';
-
-
-$route['user_details/(:num)'] = 'Sysadmin/user_details';
-
-
-$route['sysadmin/user/(:any)'] = 'Sysadmin/user/$1';
-
-
-$route['sysadmin/user/(:any)/(:any)'] = 'Sysadmin/user/$1/$2';
-
-
-$route['404_override'] = '';
-
-
-$route['translate_uri_dashes'] = TRUE;
-
-
-$route['form'] = 'sysadmin/add_gallery';
-
-
-$route['upload'] = 'gallery';
 
 
 

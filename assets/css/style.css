@@ -10,22 +10,21 @@ body {
 
 header {
 	height: 100vh;
-	background-image: url(../img/h_p_bg.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
 
-header::before {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-	left: 0;
-	top: 0;
-	background: #00000094;
-}
+/*header::before {*/
+/*	content: '';*/
+/*	position: absolute;*/
+/*	width: 100%;*/
+/*	height: 100vh;*/
+/*	left: 0;*/
+/*	top: 0;*/
+/*	background: #00000094;*/
+/*}*/
 
 .language_div {
 	display: inline-block;
@@ -536,6 +535,156 @@ button.modal_button:hover {
 }
 
 @media all and (max-width: 700px) {
+
+	header {
+		height: auto !important;
+		padding-bottom: 25px !important;
+	}
+
+	.img_left_div img{
+		display: none;
+	}
+	.text_right_div {
+		width: 100%;
+		float: none;
+	}
+
+	.text_left_div {
+		width: 100%;
+		float: none;
+	}
+
+	.img_right_div img{
+		display: none;
+	}
+
+	.card {
+		width: 90%;
+	}
+
+	.subscribe_form input, .subscribe_form button {
+		margin: 10px;
+	}
+
+	main h1 {
+		margin-top: 3%;
+		text-align: center;
+		text-transform: capitalize;
+		width: 90%;
+		font-size: 30px;
+		font-weight: 400;
+		color: #e6e6e6;
+		letter-spacing: 10px;
+	}
+
+	main p {
+		margin-top: 25px;
+		text-align: center;
+		font-size: 13px;
+		font-weight: 400;
+		color: #e6e6e6;
+		word-break: break-all;
+		width: 90%;
+		letter-spacing: 5px;
+		line-height: 15px;
+	}
+
+	.main_buttons button {
+		margin: 10px;
+	}
+
+	.lng {
+		font-size: 16px;
+	}
+
+	.modal {
+		width: 90% !important;
+		right: 3% !important;
+		overflow-y: auto;
+		height: 80%;
+		bottom: 5%;
+	}
+
+	.lng_rus::after {
+		height: 20px;
+	}
+
+
+}
+
+
+@media all and (min-width: 701px) and (max-width: 800px) {
+
+	header {
+		height: auto !important;
+		padding-bottom: 25px !important;
+	}
+
+	.card {
+		width: 90%;
+	}
+	.card_image {
+		margin-top: 16%;
+	}
+
+	.card_text h3 {
+		font-size: 50px;
+	}
+
+	.img_left_div img{
+		min-height: auto;
+	}
+
+	.img_right_div img{
+		min-height: auto;
+	}
+
+	.text_right_div h2, .text_left_div h2 {
+		padding-top: 0;
+		font-size: 18px;
+		letter-spacing: normal;
+		color: #333;
+	}
+
+	.text_right_div p, .text_left_div p {
+		font-size: 16px;
+		line-height: normal;
+	}
+
+	.card_text h3 {
+		font-size: 25px;
+	}
+
+	.subscribe_form input{
+		margin-bottom: 10px;
+	}
+
+	main h1 {
+		margin-top: 3%;
+		font-size: 35px;
+	}
+
+	main p {
+		margin-top: 50px;
+		text-align: center;
+		font-size: 17px;
+		font-weight: 400;
+		color: #e6e6e6;
+		letter-spacing: 2px;
+		line-height: 30px;
+	}
+
+	.lng {
+		font-size: 16px;
+	}
+
+	.lng_rus::after {
+		height: 20px;
+	}
+}
+
+@media all and (min-width: 801px) and (max-width: 1124px) {
+
 	.img_left_div img{
 		display: none;
 	}
@@ -591,99 +740,42 @@ button.modal_button:hover {
 	.lng {
 		font-size: 16px;
 	}
-}
-
-
-@media all and (min-width: 701px) and (max-width: 800px) {
-	.card {
-		width: 90%;
-	}
-	.card_image {
-		margin-top: 16%;
-	}
-
-	.card_text h3 {
-		font-size: 50px;
-	}
-
-	.img_left_div img{
-		min-height: auto;
-	}
-
-	.img_right_div img{
-		min-height: auto;
-	}
-
-	.text_right_div h2, .text_left_div h2 {
-		padding-top: 0;
-		font-size: 18px;
-		letter-spacing: normal;
-		color: #333;
-	}
-
-	.text_right_div p, .text_left_div p {
-		font-size: 16px;
-		line-height: normal;
-	}
-
-	.card_text h3 {
-		font-size: 25px;
-	}
-
-	.subscribe_form input{
-		margin-bottom: 10px;
-	}
-
-	main h1 {
-		margin-top: 10%;
-		font-size: 50px;
-	}
-
-	main p {
-		margin-top: 50px;
-		text-align: center;
-		font-size: 17px;
-		font-weight: 400;
-		color: #e6e6e6;
-		letter-spacing: 2px;
-		line-height: 30px;
-	}
-}
-
-@media all and (min-width: 801px) and (max-width: 1124px) {
-	main h1 {
-		margin-top: 3%;
-	}
-
-	.card {
-		width: 44%;
-	}
-
-	header {
-		height: 600px !important;
-	}
-
-	header::before {
-
-		height: 600px !important;
-
-	}
 
 
 
-	.img_right_div img {
-		width: 100%;
-		min-height: auto;
-	}
+	/*main h1 {*/
+	/*margin-top: 3%;*/
+	/*}*/
 
-	.img_left_div img {
-		width: 100%;
-		min-height: auto;
-	}
+	/*.card {*/
+	/*width: 44%;*/
+	/*}*/
 
-	.functional, .faq, .subscribe {
-		margin-top: 100px;
-	}
+	/*header {*/
+	/*height: 600px !important;*/
+	/*}*/
+
+	/*header::before {*/
+
+	/*height: 600px !important;*/
+
+	/*}*/
+
+
+
+	/*.img_right_div img {*/
+	/*width: 100%;*/
+	/*min-height: auto;*/
+	/*}*/
+
+	/*.img_left_div img {*/
+	/*width: 100%;*/
+	/*min-height: auto;*/
+	/*}*/
+
+	/*.functional, .faq, .subscribe {*/
+	/*margin-top: 100px;*/
+	/*}*/
 
 }
 

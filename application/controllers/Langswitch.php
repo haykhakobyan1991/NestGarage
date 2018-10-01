@@ -8,7 +8,7 @@ class LangSwitch extends CI_Controller
         $this->load->helper('url');
     }
 
-    function switchLanguage($language = "lang_1") {
+    public function switchLanguage($language = "lang_1") {
 
     	$language_id = explode('_', $language);
 

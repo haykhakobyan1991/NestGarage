@@ -62,23 +62,23 @@ $url=base_url().'admin/'.$this->uri->segment(0);
 		}
 		if (e.success == '1') {
 			scroll_top();
-			$('.alert-danger').addClass('d_none');
-			$('.alert-success').removeClass('d_none');
+			$('.alert-danger').addClass('d-none');
+			$('.alert-success').removeClass('d-none');
 			$('.alert-success').html(e.message);
 			var url = "<?=$url?>";
 			$(location).attr('href',url);
 			close_message();
 		} else {
 			scroll_top();
-			$('.alert-success').addClass('d_none');
-			$('.alert-danger').removeClass('d_none');
+			$('.alert-success').addClass('d-none');
+			$('.alert-danger').removeClass('d-none');
 			$('.alert-danger').html(error);
 		}
 	}
 
 	function errorHandler(e){
 		scroll_top();
-		$('.alert-danger').removeClass('d_none');
+		$('.alert-danger').removeClass('d-none');
 		$('.alert-danger').html(e);
 	}
 
