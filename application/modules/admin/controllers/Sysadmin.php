@@ -901,8 +901,8 @@ class Sysadmin extends CI_Controller {
 		}
 
 
-		$button_1_1 = $this->input->post('button_1_1');
-		$button_2_1 = $this->input->post('button_1_1');
+		$button_1_L1 = $this->input->post('button_1_1');
+		$button_2_L1 = $this->input->post('button_2_1');
 		$button_2_link_1 = $this->input->post('button_2_link_1');
 		$title_1 = $this->input->post('title_1');
 		$main_text_1 = $this->input->post('main_text_1');
@@ -910,8 +910,8 @@ class Sysadmin extends CI_Controller {
 		$font_css_1 = $this->input->post('font_css_1');
 
 
-		$button_1_2 = $this->input->post('button_1_2');
-		$button_2_2 = $this->input->post('button_1_2');
+		$button_1_L2 = $this->input->post('button_1_2');
+		$button_2_L2 = $this->input->post('button_2_2');
 		$button_2_link_2 = $this->input->post('button_2_link_2');
 		$title_2 = $this->input->post('title_2');
 		$main_text_2 = $this->input->post('main_text_2');
@@ -924,8 +924,8 @@ class Sysadmin extends CI_Controller {
 
 		$main_lang_arr = array(
 			'1' => array(
-				'button_1' => $button_1_1,
-				'button_2' => $button_2_1,
+				'button_1' => $button_1_L1,
+				'button_2' => $button_2_L1,
 				'button_2_url' => $button_2_link_1,
 				'title' => $title_1,
 				'main_text' => $main_text_1,
@@ -935,8 +935,8 @@ class Sysadmin extends CI_Controller {
 				'background_color' => $background_color
 			),
 			'2' => array(
-				'button_1' => $button_1_2,
-				'button_2' => $button_2_2,
+				'button_1' => $button_1_L2,
+				'button_2' => $button_2_L2,
 				'button_2_url' => $button_2_link_2,
 				'title' => $title_2,
 				'main_text' => $main_text_2,
@@ -948,7 +948,7 @@ class Sysadmin extends CI_Controller {
 		);
 
 		foreach ($main_lang_arr as $lang_id => $value) {
-			$sql_main = "
+			echo$sql_main = "
 				UPDATE `main` SET 
 					`button_1` = ".$this->db_value($value['button_1']).",
 					`button_2` = ".$this->db_value($value['button_2']).",
