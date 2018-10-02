@@ -283,29 +283,45 @@ class Main extends MX_Controller {
 		$country = $this->input->post('country');
 		$phone = $this->input->post('phone');
 
-        // Start send mail
-		$subject = 'NestGarage chat';
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'tigran.mkrtch@gmail.com';
+		$config['smtp_pass']    = 'Tig97Vah68';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'html'; // or text
+		$config['validation'] = TRUE; // bool whether to validate email or not
+
+		$this->load->library('email');
+
+		$this->email->initialize($config);
 
 
-		$headers = "From: " . strip_tags($email) . "\r\n";
-		$headers .= "Reply-To: ". strip_tags($email) . "\r\n";
-		$headers .= "CC: susan@example.com\r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+		$this->email->from($email, $name, '<@dilemmatik.ru>');
+		$this->email->reply_to($email, $name); //--
+		$this->email->to($mail_to);
 
-
-		$message = '<div>
+		$this->email->subject('Email Test'); //
+		$this->email->message('<div>
 			<p><strong>Name -</strong>'.$name.'</p>
 			<p><strong>Country -</strong>'.$country.'</p>
-			<p><strong>E-mail -</strong>'.$email.'</p>
-			<p><strong>Phone -</strong>'.$phone.'</p>
-		</div>';
+ 			<p><strong>E-mail -</strong>'.$email.'</p>
+ 			<p><strong>Phone -</strong>'.$phone.'</p>
+ 		</div>');
 
 
-		mail($mail_to, $subject, $message, $headers);
+		if(!$this->email->send()) {
+			$messages['success'] = 0;
+			$messages['error'] = $this->email->print_debugger();
+			echo json_encode($messages);
+			return false;
+		}
+
 
 		//end send mail
-
 
 		$sql = "INSERT INTO
 				  `form_email`
@@ -338,6 +354,7 @@ class Main extends MX_Controller {
 		echo json_encode($messages);
 		return true;
 	}
+
 
 
 	public function subscribe_ax() {
