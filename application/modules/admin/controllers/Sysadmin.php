@@ -948,7 +948,7 @@ class Sysadmin extends CI_Controller {
 		);
 
 		foreach ($main_lang_arr as $lang_id => $value) {
-			echo$sql_main = "
+			$sql_main = "
 				UPDATE `main` SET 
 					`button_1` = ".$this->db_value($value['button_1']).",
 					`button_2` = ".$this->db_value($value['button_2']).",
