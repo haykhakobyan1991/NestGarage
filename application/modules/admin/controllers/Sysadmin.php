@@ -173,6 +173,7 @@ class Sysadmin extends CI_Controller {
 			  `chat`.`title`,
 			  `chat`.`photo`,
 			  `chat`.`mail_to`,
+			  `chat`.`mail_subject`,
 			  `chat`.`form_title`,
 			  `chat`.`form_name`,
 			  `chat`.`form_email`,
@@ -423,6 +424,7 @@ class Sysadmin extends CI_Controller {
 
 		// chat info
 		$mail_to = $this->input->post('mail_to');
+		$mail_subject = $this->input->post('subject');
 		$add_sql_chat = '';
 
 		if($mail_allow != 'on') {
@@ -460,7 +462,8 @@ class Sysadmin extends CI_Controller {
 		$sql_chat = "
 			UPDATE `chat` 
 				SET ".$add_sql_chat." 
-				`mail_to` = ".$this->db_value($mail_to)."
+				`mail_to` = ".$this->db_value($mail_to).",
+				`mail_subject` = ".$this->db_value($mail_subject)."
 			WHERE 1	
 		";
 

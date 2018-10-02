@@ -8,8 +8,7 @@ class Main extends MX_Controller {
 	/**
 	 * Main constructor.
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
 		parent::__construct();
 
@@ -17,10 +16,6 @@ class Main extends MX_Controller {
 		$this->load->helper('language');
 		$this->load->library('layout');
 		$this->load->library('session');
-
-//		echo '<pre>';
-//		print_r($_SESSION);
-//		echo '</pre>';
 
 	}
 	
@@ -38,25 +33,7 @@ class Main extends MX_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-	/**
-	 * @return string
-	 */
-	private function default_lng() {
-		return 'hy';
 
-	}
-
-	/**
-	 * @param $value
-	 * @return bool
-	 */
-	private function language($value) {
-		if ($value != '') {
-			return $this->lang->line($value);
-		}
-		return true;
-
-	}
 
 
 	public function index() {
@@ -65,7 +42,6 @@ class Main extends MX_Controller {
 		$this->load->helper('form');
 		$language_id = $this->session->language_id;
 
-//        $this->layout->set_title($this->language('Home'));
 		$data = array();
 
 		if($language_id == '') {
@@ -86,15 +62,11 @@ class Main extends MX_Controller {
 			  LEFT JOIN `language` 
 				ON `language`.`id` = `web`.`language_id` 
 			WHERE `web`.`status` = 1 
-				/*AND `web`.`language_id` = '".$language_id."'*/
         ";
 
 		$query_web = $this->db->query($sql_web);
 		$result_web = $query_web->result_array();
 
-//		echo '<pre>';
-//		print_r($result_web);
-//		echo '</pre>';
 
 		$sql_chat = "
 			SELECT 
@@ -267,7 +239,8 @@ class Main extends MX_Controller {
 
 		$sql_ = "
 			SELECT 
-			  `mail_to` 
+			  `mail_to`,
+			  `mail_subject`
 			FROM
 			  `chat` 
 			WHERE id = '1' 
@@ -277,6 +250,7 @@ class Main extends MX_Controller {
 		$row = $query_->row_array();
 
 		$mail_to = $row['mail_to'];
+		$mail_subject = $row['mail_subject'];
 
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
@@ -300,11 +274,11 @@ class Main extends MX_Controller {
 		$this->email->initialize($config);
 
 
-		$this->email->from($email, $name, '<@dilemmatik.ru>');
-		$this->email->reply_to($email, $name); //--
+		$this->email->from($email, $name);
+		$this->email->reply_to($email, $name);
 		$this->email->to($mail_to);
 
-		$this->email->subject('Email Test'); //
+		$this->email->subject('Subscription: '.$mail_subject);
 		$this->email->message('<div>
 			<p><strong>Name -</strong>'.$name.'</p>
 			<p><strong>Country -</strong>'.$country.'</p>
@@ -400,6 +374,9 @@ class Main extends MX_Controller {
 		return true;
 	}
 
+	private function access_denied() {
+		return false;
+	}
 
 
 }

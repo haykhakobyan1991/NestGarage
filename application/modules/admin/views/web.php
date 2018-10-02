@@ -93,13 +93,25 @@
 																						  type="checkbox"
 																						  class="custom-control-input"
 																						  value="on" id="customCheck1">
-						<label class="custom-control-label" for="customCheck1">Mail to send ORDER A CALL</label>
+						<label class="custom-control-label" for="customCheck1">Mail to send order a call</label>
 					</div>
 				</div>
+
+				<div class="col-sm-6">
+					<label class="">Mail subject</label>
+					<input value="<?= $result_chat[0]['mail_subject'] ?>"
+						   type="text"
+						   class="form-control"
+						   name="subject"
+						   placeholder="Mail subject">
+				</div>
+
+				<div class="col-sm-6"></div>
+
 				<div class="col-sm-6">
 					<label class="">Mail to</label>
 					<input value="<?= $result_chat[0]['mail_to'] ?>"
-						   type="text"
+						   type="email"
 						   class="form-control"
 						   name="mail_to"
 						   placeholder="Enter E-mail address">
