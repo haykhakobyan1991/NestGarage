@@ -801,6 +801,8 @@ class Sysadmin extends CI_Controller {
 			  `font_url`,
 			  `font_css`,
 			  `background_img`,
+			  `background_color`,
+			  `show_img`,
 			  `status`
 			FROM `main`
 			WHERE `main`.`status` = 1
@@ -915,6 +917,8 @@ class Sysadmin extends CI_Controller {
 		$main_text_2 = $this->input->post('main_text_2');
 		$font_url_2 = $this->input->post('font_url_2');
 		$font_css_2 = $this->input->post('font_css_2');
+		$show_img = $this->input->post('show_img');
+		$background_color = $this->input->post('background_color');
 
 
 
@@ -926,7 +930,9 @@ class Sysadmin extends CI_Controller {
 				'title' => $title_1,
 				'main_text' => $main_text_1,
 				'font_url' => $font_url_1,
-				'font_css' => $font_css_1
+				'font_css' => $font_css_1,
+				'show_img' => $show_img,
+				'background_color' => $background_color
 			),
 			'2' => array(
 				'button_1' => $button_1_2,
@@ -935,7 +941,9 @@ class Sysadmin extends CI_Controller {
 				'title' => $title_2,
 				'main_text' => $main_text_2,
 				'font_url' => $font_url_2,
-				'font_css' => $font_css_2
+				'font_css' => $font_css_2,
+				'show_img' => $show_img,
+				'background_color' => $background_color
 			)
 		);
 
@@ -948,7 +956,9 @@ class Sysadmin extends CI_Controller {
 					`title` = ".$this->db_value($value['title']).",
 					`main_text` = ".$this->db_value($value['main_text']).",
 					`font_url` = ".$this->db_value($value['font_url']).",
-					`font_css` = ".$this->db_value($value['font_css'])."
+					`font_css` = ".$this->db_value($value['font_css']).",
+					`show_img` = ".$this->db_value($value['show_img']).",
+					`background_color` = ".$this->db_value($value['background_color'])."
 				WHERE `language_id` = '".$lang_id."'	
 			";
 
@@ -1604,10 +1614,10 @@ class Sysadmin extends CI_Controller {
 		}
 
 
-		$show_img = $this->input->post('show_img');
 		$button_name_1 = $this->input->post('button_name_1');
 		$text_1 = $this->input->post('text_1');
 		$button_link = $this->input->post('button_link');
+		$show_img = $this->input->post('show_img');
 		$background_color = $this->input->post('background_color');
 
 

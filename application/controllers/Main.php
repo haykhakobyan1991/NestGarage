@@ -74,6 +74,7 @@ class Main extends MX_Controller {
 			  `chat`.`title`,
 			  `chat`.`photo`,
 			  `chat`.`mail_to`,
+			  `chat`.`mail_subject`,
 			  `chat`.`form_title`,
 			  `chat`.`form_name`,
 			  `chat`.`form_email`,
@@ -103,7 +104,9 @@ class Main extends MX_Controller {
 			  `main_text`,
 			  `font_url`,
 			  `font_css`,
+			  `show_img`,
 			  `background_img`,
+			  `background_color`,
 			  `status`
 			FROM `main`
 			WHERE `main`.`status` = 1

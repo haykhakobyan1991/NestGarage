@@ -174,16 +174,37 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6">
-					<form>
-						<div class="form-group">
-							<label for="exampleFormControlFile1">Choose Main Background image (1920x1280)</label>
-							<input type="file" name="background_image" class="form-control-file"
-								   id="exampleFormControlFile1">
-						</div>
-					</form>
 
-					<img width="200" height="100" src="<?= base_url() ?>assets/img/<?=$result[1]['background_img']?>" alt="..."
+
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Choose Main Background image (1920x1280)</label>
+						<input type="file" name="background_image" class="form-control-file"
+							   id="exampleFormControlFile1">
+					</div>
+
+
+					<img width="200" height="100" src="<?= base_url() ?>assets/img/<?= $result[1]['background_img'] ?>"
+						 alt="..."
 						 class="img-thumbnail">
+				</div>
+				<div class="col-sm-6">
+					<div class="mt-5  custom-control custom-checkbox float-right">
+						<input <?= ($result[0]['show_img'] == 'yes' ? 'checked' : '') ?>
+							name="show_img"
+							value="yes"
+							type="checkbox"
+							class="custom-control-input"
+							id="customCheck2">
+						<label class="custom-control-label" for="customCheck2">Show background image</label>
+					</div>
+
+					<div class="mt-5 form-group">
+						<label class="mt-3 pt-md-3">Background color</label>
+						<input value="<?=$result[0]['background_color']?>" type="text" class="form-control"
+							   name="background_color" placeholder="Enter Background color example #345985">
+					</div>
+
+
 				</div>
 			</div>
 
