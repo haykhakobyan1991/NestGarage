@@ -257,7 +257,7 @@ class Main extends MX_Controller {
 		$country = $this->input->post('country');
 		$phone = $this->input->post('phone');
 
-
+        // smtp start
 		$config['protocol']    = 'smtp';
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
 		$config['smtp_port']    = '465';
@@ -295,7 +295,7 @@ class Main extends MX_Controller {
 		}
 
 
-		//end send mail
+		//end of smtp
 
 		$sql = "INSERT INTO
 				  `form_email`
@@ -341,6 +341,62 @@ class Main extends MX_Controller {
 		}
 		$name = $this->input->post('name');
 		$email = $this->input->post('email');
+
+
+		$sql_ = "
+			SELECT 
+			  `mail_to`,
+			  `mail_subject`
+			FROM
+			  `chat` 
+			WHERE id = '1' 
+		";
+
+		$query_ = $this->db->query($sql_);
+		$row = $query_->row_array();
+
+
+		$mail_to = $row['mail_to'];
+		$mail_subject = $row['mail_subject'];
+
+
+		// smtp start
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'tigran.mkrtch@gmail.com';
+		$config['smtp_pass']    = 'Tig97Vah68';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'html'; // or text
+		$config['validation'] = TRUE; // bool whether to validate email or not
+
+		$this->load->library('email');
+
+		$this->email->initialize($config);
+
+
+		$this->email->from($email, $name);
+		$this->email->reply_to($email, $name);
+		$this->email->to($mail_to);
+
+		$this->email->subject('Subscription: '.$mail_subject);
+		$this->email->message('<div>
+			<p><strong>Name -</strong>'.$name.'</p>
+ 			<p><strong>E-mail -</strong>'.$email.'</p>
+ 		</div>');
+
+
+		if(!$this->email->send()) {
+			$messages['success'] = 0;
+			$messages['error'] = $this->email->print_debugger();
+			echo json_encode($messages);
+			return false;
+		}
+
+
+		//end of smtp
 
 
 		$sql = "INSERT INTO
