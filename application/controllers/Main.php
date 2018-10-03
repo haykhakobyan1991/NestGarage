@@ -41,7 +41,7 @@ class Main extends MX_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$language_id = $this->session->language_id;
-
+		
 		$data = array();
 
 		if($language_id == '') {
