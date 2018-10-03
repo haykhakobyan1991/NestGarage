@@ -54,9 +54,9 @@
 	<div class="center">
 
 		<div class="language_div">
-			<span   data-value="lang_1" class="lng lng_arm  <?=($site_lang == lang_1) ? 'active' : '' ?> "><?= $result_web[0]['language'] ?></span>
+			<span   data-value="lang_1" class="lng lng_arm  <?=($site_lang == 'lang_1') ? 'active' : '' ?> "><?= $result_web[0]['language'] ?></span>
 			<? if ($result_web[1]['language_status'] == 1) { ?>
-				<span data-value="lang_2" class="lng lng_rus  <?=($site_lang == lang_2) ? 'active' : '' ?> "><?= $result_web[1]['language'] ?></span>
+				<span data-value="lang_2" class="lng lng_rus  <?=($site_lang == 'lang_2') ? 'active' : '' ?> "><?= $result_web[1]['language'] ?></span>
 			<? } ?>
 		</div>
 
