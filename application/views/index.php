@@ -41,7 +41,7 @@
 </head>
 <body
 	style="<?= ($result_main[$lng]['font_css'] == '' ? 'font-family: \'Open Sans\', sans-serif;' : $result_main[$lng]['font_css']) ?>">
-
+<?php $site_lang = $this->session->site_lang;  ?>
 <header style="
 	background:<?=($result_main[$lng]['background_color'] != '' ? $result_main[$lng]['background_color'].',' : 'linear-gradient(0deg,rgba(21, 27, 60, 0.72), rgba(0, 0, 0, 0.58)),')?>
 	url(<?= base_url() ?>assets/img/<?= ($result_main[$lng]['show_img'] == 'yes' ? $result_main[$lng]['background_img'] : '') ?>);
@@ -54,9 +54,9 @@
 	<div class="center">
 
 		<div class="language_div">
-			<span data-value="lang_1" class="lng lng_arm"><?= $result_web[0]['language'] ?></span>
+			<span   data-value="lang_1" class="lng lng_arm  <?=($site_lang == lang_1) ? 'active' : '' ?> "><?= $result_web[0]['language'] ?></span>
 			<? if ($result_web[1]['language_status'] == 1) { ?>
-				<span data-value="lang_2" class="lng lng_rus"><?= $result_web[1]['language'] ?></span>
+				<span data-value="lang_2" class="lng lng_rus  <?=($site_lang == lang_2) ? 'active' : '' ?> "><?= $result_web[1]['language'] ?></span>
 			<? } ?>
 		</div>
 
