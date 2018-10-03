@@ -50,6 +50,10 @@ header {
 	-o-transition: all .3s ease-in-out;
 }
 
+.active {
+	color: #ffffff70;
+}
+
 .lng:hover {
 	opacity: .8;
 }
