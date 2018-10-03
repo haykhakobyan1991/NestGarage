@@ -37,7 +37,7 @@ header {
 .lng {
 	position: relative;
 	display: inline-block;
-	color: #ffffff70;
+	color: #e6e6e6;
 	font-size: 28px;
 	padding: 20px;
 	z-index: 999;
@@ -51,7 +51,7 @@ header {
 }
 
 .active {
-	color: #e6e6e6;
+	color: #ffffff70;
 }
 
 .lng:hover {
